@@ -151,50 +151,61 @@
     </div>
   </section>
 
-  <!-- ════════ 역량 · 자격 ════════ -->
+  <!-- ════════ 역량 ════════ -->
   <section class="section section--tight" aria-labelledby="skill-title">
     <div class="container">
       <div class="section-head">
         <p class="eyebrow"><span class="dot" aria-hidden="true"></span>Skills</p>
-        <h2 class="h2" id="skill-title">역량 · 자격</h2>
+        <h2 class="h2" id="skill-title">보유 기술 · 역량</h2>
+        <p class="lead">쓸 수 있는 기술을 눌러서 요약과 실제 산출물을 확인하세요.</p>
       </div>
 
-      <div class="grid grid--2">
-        <div class="card card--flat">
-          <span class="tag">역량</span>
-          <h3 class="h3">보유 기술 · 역량</h3>
+      <div class="skilltabs" data-skilltabs>
+        <div class="skilltabs__bar" role="tablist" aria-label="보유 기술 목록">
+          <button type="button" role="tab" id="tab-sheet" aria-controls="panel-sheet" aria-selected="true" class="skilltabs__tab is-active">스프레드시트</button>
+          <button type="button" role="tab" id="tab-doc" aria-controls="panel-doc" aria-selected="false" class="skilltabs__tab" tabindex="-1">문서화 도구</button>
+          <button type="button" role="tab" id="tab-ai" aria-controls="panel-ai" aria-selected="false" class="skilltabs__tab" tabindex="-1">AI 활용</button>
+          <button type="button" role="tab" id="tab-unity" aria-controls="panel-unity" aria-selected="false" class="skilltabs__tab" tabindex="-1">Unity</button>
+        </div>
 
-          <!-- TODO: 아래 두 항목(스프레드시트/AI 활용)은 실제로 써본 함수·VBA·산출물로
-               구체화해 주십시오. 원본 이력서에 세부 사례가 없어 채우지 못했습니다.
-               .todo-fill 문단은 화면(주황색 문구)에만 보이고 인쇄 시에는 자동으로 빠집니다. -->
-          <div class="skillgroup" style="margin-top:18px;">
-            <p class="skillgroup__label">스프레드시트</p>
-            <p style="margin-top:6px;font-size:14px;line-height:1.6;color:var(--muted);">함수, 매크로, VBA를 활용해 데이터 테이블을 자동화할 수 있습니다.</p>
-            <p class="todo-fill noprint" style="margin-top:4px;">→ 실제 사용 함수(예: VLOOKUP, SUMIFS, 피벗테이블)와 VBA 코드 사례를 채워 넣어 주세요.</p>
-          </div>
-          <div class="skillgroup">
-            <p class="skillgroup__label">문서화 도구</p>
-            <p style="margin-top:6px;font-size:14px;line-height:1.6;color:var(--muted);">기획서를 작성하고, 문서를 팀과의 소통 수단으로 적극 활용합니다.</p>
-          </div>
-          <div class="skillgroup">
-            <p class="skillgroup__label">AI 활용</p>
-            <p style="margin-top:6px;font-size:14px;line-height:1.6;color:var(--muted);">MCP를 통해 프로젝트를 구현하고, 게임 리소스 생산에 활용할 수 있습니다.</p>
-            <p class="todo-fill noprint" style="margin-top:4px;">→ 실제로 뽑아본 산출물(이미지·문서·코드 등) 사례를 채워 넣어 주세요.</p>
-          </div>
-          <div class="skillgroup">
-            <p class="skillgroup__label">Unity</p>
-            <p style="margin-top:6px;font-size:14px;line-height:1.6;color:var(--muted);">기초적인 씬과 객체 구성, C# 스크립트 분석이 가능합니다.</p>
+        <div class="skilltabs__panel" id="panel-sheet" role="tabpanel" aria-labelledby="tab-sheet">
+          <p class="skilltabs__summary">함수 · 매크로 · VBA로 데이터 테이블을 자동화합니다.</p>
+          <div class="skilltabs__output">
+            <div class="skilltabs__output-box">
+              <p class="todo-fill noprint" style="margin:0;">→ 실제 산출물(예: VLOOKUP·SUMIFS 활용 시트, VBA 코드 캡처)을 여기에 추가해 주세요. 우측 상단 "수정" 버튼으로 설명 텍스트는 바로 채울 수 있습니다.</p>
+            </div>
           </div>
         </div>
 
-        <div class="card card--wash card--flat">
-          <span class="tag">자격증</span>
-          <h3 class="h3">보유 자격</h3>
-          <ul class="rows" style="margin-top:16px;">
-            <li><span class="n">컴퓨터활용능력 1급</span></li>
-            <li><span class="n">직업상담사 2급</span></li>
-            <li><span class="n">평생교육사 2급</span></li>
-          </ul>
+        <div class="skilltabs__panel" id="panel-doc" role="tabpanel" aria-labelledby="tab-doc" hidden>
+          <p class="skilltabs__summary">기획서를 작성하고, 문서를 팀과의 소통 수단으로 적극 활용합니다.</p>
+          <div class="skilltabs__output">
+            <div class="skilltabs__output-box">
+              <p class="todo-fill noprint" style="margin:0;">→ 실제로 작성한 기획서·문서 캡처를 여기에 추가해 주세요.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="skilltabs__panel" id="panel-ai" role="tabpanel" aria-labelledby="tab-ai" hidden>
+          <p class="skilltabs__summary">AI 도구를 조합해 게임 리소스와 프로젝트 산출물을 직접 만들어봤습니다.</p>
+          <div class="skilltabs__output">
+            <a class="skilltabs__output-link" href="./projects/animation-pipeline.html">
+              <span>
+                <span class="l">실제 산출물 보기</span>
+                <span class="t">애니메이션 리소스 파이프라인 구축 (컴스톡)</span>
+              </span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="skilltabs__panel" id="panel-unity" role="tabpanel" aria-labelledby="tab-unity" hidden>
+          <p class="skilltabs__summary">기초적인 씬과 객체 구성, C# 스크립트 분석이 가능합니다.</p>
+          <div class="skilltabs__output">
+            <div class="skilltabs__output-box">
+              <p class="todo-fill noprint" style="margin:0;">→ 실제 작업한 Unity 씬·스크립트 캡처를 여기에 추가해 주세요.</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -257,6 +268,35 @@
 (function () {
   var btn = document.getElementById('printBtn');
   if (btn) btn.addEventListener('click', function () { window.print(); });
+})();
+
+(function () {
+  var bar = document.querySelector('[data-skilltabs] .skilltabs__bar');
+  if (!bar) return;
+  var tabs = bar.querySelectorAll('[role="tab"]');
+
+  function select(tab) {
+    Array.prototype.forEach.call(tabs, function (t) {
+      var on = t === tab;
+      t.classList.toggle('is-active', on);
+      t.setAttribute('aria-selected', String(on));
+      t.tabIndex = on ? 0 : -1;
+      var panel = document.getElementById(t.getAttribute('aria-controls'));
+      if (panel) panel.hidden = !on;
+    });
+  }
+
+  Array.prototype.forEach.call(tabs, function (tab, i) {
+    tab.addEventListener('click', function () { select(tab); });
+    tab.addEventListener('keydown', function (e) {
+      var dir = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+      if (!dir) return;
+      e.preventDefault();
+      var next = tabs[(i + dir + tabs.length) % tabs.length];
+      next.focus();
+      select(next);
+    });
+  });
 })();
 </script>
 <script src="./assets/edit.js" defer></script>
