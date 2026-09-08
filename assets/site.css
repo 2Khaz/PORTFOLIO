@@ -651,6 +651,7 @@ body.is-editing [data-ek]:focus{outline:1.5px solid var(--accent);background:var
   padding:10px 10px 10px 16px;border-radius:999px;
   background:var(--ink);color:#fff;box-shadow:0 10px 30px rgba(8,9,10,.28);
 }
+.editbar[hidden]{display:none;}
 .editbar__status{font-size:12.5px;color:rgba(255,255,255,.75);white-space:nowrap;}
 .editbar__actions{display:flex;gap:6px;}
 .editbar__actions button{
