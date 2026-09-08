@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#ffffff" />
+<meta name="format-detection" content="telephone=no" />
+
+<title>플레이 아카이브 — 이정현 시스템 기획자</title>
+<meta name="description" content="플레이어로서 해온 게임들에서 시스템 기획자 관점으로 얻은 인사이트를 정리했습니다." />
+
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="ko_KR" />
+<meta property="og:title" content="플레이 아카이브 — 이정현 시스템 기획자" />
+<meta property="og:description" content="플레이어로서 해온 게임들에서 시스템 기획자 관점으로 얻은 인사이트를 정리했습니다." />
+
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+<link rel="stylesheet" as="style" crossorigin
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" />
+<link rel="stylesheet" href="./assets/site.css" />
+
+<!--
+================================================================================
+  플레이 아카이브 — 임시 예시 데이터로 채움
+    · 스타크래프트 · 프로젝트 좀보이드 두 항목은 사용자가 요청한 대로
+      Claude가 장르/플랫폼/인사이트를 임의로 채운 예시입니다.
+    · 실제 본인 플레이 이력(정확한 플레이 시간, 엔딩 여부, 실제로 느낀
+      인사이트)으로 바꿔 주세요 — 우측 상단 "수정" 버튼으로 텍스트는
+      바로 고칠 수 있습니다.
+    · 카드를 추가할 때: <li class="playcard-item" data-cat="pc|mobile|console">
+      로 감싸면 상단 필터가 자동으로 인식하고 개수도 자동 계산됩니다.
+================================================================================
+-->
+</head>
+
+<body>
+<a class="skip" href="#main">본문 바로가기</a>
+
+<header class="nav nav--bordered">
+  <div class="container nav__inner">
+    <a class="brand" href="./index.html" aria-label="이정현 포트폴리오 홈">
+      <span class="brand__mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 20V9l8-5 8 5v11"/><path d="M9 20v-6h6v6"/>
+        </svg>
+      </span>
+      <span class="brand__name">이정현</span>
+    </a>
+    <nav class="doctabs" aria-label="문서 이동">
+      <a href="./resume.html">이력서</a>
+      <a href="./cover-letter.html">자기소개서</a>
+      <a href="./portfolio.html">포트폴리오</a>
+      <a href="./play-archive.html" aria-current="page">플레이 아카이브</a>
+    </nav>
+    <a class="nav__mail" href="mailto:tripletrio97@naver.com">연락하기</a>
+    <button class="editbtn noprint" id="editToggle" type="button" aria-pressed="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg>
+      수정
+    </button>
+  </div>
+</header>
+
+<div class="pagehead">
+  <div class="container pagehead__inner">
+    <div>
+      <p class="eyebrow"><span class="dot" aria-hidden="true"></span>Play Archive</p>
+      <h1 class="h1">플레이 아카이브</h1>
+      <p class="lead">직접 만든 프로젝트는 아니지만, 플레이어로서 해온 게임들에서 시스템 기획자 관점으로 얻은 인사이트를 정리했습니다.</p>
+      <p class="pagemeta">
+        <span>기록 <b>2건</b></span>
+        <span>최종 수정 <b>2026.09</b></span>
+      </p>
+    </div>
+    <div class="pagehead__actions noprint">
+      <a class="btn btn--outline" href="./portfolio.html">포트폴리오 보기</a>
+      <a class="btn btn--filled" href="mailto:tripletrio97@naver.com">
+        연락하기
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</div>
+
+<main id="main">
+  <section class="section" aria-labelledby="list-title">
+    <div class="container">
+      <h2 class="sr-only" id="list-title">플레이 기록 목록</h2>
+
+      <div class="filters noprint" id="filters" role="group" aria-label="플랫폼 필터">
+        <button type="button" data-cat="all" aria-pressed="true">전체 <span class="count"></span></button>
+        <button type="button" data-cat="pc" aria-pressed="false">PC <span class="count"></span></button>
+        <button type="button" data-cat="mobile" aria-pressed="false">Mobile <span class="count"></span></button>
+        <button type="button" data-cat="console" aria-pressed="false">Console <span class="count"></span></button>
+      </div>
+
+      <ul class="grid grid--3" id="cards">
+        <!-- TODO: 실제 본인 플레이 이력으로 교체 -->
+        <li class="playcard-item" data-cat="pc">
+          <div class="pcard">
+            <span class="pcard__thumb">대표 이미지</span>
+            <span class="pcard__body">
+              <span class="tag">RTS · 실시간 전략</span>
+              <h3 class="h3">스타크래프트</h3>
+              <p>유닛 상성과 자원 곡선이 정교하게 맞물려야 전략적 선택이 의미를 가진다는 걸 체감했습니다. 같은 유닛이라도 타이밍과 조합에 따라 가치가 완전히 달라지는 밸런스 설계가 인상 깊었습니다.</p>
+              <span class="pcard__meta">PC · 장기 플레이 · 커스텀 맵 에디터 경험</span>
+            </span>
+          </div>
+        </li>
+
+        <li class="playcard-item" data-cat="pc">
+          <div class="pcard">
+            <span class="pcard__thumb">대표 이미지</span>
+            <span class="pcard__body">
+              <span class="tag">오픈월드 · 서바이벌</span>
+              <h3 class="h3">프로젝트 좀보이드</h3>
+              <p>제한된 자원과 영구 사망(퍼머데스) 시스템이 만드는 긴장감이, 시스템 하나하나가 어떻게 플레이어의 선택 압박으로 이어지는지 보여주는 사례였습니다. 사소한 수치 하나가 플레이 태도 전체를 바꾼다는 걸 배웠습니다.</p>
+              <span class="pcard__meta">PC · 샌드박스 · 장기 플레이</span>
+            </span>
+          </div>
+        </li>
+      </ul>
+
+      <p class="lead is-hidden" id="empty" style="margin-top:24px;">해당 분류에 표시할 기록이 없습니다.</p>
+
+      <div class="nextdocs noprint" style="margin-top:56px;">
+        <div class="nextdocs__grid nextdocs__grid--single">
+          <a href="./portfolio.html">
+            <span>
+              <span class="l">다음 문서</span>
+              <span class="t">포트폴리오</span>
+            </span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="editbar noprint" id="editbar" hidden>
+  <span class="editbar__status">수정 모드 · 브라우저에만 임시 저장됩니다</span>
+  <div class="editbar__actions">
+    <button type="button" id="editExport">내보내기</button>
+    <button type="button" id="editReset">초기화</button>
+    <button type="button" id="editDone" class="is-primary">완료</button>
+  </div>
+</div>
+
+<footer class="footer noprint">
+  <div class="container footer__inner">
+    <div class="footer__contact">
+      <a href="mailto:tripletrio97@naver.com">tripletrio97@naver.com</a>
+      <a href="./index.html">홈</a>
+      <a href="#" rel="noopener">GitHub</a>
+      <a href="#" rel="noopener">Notion</a>
+    </div>
+    <p class="footer__copy">© 2026 이정현. 시스템 기획자 포트폴리오.</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var wrap = document.getElementById('filters');
+  var items = document.querySelectorAll('.playcard-item');
+  var empty = document.getElementById('empty');
+  if (!wrap || !items.length) return;
+
+  var buttons = wrap.querySelectorAll('button');
+
+  Array.prototype.forEach.call(buttons, function (b) {
+    var cat = b.getAttribute('data-cat');
+    var n = cat === 'all'
+      ? items.length
+      : document.querySelectorAll('.playcard-item[data-cat="' + cat + '"]').length;
+    var slot = b.querySelector('.count');
+    if (slot) slot.textContent = n;
+  });
+
+  function apply(cat, push) {
+    var shown = 0;
+    Array.prototype.forEach.call(items, function (li) {
+      var hit = (cat === 'all') || li.getAttribute('data-cat') === cat;
+      li.classList.toggle('is-hidden', !hit);
+      if (hit) shown++;
+    });
+    Array.prototype.forEach.call(buttons, function (b) {
+      b.setAttribute('aria-pressed', String(b.getAttribute('data-cat') === cat));
+    });
+    if (empty) empty.classList.toggle('is-hidden', shown > 0);
+
+    if (push && window.history && window.history.replaceState) {
+      var url = new URL(window.location.href);
+      if (cat === 'all') url.searchParams.delete('filter');
+      else url.searchParams.set('filter', cat);
+      window.history.replaceState({}, '', url.toString());
+    }
+  }
+
+  wrap.addEventListener('click', function (e) {
+    var b = e.target.closest ? e.target.closest('button[data-cat]') : null;
+    if (!b) return;
+    apply(b.getAttribute('data-cat'), true);
+  });
+
+  var initial = 'all';
+  try {
+    var q = new URL(window.location.href).searchParams.get('filter');
+    if (q && wrap.querySelector('button[data-cat="' + q + '"]')) initial = q;
+  } catch (err) { /* URL 미지원 브라우저 — 기본값 사용 */ }
+  apply(initial, false);
+})();
+</script>
+<script src="./assets/edit.js" defer></script>
+</body>
+</html>
