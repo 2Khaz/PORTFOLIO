@@ -23,12 +23,15 @@
 <!--
 ================================================================================
   허브(랜딩) — 스크롤 없이 보이는 첫 화면에 아래 3가지를 모두 담는다.
-    1) 로그라인   2) 이력서 강조 요약   3) 이력서/자소서/포트폴리오 바로가기
+    1) 로그라인   2) 이력서 강조 요약(출시 경험을 맨 앞에 강조)
+    3) 이력서/자소서/포트폴리오 바로가기(이력서가 가장 강조된 버튼)
   그 아래는 프로젝트 → 보유 역량 → 학력 및 교육 경험 순으로 배치.
+  상단 리본(doctabs)은 다른 페이지와 동일하게 이력서/자소서/포트폴리오로 통일.
 --------------------------------------------------------------------------------
   TODO — 채워야 할 항목
-    · 키워드 칩(hero__keywords)
-    · 이메일 · GitHub · Notion, og:image / og:url
+    · 키워드 칩(.keywords) — 지금은 예시. # 는 <span class="h"> 로 별도 마크업했으니
+      텍스트만 교체하면 됨
+    · GitHub · Notion, og:image / og:url
     · (선택) 히어로 배경 게임 이미지 — </body> 위 스크립트의 IMAGES 배열 참고
     · 자격증 3건은 실제 취득월 정보가 없어 이름만 기재함 — 있으면 추가
 ================================================================================
@@ -49,7 +52,11 @@
       </span>
       <span class="brand__name">이정현</span>
     </a>
-    <!-- TODO: 실제 이메일 주소로 교체 -->
+    <nav class="doctabs" aria-label="문서 이동">
+      <a href="./resume.html">이력서</a>
+      <a href="./cover-letter.html">자기소개서</a>
+      <a href="./portfolio.html">포트폴리오</a>
+    </nav>
     <a class="nav__mail" href="mailto:tripletrio97@naver.com">연락하기</a>
   </div>
 </header>
@@ -71,27 +78,28 @@
 
     <p class="hero__sub">규칙과 수치를 구조로 정리하고, 팀이 같은 그림을 보고 만들 수 있도록 문서로 옮깁니다.</p>
 
-    <!-- TODO: 수치 교체 -->
+    <!-- TODO: 수치 교체. 출시 경험을 가장 앞에 두어 강조함(is-highlight) -->
     <ul class="facts" aria-label="이력 요약">
+      <li class="is-highlight"><div class="v">1<span class="u">회</span></div><div class="l">출시 경험</div></li>
       <li><div class="v">2<span class="u">건</span></div><div class="l">참여 프로젝트</div></li>
-      <li><div class="v">1<span class="u">회</span></div><div class="l">출시 경험</div></li>
     </ul>
 
     <!-- TODO: 키워드 교체 -->
     <ul class="keywords" aria-label="핵심 역량">
-      <li>시스템 · 밸런스 설계</li>
-      <li>전투 · 성장 기획</li>
-      <li>데이터 기반 수치 검증</li>
-      <li>GDD 문서화</li>
+      <li><span class="h">#</span>시스템 · 밸런스 설계</li>
+      <li><span class="h">#</span>전투 · 성장 기획</li>
+      <li><span class="h">#</span>데이터 기반 수치 검증</li>
+      <li><span class="h">#</span>GDD 문서화</li>
     </ul>
 
+    <!-- 이력서를 가장 강조 — is-primary(채워진 버튼) -->
     <nav class="jump" aria-label="주요 문서 바로가기">
-      <a class="is-secondary" href="./resume.html">이력서</a>
-      <a class="is-secondary" href="./cover-letter.html">자기소개서</a>
-      <a class="is-primary" href="./portfolio.html">
-        포트폴리오
+      <a class="is-primary" href="./resume.html">
+        이력서
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
       </a>
+      <a class="is-secondary" href="./cover-letter.html">자기소개서</a>
+      <a class="is-secondary" href="./portfolio.html">포트폴리오</a>
     </nav>
 
     <a class="cue" href="#more">
@@ -191,9 +199,9 @@
 
 <footer class="footer">
   <div class="container footer__inner">
-    <!-- TODO: 연락처 교체 -->
     <div class="footer__contact">
       <a href="mailto:tripletrio97@naver.com">tripletrio97@naver.com</a>
+      <a href="tel:010-4038-4198">010-4038-4198</a>
       <a href="#" rel="noopener">GitHub</a>
       <a href="#" rel="noopener">Notion</a>
     </div>

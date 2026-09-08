@@ -161,9 +161,10 @@ button{font:inherit;color:inherit;-webkit-appearance:none;appearance:none;border
 .doctabs a[aria-current="page"]{background:var(--accent-wash);color:var(--accent);font-weight:600;}
 @media (min-width:768px){ .doctabs{gap:4px;} .doctabs a{padding:8px 14px;font-size:14px;} }
 @media (max-width:479px){ .nav__mail{display:none;} }
-/* 아주 좁은 화면: 이름을 감추고 로고 마크만 남겨 탭 3개가 한 줄에 들어가게 한다 */
+/* 아주 좁은 화면: 이름을 감추고 로고 마크만 남겨 탭 3개가 한 줄에 들어가게 한다
+   (doctabs 를 쓰는 모든 nav 에 공통 적용 — 히어로 위 투명 상태 포함) */
 @media (max-width:389px){
-  .nav--bordered .brand__name{display:none;}
+  .nav .brand__name{display:none;}
   .doctabs a{padding:7px 9px;font-size:12.5px;}
 }
 
@@ -171,6 +172,9 @@ button{font:inherit;color:inherit;-webkit-appearance:none;appearance:none;border
 .nav.is-transparent{background:transparent;box-shadow:none;}
 .nav.is-transparent .brand__name{color:var(--white);}
 .nav.is-transparent .nav__mail{color:rgba(255,255,255,.82);}
+.nav.is-transparent .doctabs a{color:rgba(255,255,255,.82);}
+.nav.is-transparent .doctabs a:hover{background:rgba(255,255,255,.14);color:var(--white);}
+.nav.is-transparent .doctabs a[aria-current="page"]{background:rgba(255,255,255,.18);color:var(--white);}
 .nav.is-solid{box-shadow:0 1px 0 0 var(--mist);}
 .nav--bordered{box-shadow:0 1px 0 0 var(--mist);}
 
@@ -223,6 +227,8 @@ button{font:inherit;color:inherit;-webkit-appearance:none;appearance:none;border
 }
 .facts li{padding:14px 18px;}
 .facts li + li{border-left:1px solid rgba(255,255,255,.16);}
+/* 강조하고 싶은 지표(가장 앞 항목)에 붙이는 옅은 채움 */
+.facts li.is-highlight{background:rgba(255,255,255,.09);}
 .facts .v{
   font-size:clamp(21px,3.4vw,27px);line-height:1.15;letter-spacing:-.7px;font-weight:600;
   font-variant-numeric:tabular-nums;
@@ -235,6 +241,7 @@ button{font:inherit;color:inherit;-webkit-appearance:none;appearance:none;border
   border:1px solid rgba(255,255,255,.24);
   font-size:12px;font-weight:500;color:rgba(255,255,255,.88);letter-spacing:-.1px;
 }
+.keywords .h{color:rgba(255,255,255,.55);margin-right:1px;}
 .jump{margin-top:24px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;max-width:720px;}
 .jump a{
   display:flex;align-items:center;justify-content:center;gap:6px;
@@ -424,17 +431,19 @@ button{font:inherit;color:inherit;-webkit-appearance:none;appearance:none;border
 .skillgroup__label{
   font-size:12px;font-weight:600;letter-spacing:.4px;text-transform:uppercase;color:var(--accent);
 }
+/* 내용을 아직 못 채운 자리를 눈에 띄게 표시 — 인쇄 시에는 자동으로 빠짐(noprint 병행) */
+.todo-fill{font-size:13px;font-weight:500;color:#b45309;}
 
 /* ══════════════ 자기소개서 ══════════════ */
 .qa{border-top:1px solid var(--mist);padding-top:32px;margin-top:32px;scroll-margin-top:calc(var(--nav-h) + 24px);}
 .qa:first-of-type{border-top:0;padding-top:0;margin-top:0;}
 .qa__no{
   display:inline-flex;align-items:center;justify-content:center;
-  width:26px;height:26px;border-radius:var(--r-tag);
+  width:30px;height:30px;border-radius:var(--r-tag);
   background:var(--accent-wash);color:var(--accent);
-  font-size:13px;font-weight:600;font-variant-numeric:tabular-nums;
+  font-size:14px;font-weight:700;font-variant-numeric:tabular-nums;
 }
-.qa__q{margin-top:12px;font-size:clamp(19px,2.6vw,24px);line-height:1.35;letter-spacing:-.3px;font-weight:600;color:var(--ink);}
+.qa__q{margin-top:14px;font-size:clamp(23px,3.4vw,32px);line-height:1.3;letter-spacing:-.4px;font-weight:700;color:var(--ink);}
 .qa__body{margin-top:16px;}
 .qa__pull{
   margin:18px 0;padding:16px 18px;
@@ -592,6 +601,8 @@ button{font:inherit;color:inherit;-webkit-appearance:none;appearance:none;border
 .nextdocs{border-top:1px solid var(--mist);padding-top:36px;margin-top:0;}
 .nextdocs__grid{display:grid;gap:12px;grid-template-columns:1fr;}
 @media (min-width:600px){ .nextdocs__grid{grid-template-columns:repeat(2,minmax(0,1fr));} }
+/* 다음 문서 링크가 하나뿐일 때 — 전체 폭으로 늘어나지 않도록 폭을 제한 */
+.nextdocs__grid--single{grid-template-columns:1fr;max-width:380px;}
 .nextdocs a{
   display:flex;align-items:center;justify-content:space-between;gap:12px;
   padding:18px 20px;border:1px solid var(--mist);border-radius:var(--r-card);
