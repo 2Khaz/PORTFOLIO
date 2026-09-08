@@ -6,13 +6,13 @@
 <meta name="theme-color" content="#ffffff" />
 <meta name="format-detection" content="telephone=no" />
 
-<title>성장 · 재화 밸런스 설계 — 이정현 포트폴리오</title>
-<meta name="description" content="중반 이후 이탈이 몰리던 구간의 원인을 난이도가 아닌 성장 체감에서 찾고, 곡선을 다시 맞춘 작업입니다." />
+<title>애니메이션 리소스 파이프라인 구축 — 이정현 포트폴리오</title>
+<meta name="description" content="6주간 5인이 진행한 PC 게임(컴스톡) 프로덕션 단계에서, 팀 전체가 같은 방식으로 쓸 수 있는 애니메이션 리소스 파이프라인을 탐색하고 실제 리소스를 생산한 작업입니다." />
 
 <meta property="og:type" content="article" />
 <meta property="og:locale" content="ko_KR" />
-<meta property="og:title" content="성장 · 재화 밸런스 설계 — 이정현 포트폴리오" />
-<meta property="og:description" content="요구 전투력과 획득 재화량을 같은 표에 놓고, 구간별로 어긋나는 지점을 찾아 곡선을 다시 맞췄습니다." />
+<meta property="og:title" content="애니메이션 리소스 파이프라인 구축 — 이정현 포트폴리오" />
+<meta property="og:description" content="AI 도구를 조합해 애니메이션 리소스 파이프라인을 탐색하고, 막힌 지점에서 대안으로 전환해 팀 전체가 쓸 수 있는 방식으로 정리했습니다." />
 
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
 <link rel="stylesheet" as="style" crossorigin
@@ -21,17 +21,16 @@
 
 <!--
 ================================================================================
-  프로젝트 상세 (1/3) — TODO 목록
-    · 개요(.spec) 4칸, 문제→접근→결과(.steps), 성과표(.outcomes), 자료 링크(.assets)
-    · 자료 임베드 : .embed 블록을 <iframe> 으로 교체
-        - YouTube        https://www.youtube.com/embed/<ID>
-        - Google Slides  https://docs.google.com/presentation/d/<ID>/embed
-        - Google Drive   https://drive.google.com/file/d/<ID>/preview
-        - PDF            <iframe src="../assets/docs/xxx.pdf">
-      iframe 에는 sandbox="allow-scripts allow-same-origin allow-popups" 를 붙이십시오.
-    · 성과표 수치 — 근거 없는 숫자는 넣지 말 것
-  이 페이지를 복제해 새 프로젝트를 만들 때는 ../portfolio.html 의 카드 목록과
-  아래 .projectnav(이전/다음) 를 함께 갱신하십시오.
+  프로젝트 상세 — 컴스톡(itch.io 출시) 프로덕션 단계, 애니메이션 리소스 파이프라인
+  업로드하신 STAR 문서(20260907_...Ver01.md)와 강사님 FEED100 피드백을 반영해 작성함
+    · 프로젝트 소개(lead) 추가
+    · 기간을 .spec 에 명시
+    · 행동(Approach)을 단계별로 정리
+    · 결과에 산출물·형태·팀 전달 과정 포함
+  남은 TODO
+    · .embed 자리에 실제 작업 이미지(원화→리깅→완성 비교컷 등) 추가
+    · .assets 링크를 실제 파이프라인 공유 문서·리소스 링크로 교체
+    · 정확한 날짜(기간)가 있으면 .spec 의 "6주 프로젝트 · 프로덕션 단계" 대신 실제 날짜로 교체
 ================================================================================
 -->
 </head>
@@ -54,7 +53,6 @@
       <a href="../cover-letter.html">자기소개서</a>
       <a href="../portfolio.html" aria-current="page">포트폴리오</a>
     </nav>
-    <!-- TODO: 이메일 교체 -->
     <a class="nav__mail" href="mailto:tripletrio97@naver.com">연락하기</a>
   </div>
 </header>
@@ -67,13 +65,12 @@
     </a>
     <div class="pagehead__inner">
       <div>
-        <span class="tag">시스템 기획</span>
-        <h1 class="h1" style="margin-top:14px;">성장 · 재화 밸런스 설계</h1>
-        <p class="lead" style="margin-top:12px;">중반 이후 이탈이 몰리던 구간의 원인을 난이도가 아닌 성장 체감에서 찾고, 곡선을 다시 맞춘 작업입니다.</p>
+        <span class="tag">리소스 · AI 파이프라인</span>
+        <h1 class="h1" style="margin-top:14px;">애니메이션 리소스 파이프라인 구축</h1>
+        <p class="lead" style="margin-top:12px;">6주간 5인이 진행한 PC 게임(컴스톡, itch.io 출시) 프로덕션 단계에서, 팀 전체가 같은 방식으로 쓸 수 있는 애니메이션 리소스 파이프라인을 탐색하고 실제 리소스를 생산한 작업입니다.</p>
       </div>
       <div class="pagehead__actions noprint">
         <a class="btn btn--outline" href="../resume.html">이력서 보기</a>
-        <!-- TODO: 이메일 교체 -->
         <a class="btn btn--filled" href="mailto:tripletrio97@naver.com">
           연락하기
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
@@ -88,82 +85,73 @@
     <div class="container">
       <article class="detail">
 
-        <!-- TODO: 개요 교체 -->
         <dl class="spec">
-          <div><dt>기간</dt><dd>2025.03 — 2025.08</dd></div>
-          <div><dt>플랫폼</dt><dd>모바일 (Android / iOS)</dd></div>
-          <div><dt>팀 규모</dt><dd>0명</dd></div>
-          <div><dt>담당 역할</dt><dd>성장 · 재화 밸런싱</dd></div>
+          <div><dt>기간</dt><dd>6주 프로젝트 · 프로덕션 단계</dd></div>
+          <div><dt>팀 규모</dt><dd>5인</dd></div>
+          <div><dt>사용 도구</dt><dd>ChatGPT · Claude · ComfyUI · Ludo.ai · Photopea</dd></div>
+          <div><dt>담당 역할</dt><dd>파이프라인 탐색 · 리소스 제작 · 팀 공유</dd></div>
         </dl>
 
         <div class="steps">
           <div class="step">
             <p class="step__label">Problem</p>
-            <h4 class="h4">중반 이후 이탈 집중</h4>
-            <p>특정 구간부터 진행이 멈추는 사용자가 늘었습니다. 난이도 문제로 보였지만, 실제로는 성장 체감이 끊기는 것이 원인이었습니다.</p>
+            <h4 class="h4">팀 전체가 쓸 통일된 파이프라인이 없음</h4>
+            <p>6주짜리 프로젝트라 전담 애니메이터 없이 리소스를 만들어야 했습니다. 톤앤매너가 균일한 애니메이션을, 팀원 누구든 같은 방식으로 만들 수 있는 파이프라인이 먼저 필요했습니다.</p>
           </div>
           <div class="step">
             <p class="step__label">Approach</p>
-            <h4 class="h4">요구치와 획득량을 한 표에</h4>
-            <p>구간별 필요 전투력과 실제 획득 가능한 재화량을 같은 표에 두고 비교해, 두 곡선의 기울기가 벌어지는 지점을 특정했습니다.</p>
+            <h4 class="h4">AI 조합으로 시도하고, 막히면 전환</h4>
+            <p>ChatGPT로 원화를 만들고 Claude로 캐릭터 부위(몸통·팔·다리)를 나눠 리깅한 뒤 ComfyUI로 인페인팅하는 방식을 시도했습니다. 다리가 교차하는 이동 애니메이션에서 LLM 판단 오류로 한계에 부딪히자, Blit.so·Ludo.ai 등 대안을 비교해 가격과 결과물 기준으로 Ludo.ai로 전환했습니다. 이펙트 애니메이션은 ChatGPT로 10~12프레임 ZIP을 반복 생성·선별하는 별도 방식으로 정리했습니다.</p>
           </div>
           <div class="step">
             <p class="step__label">Result</p>
-            <h4 class="h4">곡선 정렬 + 중간 보상</h4>
-            <p>획득 곡선을 요구치와 같은 기울기로 맞춘 뒤, 해당 구간에만 중간 보상을 배치해 체감 간격을 좁혔습니다.</p>
+            <h4 class="h4">리소스 생산 + 파이프라인 문서로 공유</h4>
+            <p>캐릭터·이펙트 애니메이션 리소스 생산을 마치고, 완성한 파이프라인을 문서로 정리해 팀원 모두가 같은 방식으로 후속 작업을 이어갈 수 있도록 전달했습니다. 다만 Ludo.ai는 내부 처리 방식이 공개되어 있지 않아, 캐릭터 애니메이션 쪽은 다음 프로젝트에 그대로 재활용하기는 어렵다고 판단했습니다.</p>
           </div>
         </div>
 
-        <!-- TODO: 성과 수치 교체. 근거 없는 숫자는 넣지 말 것 -->
         <div class="tablewrap">
           <table class="outcomes">
-            <caption>정량 성과</caption>
+            <caption>결과 요약</caption>
             <thead>
-              <tr><th scope="col">지표</th><th scope="col">변화</th><th scope="col">측정 기준</th></tr>
+              <tr><th scope="col">구분</th><th scope="col">결과</th><th scope="col">재사용 가능성</th></tr>
             </thead>
             <tbody>
-              <tr><td>해당 구간 이탈률</td><td class="val">0%p ↓</td><td>수정 전후 2주 · 동일 유입 기준</td></tr>
-              <tr><td>구간 평균 체류</td><td class="val">0% ↑</td><td>구간 진입~통과 소요 시간</td></tr>
-              <tr><td>밸런스 재조정 횟수</td><td class="val">0회 → 0회</td><td>월 단위 핫픽스 기준</td></tr>
+              <tr><td>이펙트 애니메이션</td><td class="val">목표대로 완성</td><td>다음 프로젝트에도 활용 가능</td></tr>
+              <tr><td>캐릭터 애니메이션</td><td class="val">생산 완료</td><td>도구 내부 파이프라인 비공개로 재활용 어려움</td></tr>
             </tbody>
           </table>
         </div>
 
-        <!-- TODO: iframe 으로 교체 -->
-        <div class="embed noprint">기획서 · 시트 임베드 자리<br />(Google Slides / Drive / PDF iframe)</div>
+        <div class="prose" style="margin-top:28px;">
+          <h4 class="h4">배운 점</h4>
+          <p>애니메이션 레퍼런스를 탐색하고 AI에 전달하는 과정 자체는, 이후 비주얼 가이드를 만들어 애니메이터에게 작업을 전달할 때도 쓸 수 있는 경험이 되었습니다. 이펙트 애니메이션 파이프라인은 이후 프로젝트에도 그대로 활용할 수 있다고 판단하고 있고, 첫 방법(ComfyUI 인페인팅)이 막혔을 때 대안(Ludo.ai)을 빠르게 찾아 전환한 경험도 남았습니다. 다만 AI 활용이 아직 미숙해서, 필요한 작업 프로세스를 구축하는 데 시행착오가 많았던 점은 아쉬웠습니다.</p>
+        </div>
+
+        <!-- TODO: 실제 작업 이미지(원화 → 리깅 → 완성 애니메이션 비교컷 등)로 교체 -->
+        <div class="embed noprint">작업 과정 이미지 자리<br />(원화 · 리깅 · 완성 비교컷)</div>
 
         <div class="assets">
           <!-- TODO: 실제 자료 링크로 교체 -->
           <a href="#" rel="noopener">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3v5h5"/><path d="M15 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7z"/></svg>
-            기획서 원문
-          </a>
-          <a href="#" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m10 9 5 3-5 3z"/></svg>
-            플레이 영상
+            파이프라인 공유 문서
           </a>
           <a href="#" rel="noopener">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/></svg>
-            밸런스 시트
+            컴스톡 (itch.io)
           </a>
         </div>
       </article>
 
       <!-- 이전/다음 프로젝트 -->
       <nav class="projectnav noprint" aria-label="다른 프로젝트">
-        <a class="projectnav__prev" href="./animation-pipeline.html">
-          <span class="l">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg>
-            이전
-          </span>
-          <span class="t">애니메이션 리소스 파이프라인 구축</span>
-        </a>
-        <a class="projectnav__next" href="./combat-spec.html">
+        <a class="projectnav__next" href="./growth-balance.html">
           <span class="l">
             다음
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
           </span>
-          <span class="t">전투 규칙 · 스킬 명세</span>
+          <span class="t">성장 · 재화 밸런스 설계</span>
         </a>
       </nav>
 
