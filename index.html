@@ -27,9 +27,10 @@
   그 아래는 부가 정보(프로젝트 · 자격 · 연락처).
 --------------------------------------------------------------------------------
   TODO — 채워야 할 항목
-    · 지표 4개 수치, 키워드 칩
+    · 지표 2개(참여 프로젝트/출시 경험) 수치, 키워드 칩
     · 프로젝트 3건, 자격증 3건, 툴 스택
     · 이메일 · GitHub · Notion, og:image / og:url
+    · (선택) 히어로 배경 게임 이미지 — </body> 위 스크립트의 IMAGES 배열 참고
 ================================================================================
 -->
 
@@ -55,25 +56,13 @@
 
 <!-- ════════ 첫 화면 : 로그라인 + 요약 + 바로가기 ════════ -->
 <section class="hero" id="top">
-  <svg class="hero__sky" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
-    <defs>
-      <filter id="soft" x="-25%" y="-25%" width="150%" height="150%"><feGaussianBlur stdDeviation="18"/></filter>
-      <filter id="softer" x="-25%" y="-25%" width="150%" height="150%"><feGaussianBlur stdDeviation="34"/></filter>
-    </defs>
-    <g filter="url(#softer)" opacity=".2">
-      <ellipse cx="1190" cy="170" rx="240" ry="100" fill="#FBF1CE"/>
-      <ellipse cx="1315" cy="132" rx="155" ry="76" fill="#FDF7E6"/>
-      <ellipse cx="1060" cy="205" rx="145" ry="68" fill="#F6E4B0"/>
-    </g>
-    <g filter="url(#soft)" opacity=".13">
-      <ellipse cx="210" cy="760" rx="280" ry="108" fill="#FDF7E6"/>
-      <ellipse cx="370" cy="800" rx="185" ry="78" fill="#F6E4B0"/>
-      <ellipse cx="70"  cy="812" rx="155" ry="72" fill="#FBF1CE"/>
-    </g>
-    <g filter="url(#softer)" opacity=".09">
-      <ellipse cx="740" cy="430" rx="380" ry="130" fill="#FDF7E6"/>
-    </g>
-  </svg>
+  <!--
+    배경 게임 이미지 자리. 이미지가 없으면 기존 그라디언트만 보이고,
+    아래 스크립트의 IMAGES 배열에 경로를 채우면 자동으로 순환 전환됩니다.
+    자세한 방법은 </body> 바로 위 스크립트의 주석을 참고하십시오.
+  -->
+  <div class="hero__bg" id="heroBg" aria-hidden="true"></div>
+  <div class="hero__scrim" aria-hidden="true"></div>
 
   <div class="container hero__inner">
     <p class="eyebrow eyebrow--on-dark"><span class="dot" aria-hidden="true"></span>System Designer · Portfolio</p>
@@ -86,8 +75,6 @@
     <ul class="facts" aria-label="이력 요약">
       <li><div class="v">5<span class="u">건</span></div><div class="l">참여 프로젝트</div></li>
       <li><div class="v">2<span class="u">회</span></div><div class="l">출시 경험</div></li>
-      <li><div class="v">3<span class="u">종</span></div><div class="l">보유 자격증</div></li>
-      <li><div class="v">2<span class="u">회</span></div><div class="l">팀 리드 경험</div></li>
     </ul>
 
     <!-- TODO: 키워드 교체 -->
@@ -229,6 +216,74 @@
   window.addEventListener('resize', onScroll, { passive: true });
   window.addEventListener('orientationchange', onScroll);
   update();
+})();
+
+/*
+================================================================================
+  히어로 배경 이미지 순환
+--------------------------------------------------------------------------------
+  사용법
+    1) 크롭한 게임 이미지를 assets/hero/ 폴더에 넣는다 (폴더는 새로 만들어야 함)
+    2) 아래 IMAGES 배열에 파일 경로를 순서대로 적는다
+    3) 저장하면 끝 — 몇 초마다 자동으로 다음 이미지로 부드럽게 전환됩니다
+
+  이미지 권장 사항
+    · 가로로 넓은 사진일수록 좋음 (최소 1600px 폭 권장)
+    · 각 파일 300~600KB 정도로 압축 (사이트 전체가 정적 파일이라 별도 최적화 과정이 없음)
+    · 배경이 cover 방식으로 꽉 채워지므로, 화면 폭에 따라 좌우가 살짝 잘릴 수 있음
+      → 중요한 장면은 이미지 가운데에 오도록 크롭
+
+  이미지가 0장이면 이 스크립트는 아무 일도 하지 않고, 기존 그라디언트만 보입니다.
+  1장만 넣으면 전환 없이 그 사진 한 장만 고정으로 보입니다.
+================================================================================
+*/
+(function () {
+  var hero = document.getElementById('top');
+  var bg = document.getElementById('heroBg');
+  if (!hero || !bg) return;
+
+  var IMAGES = [
+    // './assets/hero/game-1.jpg',
+    // './assets/hero/game-2.jpg',
+    // './assets/hero/game-3.jpg',
+  ];
+  var INTERVAL_MS = 6000; // 전환 간격(밀리초). 6000 = 6초
+
+  if (!IMAGES.length) return;
+
+  hero.classList.add('has-photos');
+  var slides = IMAGES.map(function (src, i) {
+    var el = document.createElement('div');
+    el.className = 'hero__bg-slide' + (i === 0 ? ' is-active' : '');
+    el.style.backgroundImage = "url('" + src + "')";
+    bg.appendChild(el);
+    return el;
+  });
+  if (slides.length < 2) return;
+
+  var idx = 0;
+  var timer = null;
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function show(next) {
+    slides[idx].classList.remove('is-active');
+    idx = next;
+    slides[idx].classList.add('is-active');
+  }
+  function tick() { show((idx + 1) % slides.length); }
+  function start() {
+    if (reduceMotion || timer) return;
+    timer = window.setInterval(tick, INTERVAL_MS);
+  }
+  function stop() {
+    if (timer) { window.clearInterval(timer); timer = null; }
+  }
+
+  start();
+  // 다른 탭을 보고 있을 때는 멈춰서 배터리·성능을 아낀다
+  document.addEventListener('visibilitychange', function () {
+    if (document.hidden) stop(); else start();
+  });
 })();
 </script>
 </body>
