@@ -54,6 +54,10 @@
       <a href="./portfolio.html">포트폴리오</a>
     </nav>
     <a class="nav__mail" href="mailto:tripletrio97@naver.com">연락하기</a>
+    <button class="editbtn noprint" id="editToggle" type="button" aria-pressed="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg>
+      수정
+    </button>
   </div>
 </header>
 
@@ -241,11 +245,21 @@
   </div>
 </footer>
 
+<div class="editbar noprint" id="editbar" hidden>
+  <span class="editbar__status">수정 모드 · 브라우저에만 임시 저장됩니다</span>
+  <div class="editbar__actions">
+    <button type="button" id="editExport">내보내기</button>
+    <button type="button" id="editReset">초기화</button>
+    <button type="button" id="editDone" class="is-primary">완료</button>
+  </div>
+</div>
+
 <script>
 (function () {
   var btn = document.getElementById('printBtn');
   if (btn) btn.addEventListener('click', function () { window.print(); });
 })();
 </script>
+<script src="./assets/edit.js" defer></script>
 </body>
 </html>
