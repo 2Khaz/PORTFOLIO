@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#ffffff" />
+<meta name="format-detection" content="telephone=no" />
+
+<title>밸런싱 시뮬레이터 — 이정현 포트폴리오</title>
+<meta name="description" content="밸런스 논의가 취향이 아니라 근거 위에서 이뤄지도록, 수치를 넣으면 결과가 바로 보이는 시트를 만들었습니다." />
+
+<meta property="og:type" content="article" />
+<meta property="og:locale" content="ko_KR" />
+<meta property="og:title" content="밸런싱 시뮬레이터 — 이정현 포트폴리오" />
+<meta property="og:description" content="수치를 입력하면 기댓값과 구간별 곡선이 바로 나오도록 시트를 구성해, 검토 주기를 짧게 만들었습니다." />
+
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+<link rel="stylesheet" as="style" crossorigin
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" />
+<link rel="stylesheet" href="../assets/site.css" />
+
+<!--
+================================================================================
+  프로젝트 상세 (3/3) — TODO 목록
+    · 개요(.spec) 4칸, 문제→접근→결과(.steps), 성과표(.outcomes), 자료 링크(.assets)
+    · 자료 임베드 : .embed 블록을 <iframe> 으로 교체 (형식은 growth-balance.html 상단 주석 참고)
+    · 성과표 수치 — 근거 없는 숫자는 넣지 말 것
+================================================================================
+-->
+</head>
+
+<body>
+<a class="skip" href="#main">본문 바로가기</a>
+
+<header class="nav nav--bordered">
+  <div class="container nav__inner">
+    <a class="brand" href="../index.html" aria-label="이정현 포트폴리오 홈">
+      <span class="brand__mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 20V9l8-5 8 5v11"/><path d="M9 20v-6h6v6"/>
+        </svg>
+      </span>
+      <span class="brand__name">이정현</span>
+    </a>
+    <nav class="doctabs" aria-label="문서 이동">
+      <a href="../resume.html">이력서</a>
+      <a href="../cover-letter.html">자기소개서</a>
+      <a href="../portfolio.html" aria-current="page">포트폴리오</a>
+    </nav>
+    <!-- TODO: 이메일 교체 -->
+    <a class="nav__mail" href="mailto:example@email.com">연락하기</a>
+  </div>
+</header>
+
+<div class="pagehead">
+  <div class="container">
+    <a class="backlink noprint" href="../portfolio.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg>
+      포트폴리오 목록
+    </a>
+    <div class="pagehead__inner">
+      <div>
+        <span class="tag">데이터 · 툴</span>
+        <h1 class="h1" style="margin-top:14px;">밸런싱 시뮬레이터</h1>
+        <p class="lead" style="margin-top:12px;">밸런스 논의가 취향이 아니라 근거 위에서 이뤄지도록, 수치를 넣으면 결과가 바로 보이는 시트를 만들었습니다.</p>
+      </div>
+      <div class="pagehead__actions noprint">
+        <a class="btn btn--outline" href="../resume.html">이력서 보기</a>
+        <!-- TODO: 이메일 교체 -->
+        <a class="btn btn--filled" href="mailto:example@email.com">
+          연락하기
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main id="main">
+  <section class="section">
+    <div class="container">
+      <article class="detail">
+
+        <!-- TODO: 개요 교체 -->
+        <dl class="spec">
+          <div><dt>기간</dt><dd>2024.11 — 2025.01</dd></div>
+          <div><dt>형태</dt><dd>스프레드시트 + 스크립트</dd></div>
+          <div><dt>사용자</dt><dd>기획 0명</dd></div>
+          <div><dt>담당 역할</dt><dd>설계 · 제작 · 운영</dd></div>
+        </dl>
+
+        <div class="steps">
+          <div class="step">
+            <p class="step__label">Problem</p>
+            <h4 class="h4">검토 한 번에 하루</h4>
+            <p>수치를 하나 바꿀 때마다 손으로 다시 계산해야 해서, 안을 여러 개 비교하기 어려웠습니다.</p>
+          </div>
+          <div class="step">
+            <p class="step__label">Approach</p>
+            <h4 class="h4">입력–계산–출력 분리</h4>
+            <p>입력 시트, 계산 시트, 결과 시트를 나누고 계산부를 건드리지 않아도 되게 만들어, 실수로 수식이 깨지는 일을 막았습니다.</p>
+          </div>
+          <div class="step">
+            <p class="step__label">Result</p>
+            <h4 class="h4">안 비교가 가능해짐</h4>
+            <p>여러 안을 나란히 놓고 곡선을 비교할 수 있게 되면서, 논의가 "느낌"에서 "이 구간의 기울기"로 바뀌었습니다.</p>
+          </div>
+        </div>
+
+        <!-- TODO: 성과 수치 교체. 근거 없는 숫자는 넣지 말 것 -->
+        <div class="tablewrap">
+          <table class="outcomes">
+            <caption>정량 성과</caption>
+            <thead>
+              <tr><th scope="col">지표</th><th scope="col">변화</th><th scope="col">측정 기준</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>1회 검토 소요</td><td class="val">0시간 → 0분</td><td>동일 범위 수치 조정 기준</td></tr>
+              <tr><td>비교 가능한 안</td><td class="val">0개 → 0개</td><td>회의 1회 기준</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- TODO: iframe 으로 교체 -->
+        <div class="embed noprint">시트 임베드 자리<br />(Google Sheets iframe)</div>
+
+        <div class="assets">
+          <!-- TODO: 실제 자료 링크로 교체 -->
+          <a href="#" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/></svg>
+            시뮬레이터 시트
+          </a>
+          <a href="#" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3v5h5"/><path d="M15 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7z"/></svg>
+            사용 설명서
+          </a>
+        </div>
+      </article>
+
+      <!-- 이전/다음 프로젝트 -->
+      <nav class="projectnav noprint" aria-label="다른 프로젝트">
+        <a class="projectnav__prev" href="./combat-spec.html">
+          <span class="l">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg>
+            이전
+          </span>
+          <span class="t">전투 규칙 · 스킬 명세</span>
+        </a>
+      </nav>
+
+      <div class="nextdocs noprint" style="margin-top:36px;">
+        <div class="nextdocs__grid">
+          <a href="../resume.html">
+            <span><span class="l">함께 보기</span><span class="t">이력서</span></span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+          </a>
+          <a href="../cover-letter.html">
+            <span><span class="l">함께 보기</span><span class="t">자기소개서</span></span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer noprint">
+  <div class="container footer__inner">
+    <div class="footer__contact">
+      <a href="mailto:example@email.com">example@email.com</a>
+      <a href="../index.html">홈</a>
+      <a href="#" rel="noopener">GitHub</a>
+      <a href="#" rel="noopener">Notion</a>
+    </div>
+    <p class="footer__copy">© 2026 이정현. 시스템 기획자 포트폴리오.</p>
+  </div>
+</footer>
+</body>
+</html>

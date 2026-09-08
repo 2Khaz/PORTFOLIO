@@ -529,6 +529,35 @@ button{font:inherit;color:inherit;-webkit-appearance:none;appearance:none;border
   color:var(--muted);font-size:13px;text-align:center;padding:20px;
 }
 
+/* 프로젝트 상세(독립 페이지) 상단의 "목록으로" 링크 */
+.backlink{
+  display:inline-flex;align-items:center;gap:6px;
+  margin-bottom:18px;
+  font-size:13px;font-weight:500;color:var(--muted);
+}
+.backlink svg{width:14px;height:14px;flex:none;}
+.backlink:hover{color:var(--ink);}
+
+/* 프로젝트 상세 하단의 이전/다음 프로젝트 이동 */
+.projectnav{
+  display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
+  margin-top:56px;padding-top:32px;border-top:1px solid var(--mist);
+}
+.projectnav a{
+  display:flex;flex-direction:column;gap:4px;max-width:360px;
+  padding:16px 20px;border:1px solid var(--mist);border-radius:var(--r-card);
+  transition:border-color .15s ease,background-color .15s ease;
+}
+.projectnav a:hover{border-color:var(--cloud);background:#fafafa;}
+.projectnav .l{
+  display:flex;align-items:center;gap:6px;
+  font-size:12px;font-weight:500;color:var(--muted);
+}
+.projectnav .l svg{width:13px;height:13px;flex:none;}
+.projectnav .t{font-size:15px;font-weight:600;color:var(--ink);}
+.projectnav__next{margin-left:auto;text-align:right;}
+.projectnav__next .l{justify-content:flex-end;}
+
 /* ══════════════ 다음 문서 안내 ══════════════ */
 .nextdocs{border-top:1px solid var(--mist);padding-top:36px;margin-top:0;}
 .nextdocs__grid{display:grid;gap:12px;grid-template-columns:1fr;}
