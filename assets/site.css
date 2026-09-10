@@ -190,13 +190,20 @@ button{font:inherit;color:inherit;-webkit-appearance:none;appearance:none;border
   background:linear-gradient(180deg,var(--hero-top) 0%,var(--hero-mid) 54%,var(--hero-bot) 100%);
   color:var(--white);
 }
-/* 배경 레이어 — 데스크톱은 실제 플레이 영상, 모바일은 로봇 중심 정지 이미지 */
+/* 배경 레이어 — 프로젝트별 슬라이드가 opacity 크로스페이드로 순환된다.
+   슬라이드마다 데스크톱용 영상 / 모바일용 정지 이미지를 함께 담고 있고,
+   실제 화면 폭에 맞는 쪽만 CSS로 노출한다 */
 .hero__bg{position:absolute;inset:0;z-index:-2;overflow:hidden;pointer-events:none;}
+.hero__bg-slide{
+  position:absolute;inset:0;
+  opacity:0;transition:opacity 1.1s ease;
+}
+.hero__bg-slide.is-active{opacity:1;}
 .hero__bg-video{
   position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
 }
-/* 영상 우측 하단에 캡션("프로젝트: 컴스톡")이 합성되어 있어, 화면 비율이
-   달라져도 그 모서리가 화면 밖으로 밀리지 않도록 크롭 기준을 고정한다 */
+/* 각 영상·이미지 우측 하단(또는 빈 공간)에 캡션이 합성되어 있어, 화면
+   비율이 달라져도 그 모서리가 화면 밖으로 밀리지 않도록 크롭 기준을 고정 */
 .hero__bg-video--desktop{object-position:right bottom;}
 .hero__bg-video--mobile{display:none;object-position:right bottom;}
 @media (max-width:767px){

@@ -62,21 +62,15 @@
 </header>
 
 <!-- ════════ 첫 화면 : 로그라인 + 요약 + 바로가기 ════════ -->
-<section class="hero has-photos" id="top">
+<section class="hero" id="top">
   <!--
-    배경 — 데스크톱은 컴스톡 실제 플레이 영상(음소거·자동재생·반복),
-    모바일은 로봇 캐릭터를 중심으로 미리 잘라둔 정지 이미지.
-    영상에는 "프로젝트: 컴스톡 / 실제 플레이 화면" 캡션이 프레임에
-    직접 합성되어 있음(우측 하단 고정) — assets/video/comstock-hero.mp4
+    배경 — 메인급 프로젝트를 몇 초마다 순환하며 보여준다(컴스톡 → 타일시공마스터 → …).
+    각 항목은 데스크톱용 영상(음소거·자동재생·반복, 캡션이 프레임에 직접 합성됨)과
+    모바일용 정지 이미지(같은 스타일의 캡션 합성)를 한 쌍으로 갖는다.
+    실제 슬라이드 DOM은 </body> 바로 위 스크립트의 ITEMS 배열로 생성된다 —
+    새 메인급 프로젝트를 추가할 때는 그 배열에 항목만 추가하면 된다.
   -->
-  <div class="hero__bg" id="heroBg" aria-hidden="true">
-    <video class="hero__bg-video hero__bg-video--desktop" id="heroVideo"
-           src="./assets/video/comstock-hero.mp4"
-           poster="./assets/hero/comstock-poster.jpg"
-           autoplay muted loop playsinline preload="metadata"></video>
-    <img class="hero__bg-video hero__bg-video--mobile"
-         src="./assets/hero/comstock-mobile.jpg" alt="" />
-  </div>
+  <div class="hero__bg" id="heroBg" aria-hidden="true"></div>
   <div class="hero__scrim" aria-hidden="true"></div>
 
   <div class="container hero__inner">
@@ -244,27 +238,103 @@
 
 /*
 ================================================================================
-  히어로 배경 영상 재생 제어
-    · prefers-reduced-motion 이용자에게는 자동재생하지 않고 poster
-      정지 이미지만 보여준다
-    · 다른 탭을 보고 있을 때는 멈춰서 배터리·성능을 아낀다
-    · 모바일은 애초에 정지 이미지라 이 스크립트의 영향을 받지 않는다
+  히어로 배경 순환 — 메인급 프로젝트를 몇 초마다 전환한다
+--------------------------------------------------------------------------------
+  새 프로젝트를 추가하는 법
+    1) 데스크톱용 영상(assets/video/xxx-hero.mp4)과 poster 정지 프레임,
+       모바일용 정지 이미지(assets/hero/xxx-mobile.jpg)를 준비한다.
+       영상·이미지 모두 우측 하단(또는 UI가 비어 있는 자리)에
+       "프로젝트: OOO" + "실제 플레이 화면" 캡션을 같은 스타일로 합성해 둔다.
+    2) 아래 ITEMS 배열에 { video, poster, mobile } 항목을 추가한다.
+    3) 저장하면 끝 — 자동으로 순환 목록에 포함된다.
+
+  동작
+    · 데스크톱은 <video>, 모바일(≤767px)은 <img>로 각각 전환된다(CSS 처리).
+    · 현재 보이는 항목의 영상만 재생하고 나머지는 멈춰서 리소스를 아낀다.
+    · prefers-reduced-motion 이용자에게는 첫 항목만 정지 화면으로 보여주고
+      순환·자동재생을 하지 않는다.
+    · 다른 탭을 보고 있을 때는 순환과 재생을 멈춘다.
 ================================================================================
 */
 (function () {
-  var video = document.getElementById('heroVideo');
-  if (!video) return;
+  var hero = document.getElementById('top');
+  var bg = document.getElementById('heroBg');
+  if (!hero || !bg) return;
+
+  var ITEMS = [
+    {
+      video: './assets/video/comstock-hero.mp4',
+      poster: './assets/hero/comstock-poster.jpg',
+      mobile: './assets/hero/comstock-mobile.jpg'
+    },
+    {
+      video: './assets/video/tile-hero.mp4',
+      poster: './assets/hero/tile-poster.jpg',
+      mobile: './assets/hero/tile-mobile.jpg'
+    }
+  ];
+  var INTERVAL_MS = 7000;
+
+  if (!ITEMS.length) return;
+  hero.classList.add('has-photos');
 
   var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reduceMotion) {
-    video.removeAttribute('autoplay');
-    video.pause();
-    return;
+
+  var slides = ITEMS.map(function (item, i) {
+    var wrap = document.createElement('div');
+    wrap.className = 'hero__bg-slide' + (i === 0 ? ' is-active' : '');
+
+    var video = document.createElement('video');
+    video.className = 'hero__bg-video hero__bg-video--desktop';
+    video.src = item.video;
+    video.poster = item.poster;
+    video.muted = true;
+    video.loop = true;
+    video.playsInline = true;
+    video.preload = 'metadata';
+
+    var img = document.createElement('img');
+    img.className = 'hero__bg-video hero__bg-video--mobile';
+    img.src = item.mobile;
+    img.alt = '';
+
+    wrap.appendChild(video);
+    wrap.appendChild(img);
+    bg.appendChild(wrap);
+    return { wrap: wrap, video: video };
+  });
+
+  if (reduceMotion) return; // 첫 항목의 poster 정지 화면만 유지
+
+  var idx = 0;
+  var timer = null;
+
+  function play(i) {
+    var v = slides[i].video;
+    v.currentTime = 0;
+    v.play().catch(function () {});
+  }
+  function show(next) {
+    slides[idx].wrap.classList.remove('is-active');
+    slides[idx].video.pause();
+    idx = next;
+    slides[idx].wrap.classList.add('is-active');
+    play(idx);
+  }
+  function tick() { show((idx + 1) % slides.length); }
+  function start() {
+    if (timer) return;
+    play(idx);
+    if (slides.length > 1) timer = window.setInterval(tick, INTERVAL_MS);
+  }
+  function stop() {
+    if (timer) { window.clearInterval(timer); timer = null; }
+    slides[idx].video.pause();
   }
 
+  start();
   document.addEventListener('visibilitychange', function () {
-    if (document.hidden) video.pause();
-    else video.play().catch(function () {});
+    if (document.hidden) stop(); else start();
   });
 })();
 </script>
