@@ -190,24 +190,40 @@ button{font:inherit;color:inherit;-webkit-appearance:none;appearance:none;border
   background:linear-gradient(180deg,var(--hero-top) 0%,var(--hero-mid) 54%,var(--hero-bot) 100%);
   color:var(--white);
 }
-/* 배경 이미지 순환 레이어 — 이미지가 없으면 완전히 비어 있어 .hero 의 그라디언트가 그대로 보인다 */
+/* 배경 레이어 — 데스크톱은 실제 플레이 영상, 모바일은 로봇 중심 정지 이미지 */
 .hero__bg{position:absolute;inset:0;z-index:-2;overflow:hidden;pointer-events:none;}
-.hero__bg-slide{
-  position:absolute;inset:0;
-  background-size:cover;background-position:center;
-  opacity:0;transition:opacity 1.4s ease;
+.hero__bg-video{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
 }
-.hero__bg-slide.is-active{opacity:1;}
-/* 사진 위 글자 가독성용 tint. 사진이 없을 때는 투명 — 지금 보이는 그라디언트를 가리지 않는다 */
+/* 영상 우측 하단에 캡션("프로젝트: 컴스톡")이 합성되어 있어, 화면 비율이
+   달라져도 그 모서리가 화면 밖으로 밀리지 않도록 크롭 기준을 고정한다 */
+.hero__bg-video--desktop{object-position:right bottom;}
+.hero__bg-video--mobile{display:none;object-position:right bottom;}
+@media (max-width:767px){
+  .hero__bg-video--desktop{display:none;}
+  .hero__bg-video--mobile{display:block;}
+}
+/* 배경 위 글자 가독성용 무채색(검정) 틴트 — 텍스트가 있는 좌측을 고르게 덮는다 */
 .hero__scrim{
   position:absolute;inset:0;z-index:-1;pointer-events:none;
   opacity:0;transition:opacity .6s ease;
-  background:linear-gradient(180deg,
-    rgba(47,92,148,.82) 0%,
-    rgba(30,63,110,.78) 54%,
-    rgba(18,41,77,.90) 100%);
+  background:linear-gradient(90deg,
+    rgba(0,0,0,.9) 0%,
+    rgba(0,0,0,.8) 38%,
+    rgba(0,0,0,.55) 64%,
+    rgba(0,0,0,.15) 92%);
 }
 .hero.has-photos .hero__scrim{opacity:1;}
+@media (max-width:767px){
+  /* 모바일은 내용이 세로로 쌓이므로 좌우 대신 상하로 고르게 어둡게 처리 */
+  .hero__scrim{
+    background:linear-gradient(180deg,
+      rgba(0,0,0,.68) 0%,
+      rgba(0,0,0,.6) 40%,
+      rgba(0,0,0,.72) 78%,
+      rgba(0,0,0,.8) 100%);
+  }
+}
 .hero__inner{position:relative;width:100%;max-width:960px;}
 .hero h1{
   margin-top:14px;
@@ -222,13 +238,14 @@ button{font:inherit;color:inherit;-webkit-appearance:none;appearance:none;border
 /* 2개 항목 고정 — 항목 수가 늘면 grid-template-columns 를 repeat(3,...) 등으로 바꿀 것 */
 .facts{
   margin-top:26px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
-  border:1px solid rgba(255,255,255,.22);border-radius:var(--r-card);
+  background:rgba(0,0,0,.34);
+  border:1px solid rgba(255,255,255,.4);border-radius:var(--r-card);
   overflow:hidden;max-width:340px;
 }
 .facts li{padding:14px 18px;}
 .facts li + li{border-left:1px solid rgba(255,255,255,.16);}
 /* 강조하고 싶은 지표(가장 앞 항목)에 붙이는 옅은 채움 */
-.facts li.is-highlight{background:rgba(255,255,255,.09);}
+.facts li.is-highlight{background:rgba(255,255,255,.14);}
 .facts .v{
   font-size:clamp(21px,3.4vw,27px);line-height:1.15;letter-spacing:-.7px;font-weight:600;
   font-variant-numeric:tabular-nums;
@@ -238,7 +255,8 @@ button{font:inherit;color:inherit;-webkit-appearance:none;appearance:none;border
 .keywords{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px;}
 .keywords li{
   padding:5px 10px;border-radius:var(--r-tag);
-  border:1px solid rgba(255,255,255,.24);
+  background:rgba(0,0,0,.34);
+  border:1px solid rgba(255,255,255,.36);
   font-size:12px;font-weight:500;color:rgba(255,255,255,.88);letter-spacing:-.1px;
 }
 .keywords .h{color:rgba(255,255,255,.55);margin-right:1px;}
@@ -259,19 +277,19 @@ button{font:inherit;color:inherit;-webkit-appearance:none;appearance:none;border
 /* 어두운 히어로 위에서 "누를 수 있는 것"으로 뚜렷하게 읽히도록
    투명 테두리 대신 옅은 채움 + 굵은 테두리 + 그림자를 기본값으로 준다 */
 .jump .is-secondary{
-  background:rgba(255,255,255,.10);
-  border:1.5px solid rgba(255,255,255,.5);
+  background:rgba(0,0,0,.32);
+  border:1.5px solid rgba(255,255,255,.7);
   color:var(--white);
   box-shadow:0 2px 8px rgba(0,0,0,.12);
 }
 .jump .is-secondary:hover{
-  background:rgba(255,255,255,.22);
-  border-color:rgba(255,255,255,.85);
+  background:rgba(0,0,0,.46);
+  border-color:#fff;
   box-shadow:0 6px 18px rgba(0,0,0,.2);
   transform:translateY(-2px);
 }
 .jump .is-secondary:active{
-  background:rgba(255,255,255,.28);
+  background:rgba(0,0,0,.55);
   box-shadow:0 2px 6px rgba(0,0,0,.16);
   transform:translateY(0);
 }
