@@ -426,15 +426,16 @@ button{font:inherit;color:inherit;-webkit-appearance:none;appearance:none;border
 .icon-tip__bubble{
   position:absolute;left:0;bottom:calc(100% + 10px);
   transform:translateY(4px);
-  width:max-content;max-width:220px;
+  width:max-content;max-width:300px;
   background:var(--ink);color:var(--white);
-  padding:10px 12px;border-radius:10px;
+  padding:9px 12px;border-radius:10px;
   font-size:12.5px;line-height:1.5;text-align:left;
   opacity:0;visibility:hidden;pointer-events:none;
   transition:opacity .15s ease,transform .15s ease,visibility .15s;
   z-index:5;box-shadow:0 8px 20px rgba(0,0,0,.2);
 }
-.icon-tip__bubble b{display:block;margin-bottom:4px;font-size:13px;}
+.icon-tip__bubble b{display:block;margin-bottom:2px;font-size:13px;}
+.icon-tip__desc{display:block;font-size:10.5px;color:rgba(255,255,255,.72);white-space:nowrap;}
 .icon-tip__bubble::after{
   content:"";position:absolute;top:100%;left:24px;
   border:6px solid transparent;border-top-color:var(--ink);
