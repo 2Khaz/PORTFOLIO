@@ -273,7 +273,8 @@
       mobile: './assets/hero/tile-mobile.jpg'
     }
   ];
-  var INTERVAL_MS = 7000;
+  var INTERVAL_MS = 5000;
+  var SLIDE_MS = 800; // site.css 의 .hero__bg-slide transition 시간과 맞출 것
 
   if (!ITEMS.length) return;
   hero.classList.add('has-photos');
@@ -315,11 +316,26 @@
     v.play().catch(function () {});
   }
   function show(next) {
-    slides[idx].wrap.classList.remove('is-active');
-    slides[idx].video.pause();
+    var outgoing = slides[idx];
+    var incoming = slides[next];
+
+    // 나가는 슬라이드는 왼쪽으로 밀려나가고, 들어오는 슬라이드는 오른쪽에서 밀려들어온다
+    outgoing.wrap.classList.remove('is-active');
+    outgoing.wrap.classList.add('is-prev');
+    outgoing.video.pause();
+
+    incoming.wrap.classList.add('is-active');
     idx = next;
-    slides[idx].wrap.classList.add('is-active');
     play(idx);
+
+    // 전환이 끝나면 나간 슬라이드를 애니메이션 없이 대기 위치(오른쪽 바깥)로
+    // 되돌려, 다음 차례에 다시 오른쪽에서 밀려들어올 수 있게 한다
+    window.setTimeout(function () {
+      outgoing.wrap.style.transition = 'none';
+      outgoing.wrap.classList.remove('is-prev');
+      void outgoing.wrap.offsetWidth; // 강제 리플로우로 transition 해제를 확정
+      outgoing.wrap.style.transition = '';
+    }, SLIDE_MS + 50);
   }
   function tick() { show((idx + 1) % slides.length); }
   function start() {
