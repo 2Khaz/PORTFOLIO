@@ -419,8 +419,8 @@ button{font:inherit;color:inherit;-webkit-appearance:none;appearance:none;border
 }
 .card h3.projectcard__title{margin-top:0;display:flex;flex-wrap:wrap;align-items:baseline;gap:8px;}
 
-.skillcard__logos{display:flex;gap:12px;margin-top:14px;}
-.projectcard__logo--icon{box-sizing:border-box;padding:7px;object-fit:contain;}
+.skillcard__logos{display:flex;align-items:center;gap:18px;margin-top:14px;height:46px;}
+.skillcard__icon{height:46px;width:auto;display:block;}
 
 .icon-tip{position:relative;display:inline-block;border-radius:var(--r-card);}
 .icon-tip:focus-visible{outline:2px solid var(--accent);outline-offset:3px;}
