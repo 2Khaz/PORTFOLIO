@@ -441,7 +441,6 @@ button{font:inherit;color:inherit;-webkit-appearance:none;appearance:none;border
   border:6px solid transparent;border-top-color:var(--ink);
 }
 .icon-tip:hover .icon-tip__bubble,
-.icon-tip:focus-within .icon-tip__bubble,
 .icon-tip.is-active .icon-tip__bubble{
   opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0);
 }
