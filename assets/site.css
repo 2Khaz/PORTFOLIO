@@ -153,20 +153,29 @@ button{font:inherit;color:inherit;-webkit-appearance:none;appearance:none;border
 }
 .doctabs::-webkit-scrollbar{display:none;}
 .doctabs a{
+  position:relative;
   padding:7px 11px;border-radius:var(--r-btn);
   font-size:13px;font-weight:500;color:var(--muted);white-space:nowrap;
-  text-decoration:none;text-underline-offset:4px;text-decoration-thickness:2px;
-  transition:color .15s ease;
+  transition:background-color .15s ease,color .15s ease;
 }
-.doctabs a:hover{color:var(--accent);}
-.doctabs a[aria-current="page"]{color:var(--accent);font-weight:600;text-decoration:underline;}
-@media (min-width:768px){ .doctabs{gap:4px;} .doctabs a{padding:8px 14px;font-size:14px;} }
+.doctabs a::after{
+  content:'';
+  position:absolute;left:11px;right:11px;bottom:3px;
+  height:3px;border-radius:999px;background:var(--accent);
+  transform:scaleX(0);transform-origin:center;
+  transition:transform .15s ease;
+}
+.doctabs a:hover{background:var(--mist);color:var(--ink);}
+.doctabs a:hover::after{transform:scaleX(1);}
+.doctabs a[aria-current="page"]{background:var(--accent-wash);color:var(--accent);font-weight:600;}
+@media (min-width:768px){ .doctabs{gap:4px;} .doctabs a{padding:8px 14px;font-size:14px;} .doctabs a::after{left:14px;right:14px;} }
 @media (max-width:479px){ .nav__mail{display:none;} }
 /* 아주 좁은 화면: 이름을 감추고 로고 마크만 남겨 탭 3개가 한 줄에 들어가게 한다
    (doctabs 를 쓰는 모든 nav 에 공통 적용 — 히어로 위 투명 상태 포함) */
 @media (max-width:389px){
   .nav .brand__name{display:none;}
   .doctabs a{padding:7px 9px;font-size:12.5px;}
+  .doctabs a::after{left:9px;right:9px;}
 }
 
 /* 홈에서만: 히어로 위 투명 처리 (JS가 토글, 실패 시 흰 배경 유지) */
@@ -174,8 +183,9 @@ button{font:inherit;color:inherit;-webkit-appearance:none;appearance:none;border
 .nav.is-transparent .brand__name{color:var(--white);}
 .nav.is-transparent .nav__mail{color:rgba(255,255,255,.82);}
 .nav.is-transparent .doctabs a{color:rgba(255,255,255,.82);}
-.nav.is-transparent .doctabs a:hover{color:var(--white);}
-.nav.is-transparent .doctabs a[aria-current="page"]{color:var(--white);font-weight:600;text-decoration:underline;}
+.nav.is-transparent .doctabs a:hover{background:rgba(255,255,255,.14);color:var(--white);}
+.nav.is-transparent .doctabs a:hover::after{background:var(--white);}
+.nav.is-transparent .doctabs a[aria-current="page"]{background:rgba(255,255,255,.18);color:var(--white);}
 .nav.is-solid{box-shadow:0 1px 0 0 var(--mist);}
 .nav--bordered{box-shadow:0 1px 0 0 var(--mist);}
 
