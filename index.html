@@ -181,8 +181,20 @@
         <li class="card">
           <h3 class="h3" style="margin-top:0;">스프레드시트 활용 및 자동화</h3>
           <div class="skillcard__logos">
-            <img class="projectcard__logo" src="./assets/logos/excel-logo.png" alt="Excel" />
-            <img class="projectcard__logo" src="./assets/logos/sheets-logo.png" alt="Google Sheets" />
+            <span class="icon-tip" tabindex="0">
+              <img class="projectcard__logo" src="./assets/logos/excel-logo.png" alt="Excel" />
+              <span class="icon-tip__bubble" role="tooltip">
+                <b>Excel</b>
+                참조 함수 · 계산식 · 조건부 수식 · 드롭다운 · VBA 활용
+              </span>
+            </span>
+            <span class="icon-tip" tabindex="0">
+              <img class="projectcard__logo" src="./assets/logos/sheets-logo.png" alt="Google Sheets" />
+              <span class="icon-tip__bubble" role="tooltip">
+                <b>Google Sheets</b>
+                참조 함수 · 계산식 · 조건부 수식 · 드롭다운 활용<br />(Google Apps Script는 미사용)
+              </span>
+            </span>
           </div>
           <ul class="tl__list">
             <li>참조 함수(Lookup, Find, Match 등)를 활용한 데이터베이스 관리 및 자동화</li>
@@ -530,6 +542,41 @@
     window.clearTimeout(resizeTimer);
     resizeTimer = window.setTimeout(setup, 150);
   });
+})();
+
+/*
+================================================================================
+  아이콘 말풍선(icon-tip) — 데스크톱은 마우스 호버·키보드 포커스로 뜨고
+  (CSS :hover/:focus-within만으로 처리), 모바일은 터치가 :hover 를 흉내
+  내지 못하므로 꾹 누르기(길게 터치)로 켜고 화면 다른 곳을 터치하면 닫는다.
+================================================================================
+*/
+(function () {
+  var tips = Array.prototype.slice.call(document.querySelectorAll('.icon-tip'));
+  if (!tips.length) return;
+
+  var LONG_PRESS_MS = 400;
+  var pressTimer = null;
+
+  function closeAll() {
+    tips.forEach(function (t) { t.classList.remove('is-active'); });
+  }
+
+  tips.forEach(function (tip) {
+    tip.addEventListener('touchstart', function () {
+      pressTimer = window.setTimeout(function () {
+        closeAll();
+        tip.classList.add('is-active');
+      }, LONG_PRESS_MS);
+    }, { passive: true });
+    tip.addEventListener('touchend', function () { window.clearTimeout(pressTimer); });
+    tip.addEventListener('touchmove', function () { window.clearTimeout(pressTimer); });
+  });
+
+  document.addEventListener('touchstart', function (e) {
+    var inside = e.target.closest && e.target.closest('.icon-tip');
+    if (!inside) closeAll();
+  }, { passive: true });
 })();
 </script>
 </body>
