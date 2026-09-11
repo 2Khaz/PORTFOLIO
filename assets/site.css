@@ -552,8 +552,18 @@ button{font:inherit;color:inherit;-webkit-appearance:none;appearance:none;border
 .skillgroup__label{
   font-size:12px;font-weight:600;letter-spacing:.4px;text-transform:uppercase;color:var(--accent);
 }
-/* 내용을 아직 못 채운 자리를 눈에 띄게 표시 — 인쇄 시에는 자동으로 빠짐(noprint 병행) */
+/* 내용을 아직 못 채운 자리를 눈에 띄게 표시 */
 .todo-fill{font-size:13px;font-weight:500;color:#b45309;}
+
+/* 페이지 전체가 준비중임을 알리는 안내 배너 */
+.notice{
+  display:flex;align-items:flex-start;gap:10px;
+  margin:24px 0;padding:14px 16px;border-radius:var(--r-card);
+  background:#fffbeb;border:1px solid #fde68a;color:#92400e;
+  font-size:14px;line-height:1.6;
+}
+.notice svg{width:18px;height:18px;flex:none;margin-top:1px;color:#b45309;}
+.notice p{margin:0;}
 
 /* ══════════════ 기술 탭 (크롬 탭 스타일) ══════════════ */
 .skilltabs{margin-top:8px;}
@@ -780,59 +790,12 @@ button{font:inherit;color:inherit;-webkit-appearance:none;appearance:none;border
 .footer__contact a:hover{color:var(--accent);}
 .footer__copy{font-size:13px;color:var(--muted);}
 
-/* ══════════════ 브라우저 임시 편집 모드 ══════════════ */
-.editbtn{
-  display:inline-flex;align-items:center;gap:6px;
-  padding:8px 14px;border-radius:var(--r-tag);border:1px solid var(--mist);
-  font-size:13px;font-weight:600;color:var(--muted);background:transparent;
-  cursor:pointer;transition:border-color .15s ease,color .15s ease,background-color .15s ease;
-}
-.editbtn svg{width:14px;height:14px;flex:none;}
-.editbtn:hover{border-color:var(--accent-line);color:var(--accent);background:var(--accent-wash);}
-.editbtn[aria-pressed="true"]{border-color:var(--accent);color:var(--white);background:var(--accent);}
-
-body.is-editing [data-ek]{
-  outline:1.5px dashed var(--accent-line);outline-offset:3px;border-radius:4px;
-  cursor:text;transition:outline-color .15s ease,background-color .15s ease;
-}
-body.is-editing [data-ek]:hover{outline-color:var(--accent);background:var(--accent-wash);}
-body.is-editing [data-ek]:focus{outline:1.5px solid var(--accent);background:var(--accent-wash);}
-
-.editbar{
-  position:fixed;left:50%;bottom:calc(18px + env(safe-area-inset-bottom));
-  transform:translateX(-50%);z-index:60;
-  display:flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:center;
-  max-width:calc(100vw - 24px);
-  padding:10px 10px 10px 16px;border-radius:999px;
-  background:var(--ink);color:#fff;box-shadow:0 10px 30px rgba(8,9,10,.28);
-}
-.editbar[hidden]{display:none;}
-.editbar__status{font-size:12.5px;color:rgba(255,255,255,.75);white-space:nowrap;}
-.editbar__actions{display:flex;gap:6px;}
-.editbar__actions button{
-  padding:7px 13px;border-radius:999px;border:1px solid rgba(255,255,255,.25);
-  background:transparent;color:#fff;font-size:12.5px;font-weight:600;cursor:pointer;
-  transition:background-color .15s ease;
-}
-.editbar__actions button:hover{background:rgba(255,255,255,.14);}
-.editbar__actions button.is-primary{background:var(--accent);border-color:var(--accent);}
-.editbar__actions button.is-primary:hover{background:var(--accent);opacity:.9;}
-
-.edittoast{
-  position:fixed;left:50%;bottom:calc(72px + env(safe-area-inset-bottom));
-  transform:translateX(-50%) translateY(6px);z-index:61;
-  padding:7px 14px;border-radius:999px;background:var(--ink);color:#fff;
-  font-size:12.5px;font-weight:500;opacity:0;pointer-events:none;
-  transition:opacity .18s ease,transform .18s ease;
-}
-.edittoast.is-shown{opacity:1;transform:translateX(-50%) translateY(0);}
-
 /* ══════════════ 인쇄 (이력서 A4) ══════════════ */
 @media print{
   @page{margin:14mm 12mm;}
   html{scroll-behavior:auto;}
   body{background:#fff;font-size:10.5pt;line-height:1.5;}
-  .nav,.footer,.noprint,.pagehead__actions,.nextdocs,.anchornav,.filters,.cue,.editbar,.edittoast{display:none !important;}
+  .nav,.footer,.noprint,.pagehead__actions,.nextdocs,.anchornav,.filters,.cue{display:none !important;}
   .container{max-width:none;padding:0 !important;}
   .section{padding-top:14pt !important;padding-bottom:14pt !important;}
   .pagehead{padding-top:0;padding-bottom:12pt;}
