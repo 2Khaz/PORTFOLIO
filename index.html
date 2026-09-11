@@ -114,42 +114,50 @@
         <h2 class="h2" id="projects-title">직접 참여한 프로젝트</h2>
       </div>
 
-      <ul class="grid grid--2">
-        <li class="card">
-          <div class="chips">
-            <span class="chip">캐주얼 퍼즐</span>
-            <span class="chip">팀장 담당</span>
-          </div>
-          <div class="projectcard__row">
-            <img class="projectcard__logo" src="./assets/logos/tile-logo.png" alt="하늘타일공사 로고" />
-            <div>
-              <h3 class="h3 projectcard__title">타일시공마스터 <span class="tl__period">2026.06 – 2026.07</span></h3>
-              <ul class="tl__list">
-                <li>게임 컨셉 기획 및 팀 프로젝트 매니징 수행</li>
-                <li>시스템 총괄 기획 업무 수행</li>
-                <li><b>Unity</b> 엔진 활용 및 시스템 구현 업무 수행</li>
-              </ul>
+      <!--
+        프로젝트 캐러셀 — 모바일 1개 / 데스크톱 2개씩 보이며, 히어로 배경과 같은
+        주기(5초)로 한 칸씩 왼쪽으로 밀린다. 새 프로젝트를 추가할 때는 아래
+        #projectsTrack 안에 <li class="card"> 항목만 추가하면 된다(클론/루프
+        처리는 </body> 위 스크립트가 자동으로 한다).
+      -->
+      <div class="projects-carousel" id="projectsCarousel">
+        <ul class="projects-track" id="projectsTrack">
+          <li class="card">
+            <div class="chips">
+              <span class="chip">캐주얼 퍼즐</span>
+              <span class="chip">팀장 담당</span>
             </div>
-          </div>
-        </li>
-        <li class="card">
-          <div class="chips">
-            <span class="chip">뱀서라이크</span>
-            <span class="chip">itch.io 출시</span>
-          </div>
-          <div class="projectcard__row">
-            <img class="projectcard__logo" src="./assets/logos/comstock-logo.jpg" alt="컴스톡 로고" />
-            <div>
-              <h3 class="h3 projectcard__title">컴스톡 <span class="tl__period">2026.07 – 2026.09</span></h3>
-              <ul class="tl__list">
-                <li>게임 이미지·애니메이션 리소스 제작 담당</li>
-                <li>시스템 총괄 기획 업무 수행</li>
-                <li><b>AI</b> 파이프라인 활용 리소스 생산 업무 수행</li>
-              </ul>
+            <div class="projectcard__row">
+              <img class="projectcard__logo" src="./assets/logos/tile-logo.png" alt="하늘타일공사 로고" />
+              <div>
+                <h3 class="h3 projectcard__title">타일시공마스터 <span class="tl__period">2026.06 – 2026.07</span></h3>
+                <ul class="tl__list">
+                  <li>게임 컨셉 기획 및 팀 프로젝트 매니징 수행</li>
+                  <li>시스템 총괄 기획 업무 수행</li>
+                  <li><b>Unity</b> 엔진 활용 및 시스템 구현 업무 수행</li>
+                </ul>
+              </div>
             </div>
-          </div>
-        </li>
-      </ul>
+          </li>
+          <li class="card">
+            <div class="chips">
+              <span class="chip">뱀서라이크</span>
+              <span class="chip">itch.io 출시</span>
+            </div>
+            <div class="projectcard__row">
+              <img class="projectcard__logo" src="./assets/logos/comstock-logo.jpg" alt="컴스톡 로고" />
+              <div>
+                <h3 class="h3 projectcard__title">컴스톡 <span class="tl__period">2026.07 – 2026.09</span></h3>
+                <ul class="tl__list">
+                  <li>게임 이미지·애니메이션 리소스 제작 담당</li>
+                  <li>시스템 총괄 기획 업무 수행</li>
+                  <li><b>AI</b> 파이프라인 활용 리소스 생산 업무 수행</li>
+                </ul>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
     </div>
   </section>
 
@@ -369,6 +377,114 @@
   start();
   document.addEventListener('visibilitychange', function () {
     if (document.hidden) stop(); else start();
+  });
+})();
+
+/*
+================================================================================
+  프로젝트 캐러셀 — 모바일 1개 / 데스크톱(≥768px) 2개씩 보여주며,
+  히어로 배경과 같은 주기(5초)로 한 칸씩 왼쪽으로 밀린다.
+--------------------------------------------------------------------------------
+  동작
+    · 무한 루프처럼 보이도록, 맨 앞의 카드를 뒤쪽에 클론으로 붙여두고
+      끝까지 밀리면 애니메이션 없이 처음 위치로 되돌린다(히어로와 동일한 기법).
+    · PC에서 마우스를 올리고 있는 동안은 전환을 멈춘다.
+    · 다른 탭을 보고 있을 때도 멈춘다.
+    · prefers-reduced-motion 이용자에게는 캐러셀 대신 카드를 줄바꿈해
+      전부 그대로 보여주고(내용 손실 없이), 자동 전환은 하지 않는다.
+================================================================================
+*/
+(function () {
+  var carousel = document.getElementById('projectsCarousel');
+  var track = document.getElementById('projectsTrack');
+  if (!carousel || !track) return;
+
+  var INTERVAL_MS = 5000; // 히어로 배경 전환 주기와 동일
+  var SLIDE_MS = 800;
+
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduceMotion) { carousel.classList.add('is-static'); return; }
+
+  var mq = window.matchMedia('(min-width:768px)');
+  var originals = Array.prototype.slice.call(track.children);
+  var originalCount = originals.length;
+  var clones = [];
+  var index = 0;
+  var timer = null;
+  var hovering = false;
+
+  function itemsPerView() { return mq.matches ? 2 : 1; }
+
+  function step() {
+    var first = track.children[0];
+    var second = track.children[1];
+    if (!first || !second) return first ? first.getBoundingClientRect().width : 0;
+    return second.getBoundingClientRect().left - first.getBoundingClientRect().left;
+  }
+
+  function setup() {
+    // 이전 클론 정리
+    clones.forEach(function (c) { c.remove(); });
+    clones = [];
+    index = 0;
+    track.style.transition = 'none';
+    track.style.transform = 'translateX(0)';
+
+    if (originalCount < 2) return; // 카드가 1개뿐이면 캐러셀 불필요
+
+    var n = itemsPerView();
+    for (var i = 0; i < n; i++) {
+      var clone = originals[i % originalCount].cloneNode(true);
+      clone.setAttribute('aria-hidden', 'true');
+      Array.prototype.forEach.call(clone.querySelectorAll('a,button'), function (el) {
+        el.setAttribute('tabindex', '-1');
+      });
+      track.appendChild(clone);
+      clones.push(clone);
+    }
+    void track.offsetWidth;
+    track.style.transition = '';
+  }
+
+  function advance() {
+    if (originalCount < 2) return;
+    index++;
+    track.style.transform = 'translateX(-' + (step() * index) + 'px)';
+
+    if (index >= originalCount) {
+      window.setTimeout(function () {
+        track.style.transition = 'none';
+        track.style.transform = 'translateX(0)';
+        index = 0;
+        void track.offsetWidth;
+        track.style.transition = '';
+      }, SLIDE_MS + 50);
+    }
+  }
+
+  function start() {
+    if (timer || originalCount < 2) return;
+    timer = window.setInterval(function () {
+      if (!hovering && !document.hidden) advance();
+    }, INTERVAL_MS);
+  }
+  function stop() {
+    if (timer) { window.clearInterval(timer); timer = null; }
+  }
+
+  setup();
+  start();
+
+  carousel.addEventListener('mouseenter', function () { hovering = true; });
+  carousel.addEventListener('mouseleave', function () { hovering = false; });
+  document.addEventListener('visibilitychange', function () {
+    if (document.hidden) stop(); else start();
+  });
+
+  var resizeTimer = null;
+  window.addEventListener('resize', function () {
+    window.clearTimeout(resizeTimer);
+    resizeTimer = window.setTimeout(setup, 150);
   });
 })();
 </script>
