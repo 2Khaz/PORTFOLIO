@@ -822,6 +822,10 @@ body.is-editing [data-ek]:focus{outline:1.5px solid var(--accent);background:var
   .skilltabs__panel[hidden]{display:block !important;}
   .skilltabs__panel + .skilltabs__panel{margin-top:10pt;}
   .skilltabs__output-box{display:none !important;}
+  .projects-viewport{overflow:visible !important;}
+  .projects-track{transform:none !important;flex-wrap:wrap;row-gap:14pt;}
+  .projects-track > li.card{flex:0 0 100% !important;}
+  .projects-track > li[aria-hidden="true"]{display:none !important;}
 }
 
 @media (prefers-reduced-motion:reduce){
