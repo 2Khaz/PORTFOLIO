@@ -419,6 +419,8 @@ button{font:inherit;color:inherit;-webkit-appearance:none;appearance:none;border
 }
 .card h3.projectcard__title{margin-top:0;display:flex;flex-wrap:wrap;align-items:baseline;gap:8px;}
 
+.skillcard__logos{display:flex;gap:12px;margin-top:14px;}
+
 .projects-carousel{position:relative;margin-top:8px;}
 .projects-viewport{overflow:hidden;}
 .projects-track{
