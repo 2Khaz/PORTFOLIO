@@ -116,7 +116,7 @@
 
       <!--
         프로젝트 캐러셀 — 모바일 1개 / 데스크톱 2개씩 보이며, 히어로 배경과 같은
-        주기(5초)로 한 칸씩 왼쪽으로 밀린다. 좌우 화살표로 수동 전환도 가능하고,
+        주기(3초)로 한 칸씩 왼쪽으로 밀린다. 좌우 화살표로 수동 전환도 가능하고,
         누르면 자동 전환 타이머가 그 시점부터 다시 시작된다. 새 프로젝트를
         추가할 때는 아래 #projectsTrack 안에 <li class="card"> 항목만 추가하면
         된다(클론/루프/페이지네이션 처리는 </body> 위 스크립트가 자동으로 한다).
@@ -127,23 +127,6 @@
         </button>
         <div class="projects-viewport">
           <ul class="projects-track" id="projectsTrack">
-            <li class="card">
-              <div class="chips">
-                <span class="chip">캐주얼 퍼즐</span>
-                <span class="chip">팀장 담당</span>
-              </div>
-              <div class="projectcard__row">
-                <img class="projectcard__logo" src="./assets/logos/tile-logo.png" alt="하늘타일공사 로고" />
-                <div>
-                  <h3 class="h3 projectcard__title">타일시공마스터 <span class="tl__period">2026.06 – 2026.07</span></h3>
-                  <ul class="tl__list">
-                    <li>게임 컨셉 기획 및 팀 프로젝트 매니징 수행</li>
-                    <li>시스템 총괄 기획 업무 수행</li>
-                    <li><b>Unity</b> 엔진 활용 및 시스템 구현 업무 수행</li>
-                  </ul>
-                </div>
-              </div>
-            </li>
             <li class="card">
               <div class="chips">
                 <span class="chip">뱀서라이크</span>
@@ -157,6 +140,23 @@
                     <li>게임 이미지·애니메이션 리소스 제작 담당</li>
                     <li>시스템 총괄 기획 업무 수행</li>
                     <li><b>AI</b> 파이프라인 활용 리소스 생산 업무 수행</li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+            <li class="card">
+              <div class="chips">
+                <span class="chip">캐주얼 퍼즐</span>
+                <span class="chip">팀장 담당</span>
+              </div>
+              <div class="projectcard__row">
+                <img class="projectcard__logo" src="./assets/logos/tile-logo.png" alt="하늘타일공사 로고" />
+                <div>
+                  <h3 class="h3 projectcard__title">타일시공마스터 <span class="tl__period">2026.06 – 2026.07</span></h3>
+                  <ul class="tl__list">
+                    <li>게임 컨셉 기획 및 팀 프로젝트 매니징 수행</li>
+                    <li>시스템 총괄 기획 업무 수행</li>
+                    <li><b>Unity</b> 엔진 활용 및 시스템 구현 업무 수행</li>
                   </ul>
                 </div>
               </div>
@@ -279,7 +279,7 @@
       mobile: './assets/hero/tile-mobile.jpg'
     }
   ];
-  var INTERVAL_MS = 5000;
+  var INTERVAL_MS = 3000;
   var SLIDE_MS = 800; // site.css 의 .hero__bg-slide transition 시간과 맞출 것
 
   if (!ITEMS.length) return;
@@ -363,7 +363,7 @@
 /*
 ================================================================================
   프로젝트 캐러셀 — 모바일 1개 / 데스크톱(≥768px) 2개씩 보여주며,
-  히어로 배경과 같은 주기(5초)로 한 칸씩 왼쪽으로 밀린다. 좌우 화살표로
+  히어로 배경과 같은 주기(3초)로 한 칸씩 왼쪽으로 밀린다. 좌우 화살표로
   수동 전환할 수 있고, 누르면 자동 전환 타이머가 그 시점부터 다시 시작된다.
   하단 페이지네이션(캡슐 인디케이터)을 눌러 특정 프로젝트로 바로 이동할 수도 있다.
 --------------------------------------------------------------------------------
@@ -385,7 +385,7 @@
   var dotsWrap = document.getElementById('projectsDots');
   if (!carousel || !track) return;
 
-  var INTERVAL_MS = 5000; // 히어로 배경 전환 주기와 동일
+  var INTERVAL_MS = 3000; // 히어로 배경 전환 주기와 동일
   var SLIDE_MS = 800;
 
   var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
