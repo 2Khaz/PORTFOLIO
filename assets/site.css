@@ -511,6 +511,12 @@ button{font:inherit;color:inherit;-webkit-appearance:none;appearance:none;border
 .infolist dd{color:var(--ink);}
 .infolist .infolist__split{display:block;border-bottom:0;padding:0;}
 .infolist .infolist__split > div{display:block;border-bottom:0;padding:0;}
+.career-line{margin-bottom:6px;}
+.career-line .period{color:var(--muted);font-size:12px;}
+@media (min-width:560px){
+  .career-line{display:flex;justify-content:space-between;gap:8px;}
+  .career-line .period{white-space:nowrap;}
+}
 @media (min-width:560px){
   .infolist{grid-template-columns:1fr 1fr;column-gap:20px;}
   .infolist div.infolist__wide{grid-column:1 / -1;}
