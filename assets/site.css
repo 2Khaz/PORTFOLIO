@@ -499,6 +499,7 @@ button{font:inherit;color:inherit;-webkit-appearance:none;appearance:none;border
   width:76px;height:95px;border-radius:var(--r-card);
   background:var(--mist);border:1px solid var(--cloud);
   display:grid;place-items:center;color:var(--muted);font-size:12px;text-align:center;
+  object-fit:cover;object-position:top center;
 }
 @media (min-width:768px){ .profile__photo{width:100%;height:auto;aspect-ratio:4/5;} }
 .infolist{display:grid;gap:0;}
