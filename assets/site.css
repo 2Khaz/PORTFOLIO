@@ -492,15 +492,21 @@ button{font:inherit;color:inherit;-webkit-appearance:none;appearance:none;border
 /* ══════════════ 이력서 ══════════════ */
 .profile{
   display:grid;gap:16px;grid-template-columns:76px 1fr;align-items:start;
+  grid-template-areas:"photo header" "info info";
   border:1px solid var(--mist);border-radius:var(--r-large);padding:20px;
 }
-@media (min-width:768px){ .profile{grid-template-columns:108px 1fr;gap:24px;padding:22px 26px;} }
+@media (min-width:768px){
+  .profile{grid-template-columns:108px 1fr;gap:24px;padding:22px 26px;grid-template-areas:"photo header" "photo info";}
+}
 .profile__photo{
+  grid-area:photo;
   width:76px;height:95px;border-radius:var(--r-card);
   background:var(--mist);border:1px solid var(--cloud);
   display:grid;place-items:center;color:var(--muted);font-size:12px;text-align:center;
   object-fit:cover;object-position:top center;
 }
+.profile__header{grid-area:header;}
+.profile > .infolist{grid-area:info;}
 @media (min-width:768px){ .profile__photo{width:100%;height:auto;aspect-ratio:4/5;} }
 .infolist{display:grid;gap:0;}
 .infolist div{
