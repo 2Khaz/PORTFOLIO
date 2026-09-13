@@ -597,6 +597,7 @@ button{font:inherit;color:inherit;-webkit-appearance:none;appearance:none;border
 .skilltabs__panel[hidden]{display:none;}
 .skilltabs__summary{font-size:15.5px;font-weight:500;color:var(--ink);}
 .skilltabs__panel .tl__list li{color:var(--ink);}
+section[aria-labelledby="proj-title"] .tl__list li{color:var(--ink);}
 .skilltabs__output{margin-top:16px;}
 .skilltabs__output-box{
   border:1.5px dashed var(--cloud);border-radius:var(--r-card);
