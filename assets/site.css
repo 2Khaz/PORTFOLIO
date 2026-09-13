@@ -350,6 +350,7 @@ button{font:inherit;color:inherit;-webkit-appearance:none;appearance:none;border
 @media (min-width:768px){
   .pagehead{padding-top:60px;padding-bottom:44px;}
   .pagehead__inner{flex-direction:row;align-items:flex-end;justify-content:space-between;gap:32px;}
+  .pagehead__inner--center{align-items:center;}
 }
 .pagehead .h1{margin-top:10px;}
 .pagehead .lead{margin-top:12px;}
@@ -491,16 +492,16 @@ button{font:inherit;color:inherit;-webkit-appearance:none;appearance:none;border
 
 /* ══════════════ 이력서 ══════════════ */
 .profile{
-  display:grid;gap:16px;grid-template-columns:76px 1fr;align-items:start;
+  display:grid;gap:16px;grid-template-columns:92px 1fr;align-items:start;
   grid-template-areas:"photo header" "info info";
   border:1px solid var(--mist);border-radius:var(--r-large);padding:20px;
 }
 @media (min-width:768px){
-  .profile{grid-template-columns:108px 1fr;gap:24px;padding:22px 26px;grid-template-areas:"photo header" "photo info";}
+  .profile{grid-template-columns:140px 1fr;gap:24px;padding:22px 26px;grid-template-areas:"photo header" "photo info";}
 }
 .profile__photo{
   grid-area:photo;
-  width:76px;height:95px;border-radius:var(--r-card);
+  width:92px;height:115px;border-radius:var(--r-card);
   background:var(--mist);border:1px solid var(--cloud);
   display:grid;place-items:center;color:var(--muted);font-size:12px;text-align:center;
   object-fit:cover;object-position:top center;
