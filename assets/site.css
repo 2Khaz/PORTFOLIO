@@ -509,9 +509,12 @@ button{font:inherit;color:inherit;-webkit-appearance:none;appearance:none;border
 .infolist div:last-child{border-bottom:0;}
 .infolist dt{font-size:12px;font-weight:500;color:var(--muted);align-self:center;}
 .infolist dd{color:var(--ink);}
+.infolist .infolist__split{display:block;border-bottom:0;padding:0;}
+.infolist .infolist__split > div{display:block;border-bottom:0;padding:0;}
 @media (min-width:560px){
   .infolist{grid-template-columns:1fr 1fr;column-gap:20px;}
   .infolist div.infolist__wide{grid-column:1 / -1;}
+  .infolist .infolist__split{display:grid;grid-template-columns:1fr 1fr;column-gap:20px;align-items:start;}
 }
 .infolist a{font-weight:500;}
 .infolist a:hover{color:var(--accent);}
