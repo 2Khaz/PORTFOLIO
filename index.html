@@ -342,13 +342,10 @@
        영상·이미지 모두 우측 하단(또는 UI가 비어 있는 자리)에
        "프로젝트: OOO" + "실제 플레이 화면" 캡션을 같은 스타일로 합성해 둔다.
     2) 아래 ITEMS 배열에 { video, poster, mobile } 항목을 추가한다.
-       모바일에서도 영상을 재생하려면 용량을 줄인 mobileVideo(3초 내외,
-       720px 폭 권장)를 함께 추가한다 — 없으면 mobile 정지 이미지로 대체된다.
     3) 저장하면 끝 — 자동으로 순환 목록에 포함된다.
 
   동작
-    · 데스크톱은 <video>, 모바일(≤767px)은 mobileVideo가 있으면 <video>,
-      없으면 <img>로 전환된다(CSS 처리).
+    · 데스크톱은 <video>, 모바일(≤767px)은 <img>로 각각 전환된다(CSS 처리).
     · 현재 보이는 항목의 영상만 재생하고 나머지는 멈춰서 리소스를 아낀다.
     · prefers-reduced-motion 이용자에게는 첫 항목만 정지 화면으로 보여주고
       순환·자동재생을 하지 않는다.
@@ -364,14 +361,12 @@
     {
       video: './assets/video/comstock-hero.mp4',
       poster: './assets/hero/comstock-poster.jpg',
-      mobile: './assets/hero/comstock-mobile.jpg',
-      mobileVideo: './assets/video/comstock-hero-mobile.mp4'
+      mobile: './assets/hero/comstock-mobile.jpg'
     },
     {
       video: './assets/video/tile-hero.mp4',
       poster: './assets/hero/tile-poster.jpg',
-      mobile: './assets/hero/tile-mobile.jpg',
-      mobileVideo: './assets/video/tile-hero.mp4'
+      mobile: './assets/hero/tile-mobile.jpg'
     }
   ];
   var INTERVAL_MS = 3000;
@@ -395,27 +390,15 @@
     video.playsInline = true;
     video.preload = 'metadata';
 
-    var mobileEl;
-    if (item.mobileVideo) {
-      mobileEl = document.createElement('video');
-      mobileEl.className = 'hero__bg-video hero__bg-video--mobile';
-      mobileEl.src = item.mobileVideo;
-      mobileEl.poster = item.mobile;
-      mobileEl.muted = true;
-      mobileEl.loop = true;
-      mobileEl.playsInline = true;
-      mobileEl.preload = 'metadata';
-    } else {
-      mobileEl = document.createElement('img');
-      mobileEl.className = 'hero__bg-video hero__bg-video--mobile';
-      mobileEl.src = item.mobile;
-      mobileEl.alt = '';
-    }
+    var img = document.createElement('img');
+    img.className = 'hero__bg-video hero__bg-video--mobile';
+    img.src = item.mobile;
+    img.alt = '';
 
     wrap.appendChild(video);
-    wrap.appendChild(mobileEl);
+    wrap.appendChild(img);
     bg.appendChild(wrap);
-    return { wrap: wrap, video: video, mobileVideo: item.mobileVideo ? mobileEl : null };
+    return { wrap: wrap, video: video };
   });
 
   if (reduceMotion) return; // 첫 항목의 poster 정지 화면만 유지
@@ -427,8 +410,6 @@
     var v = slides[i].video;
     v.currentTime = 0;
     v.play().catch(function () {});
-    var mv = slides[i].mobileVideo;
-    if (mv) { mv.currentTime = 0; mv.play().catch(function () {}); }
   }
   function show(next) {
     var outgoing = slides[idx];
@@ -438,7 +419,6 @@
     outgoing.wrap.classList.remove('is-active');
     outgoing.wrap.classList.add('is-prev');
     outgoing.video.pause();
-    if (outgoing.mobileVideo) outgoing.mobileVideo.pause();
 
     incoming.wrap.classList.add('is-active');
     idx = next;
@@ -462,7 +442,6 @@
   function stop() {
     if (timer) { window.clearInterval(timer); timer = null; }
     slides[idx].video.pause();
-    if (slides[idx].mobileVideo) slides[idx].mobileVideo.pause();
   }
 
   start();
