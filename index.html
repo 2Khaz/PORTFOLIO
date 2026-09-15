@@ -365,13 +365,15 @@
       video: './assets/video/comstock-hero.mp4',
       poster: './assets/hero/comstock-poster.jpg',
       mobile: './assets/hero/comstock-mobile.jpg',
-      mobileVideo: './assets/video/comstock-hero-mobile.mp4'
+      mobileVideo: './assets/video/comstock-hero-mobile.mp4',
+      caption: '컴스톡'
     },
     {
       video: './assets/video/tile-hero.mp4',
       poster: './assets/hero/tile-poster.jpg',
       mobile: './assets/hero/tile-mobile.jpg',
-      mobileVideo: './assets/video/tile-hero.mp4'
+      mobileVideo: './assets/video/tile-hero-mobile.mp4',
+      caption: '타일시공마스터'
     }
   ];
   var INTERVAL_MS = 3000;
@@ -414,6 +416,17 @@
 
     wrap.appendChild(video);
     wrap.appendChild(mobileEl);
+
+    // 모바일 전용 캡션 — 영상 픽셀에 굽지 않고 화면 위에 얹어서, 기종별 화면비로
+    // object-fit:cover 크롭 결과가 달라져도 우측 하단에 항상 균일하게 나온다.
+    // (모바일 영상 자체는 캡션을 크롭해서 제거한 순수 플레이 화면이다.)
+    if (item.caption) {
+      var cap = document.createElement('div');
+      cap.className = 'hero__bg-caption';
+      cap.innerHTML = '<b>프로젝트: <em>' + item.caption + '</em></b><span>실제 플레이 화면</span>';
+      wrap.appendChild(cap);
+    }
+
     bg.appendChild(wrap);
     return { wrap: wrap, video: video, mobileVideo: item.mobileVideo ? mobileEl : null };
   });
