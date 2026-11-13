@@ -1,0 +1,283 @@
+/* ============================================================================
+   홈(대문) 전용 스타일 — site.css 토큰(--ink / --accent / --mist …)만 사용한다
+   구성 : 인트로(로그라인 + 프로젝트 이력 + 사진) → 문서 버튼 3종 → 프로젝트 캐러셀
+   ============================================================================ */
+
+.home{
+  padding-top:clamp(36px,7vh,72px);padding-bottom:clamp(48px,8vh,88px);
+  /* 첫 화면 전체에 옅은 파스텔 단색 배경 (그라데이션 없음) */
+  background:var(--home-bg);
+}
+
+/* 홈 상단 리본메뉴도 첫 화면과 같은 파스텔 배경 — 경계선 없이 한 면으로 이어지게 */
+:root{--home-bg:#f2f6fc;}
+#nav{background:var(--home-bg);box-shadow:none;}
+/* 파스텔 배경 위에서 회색 호버 상자가 튀지 않도록 — 호버 시 배경 없이 글자색·밑줄만 바뀐다 */
+#nav .doctabs a:hover{background:transparent;color:var(--accent);}
+
+/* ══════════════ 인트로 ══════════════ */
+.intro{
+  display:grid;grid-template-columns:minmax(0,1fr);gap:28px;align-items:end;
+}
+@media (min-width:860px){
+  .intro{grid-template-columns:minmax(0,1fr) 260px;gap:48px;}
+}
+@media (min-width:1100px){
+  .intro{grid-template-columns:minmax(0,1fr) 300px;}
+}
+
+.intro__eyebrow{display:flex;align-items:center;gap:8px;}
+
+/* 로그라인 — 1행: [역량]도 / 2행: 일단 부딪혀보는 기획자 이정현입니다. */
+.intro__title{
+  margin-top:0;
+  font-size:clamp(28px,4.4vw,48px);line-height:1.22;letter-spacing:-1.2px;
+  font-weight:700;color:var(--ink);
+}
+.intro__title .line{display:block;}
+.intro__title .line:first-child{white-space:nowrap;} /* [역량]과 "도"가 줄바꿈으로 떨어지지 않게 */
+.intro__title .line + .line{margin-top:4px;}
+.intro__title .name{color:var(--ink);box-shadow:inset 0 -.22em 0 rgba(53,104,172,.18);}
+
+/* 랜덤 역량 단어 — 폭은 JS가 단어 길이에 맞춰 부드럽게 늘이고 줄인다 */
+.rotator{
+  position:relative;display:inline-block;vertical-align:bottom;
+  height:1.22em;overflow:hidden;
+  color:var(--accent);
+  transition:width .45s cubic-bezier(.4,0,.2,1);
+}
+.rotator__word{
+  display:inline-block;white-space:nowrap;
+  transition:transform .45s cubic-bezier(.4,0,.2,1),opacity .45s ease;
+}
+.rotator__word.is-out{transform:translateY(-100%);opacity:0;}
+.rotator__word.is-in{transform:translateY(100%);opacity:0;transition:none;}
+.rotator__suffix{color:var(--ink);}
+
+/* 프로젝트 이력 */
+.history{margin-top:clamp(28px,4vh,40px);max-width:680px;}
+.history__label{
+  font-size:12px;font-weight:600;letter-spacing:.4px;color:var(--muted);
+  padding-bottom:10px;border-bottom:1px solid var(--ink);
+}
+.history__list li{border-bottom:1px solid var(--mist);}
+.history__list li.is-overflow{display:none;}
+.history__list a{
+  display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 18px;align-items:center;
+  padding:12px 2px;
+  transition:background-color .15s ease;
+}
+@media (min-width:600px){
+  .history__list a{grid-template-columns:132px minmax(0,1fr) auto;}
+}
+.history__name{font-size:15px;font-weight:700;color:var(--ink);letter-spacing:-.3px;}
+.history__role{
+  grid-column:1 / -1;grid-row:2;
+  font-size:13.5px;color:var(--muted);line-height:1.5;
+}
+@media (min-width:600px){
+  .history__role{grid-column:auto;grid-row:auto;font-size:14px;}
+}
+.history__go{
+  grid-column:2;grid-row:1;
+  width:16px;height:16px;color:var(--cloud);
+  transition:color .15s ease,transform .15s ease;
+}
+@media (min-width:600px){ .history__go{grid-column:3;grid-row:1;} }
+.history__list a:hover{background:#fafafa;}
+.history__list a:hover .history__name{color:var(--accent);}
+.history__list a:hover .history__go{color:var(--accent);transform:translateX(3px);}
+
+.history__more{
+  display:none;justify-content:flex-end;margin-top:10px;
+}
+.history__more.is-visible{display:flex;}
+.history__more a{
+  display:inline-flex;align-items:center;gap:5px;
+  font-size:13px;font-weight:600;color:var(--muted);
+}
+.history__more a:hover{color:var(--accent);}
+.history__more svg{width:13px;height:13px;}
+
+/* 사진 — 배경을 지운 누끼 사진을 버튼 줄 위에 그대로 세운다 */
+.intro__photo{
+  display:none;position:relative;
+  justify-self:end;width:100%;
+  margin-bottom:-1px; /* 버튼 줄과 맞닿게 */
+}
+.intro__photo img{
+  position:relative;
+  width:100%;height:auto;aspect-ratio:640/904;
+}
+@media (min-width:860px){ .intro__text{padding-bottom:32px;} }
+@media (min-width:860px){ .intro__photo{display:block;} }
+
+/* 모바일 전용 작은 사진 — 제목 옆 */
+.intro__avatar{
+  display:block;width:72px;height:72px;border-radius:50%;
+  object-fit:cover;object-position:center 4%;
+  background:rgba(53,104,172,.10);margin:0 0 16px;
+}
+@media (min-width:860px){ .intro__avatar{display:none;} }
+
+/* ══════════════ 문서 버튼 3종 ══════════════
+   기본: 투명 배경 · 파랑 글씨·테두리 / 호버: 파랑 배경 · 흰 글씨 · 우측 → 등장 */
+.docbtns{
+  position:relative;z-index:1;
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;
+  margin-top:28px;
+}
+@media (min-width:860px){ .docbtns{margin-top:0;gap:16px;} }
+.docbtn{
+  display:flex;align-items:center;justify-content:center;
+  min-height:56px;padding:0 12px;border-radius:var(--r-btn);
+  background:transparent;color:var(--accent);border:1.5px solid var(--accent);
+  font-size:clamp(14px,1.6vw,16px);font-weight:600;letter-spacing:-.2px;white-space:nowrap;
+  transition:background-color .2s ease,color .2s ease,box-shadow .2s ease;
+}
+.docbtn__arrow{
+  display:inline-block;overflow:hidden;
+  width:0;margin-left:0;opacity:0;
+  transform:translateX(-6px);
+  transition:width .2s ease,margin-left .2s ease,opacity .2s ease,transform .2s ease;
+}
+.docbtn__arrow svg{width:16px;height:16px;}
+.docbtn:hover,.docbtn:focus-visible{
+  background:var(--accent);color:var(--white);
+  box-shadow:0 6px 18px rgba(53,104,172,.24);
+}
+.docbtn:hover .docbtn__arrow,.docbtn:focus-visible .docbtn__arrow{
+  width:16px;margin-left:8px;opacity:1;transform:translateX(0);
+}
+@media (min-width:768px){ .docbtn{min-height:60px;} }
+
+/* ══════════════ 프로젝트 캐러셀 ══════════════ */
+.showcase{margin-top:clamp(36px,6vh,56px);}
+.showcase__head{
+  display:flex;align-items:baseline;justify-content:space-between;gap:12px;
+  margin-bottom:14px;
+}
+.showcase__label{font-size:12px;font-weight:600;letter-spacing:.4px;color:var(--muted);}
+.showcase__all{font-size:13px;font-weight:600;color:var(--muted);}
+.showcase__all:hover{color:var(--accent);}
+
+.showcase__body{position:relative;}
+.showcase__viewport{overflow:hidden;}
+.showcase__track{
+  --per:2;--gap:12px;
+  display:flex;gap:var(--gap);
+  transition:transform .55s cubic-bezier(.4,0,.2,1);
+}
+@media (min-width:600px){ .showcase__track{--per:3;--gap:16px;} }
+@media (min-width:960px){ .showcase__track{--per:4;--gap:24px;} }
+.showcase__track > li{
+  flex:0 0 calc((100% - (var(--per) - 1) * var(--gap)) / var(--per));
+  min-width:0;
+}
+
+.tile{display:block;}
+.tile__media{
+  position:relative;aspect-ratio:1/1;overflow:hidden;
+  border-radius:var(--r-card);border:1px solid var(--mist);
+  background:var(--mist);
+}
+.tile__media img,.tile__media video{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+}
+.tile__media .is-contain{object-fit:contain;padding:12%;}
+.tile__media .is-top{object-position:top center;}
+.tile__media video{opacity:0;transition:opacity .3s ease;}
+.tile.is-playing .tile__media video{opacity:1;}
+.tile__media img{transition:transform .5s cubic-bezier(.4,0,.2,1);}
+.tile:hover .tile__media img{transform:scale(1.03);}
+
+.tile:hover .tile__media{border-color:var(--cloud);box-shadow:0 8px 22px rgba(8,9,10,.10);}
+.tile__media{transition:border-color .2s ease,box-shadow .2s ease;}
+
+/* 호버 시 우측 하단에 나타나는 "자세히 보기 →" (터치 기기는 항상 표시) */
+.tile__more{
+  position:absolute;right:12px;bottom:12px;z-index:2;
+  padding:7px 12px;border-radius:999px;
+  background:rgba(8,9,10,.72);color:var(--white);
+  font-size:12.5px;font-weight:600;letter-spacing:-.1px;white-space:nowrap;
+  -webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);
+  opacity:0;transform:translateY(6px);
+  transition:opacity .2s ease,transform .2s ease;
+}
+.tile:hover .tile__more,.tile:focus-visible .tile__more{opacity:1;transform:translateY(0);}
+@media (hover:none){ .tile__more{opacity:1;transform:none;} }
+
+/* 빈 자리 타일 — 아직 채워지지 않은 칸 */
+.tile--empty .tile__media{
+  background:rgba(255,255,255,.45);
+  border:1.5px dashed var(--cloud);
+}
+.tile--empty:hover .tile__media{border-color:var(--cloud);box-shadow:none;}
+
+/* 좌우 화살표 — 캐러셀 바깥 여백에 둔다(좁은 화면은 썸네일 위로) */
+.showcase__arrow{
+  position:absolute;top:calc(50% - 28px);z-index:3;transform:translateY(-50%);
+  width:40px;height:40px;border-radius:50%;
+  display:grid;place-items:center;
+  background:var(--white);border:1px solid var(--cloud);color:var(--ink);
+  box-shadow:0 2px 10px rgba(0,0,0,.08);
+  transition:background-color .15s ease,border-color .15s ease,color .15s ease,opacity .15s ease;
+}
+.showcase__arrow svg{width:18px;height:18px;}
+.showcase__arrow:hover{border-color:var(--ink);background:var(--ink);color:var(--white);}
+.showcase__arrow[disabled]{opacity:0;pointer-events:none;}
+.showcase__arrow--prev{left:-10px;}
+.showcase__arrow--next{right:-10px;}
+@media (min-width:1280px){
+  .showcase__arrow--prev{left:-60px;}
+  .showcase__arrow--next{right:-60px;}
+}
+
+.showcase__dots{display:flex;justify-content:center;gap:6px;margin-top:18px;}
+.showcase__dots button{
+  width:6px;height:6px;padding:0;border-radius:999px;background:var(--cloud);
+  transition:width .2s ease,background-color .2s ease;
+}
+.showcase__dots button.is-active{width:20px;background:var(--ink);}
+.showcase__dots:has(button:only-child){display:none;}
+
+/* 보유 역량 섹션은 홈 첫 화면과 구분선으로 분리 */
+.home + main .section:first-child{border-top:1px solid var(--mist);}
+
+@media (prefers-reduced-motion:reduce){
+  .rotator,.rotator__word{transition:none !important;}
+}
+
+/* ══════════════ PC : 첫 화면(내비 ~ 게임 프로젝트)을 한 화면에 ══════════════
+   높이가 큰 요소(제목·사진·썸네일·여백)를 화면 높이(vh) 기준으로 맞춰
+   보유 역량 바로 위까지가 스크롤 없이 한 화면에 들어오게 한다.
+   썸네일은 정사각형만(--sq) 두고, 각각 위 버튼 열의 가운데에 맞춘다 */
+@media (min-width:960px){
+  .home{
+    --sq:clamp(150px,27vh,320px);
+    min-height:calc(100vh - var(--nav-h));
+    min-height:calc(100svh - var(--nav-h));
+    display:flex;flex-direction:column;justify-content:flex-start;
+    padding-top:clamp(10px,2vh,28px);padding-bottom:clamp(16px,3vh,40px);
+  }
+  .intro__title{font-size:min(4.4vw,5.4vh,48px);}
+  .history{margin-top:clamp(14px,2.6vh,32px);}
+  .history__label{padding-bottom:8px;}
+  .history__list a{padding:clamp(7px,1.2vh,12px) 2px;}
+  .intro__text{padding-bottom:clamp(14px,2.6vh,30px);}
+
+  .intro{grid-template-columns:minmax(0,1fr) auto;}
+  .intro__photo{width:auto;margin-right:clamp(16px,4vw,72px);} /* 버튼 줄 오른쪽 끝에서 살짝 안쪽(왼쪽)으로 */
+  .intro__photo img{height:clamp(260px,46vh,500px);width:auto;}
+
+  .docbtn{min-height:clamp(48px,6vh,60px);}
+
+  .showcase{margin-top:clamp(16px,3vh,36px);}
+  .showcase__head{margin-bottom:10px;}
+
+  /* 정사각형을 고정 크기로 두고, 한 화면에 보이는 4개의 양 끝이 위 버튼 줄의 좌우 끝에 맞도록
+     간격을 계산한다. 5개 이상이면 화살표·점이 나타나고 한 칸씩 슬라이드된다 */
+  .showcase__track{gap:calc((100% - 4 * var(--sq)) / 3);}
+  .showcase__track > li{flex:0 0 var(--sq);}
+  .tile{width:100%;}
+}

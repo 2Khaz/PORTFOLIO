@@ -3,16 +3,16 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<meta name="theme-color" content="#1e3f6e" />
+<meta name="theme-color" content="#ffffff" />
 <meta name="format-detection" content="telephone=no" />
 
 <title>이정현 — 시스템 기획자 포트폴리오</title>
-<meta name="description" content="게임의 튼튼한 토대를 설계하는 시스템 기획자 이정현입니다. 이력서·자기소개서·프로젝트를 한 곳에서 확인하실 수 있습니다." />
+<meta name="description" content="일단 부딪혀보는 기획자 이정현입니다. 이력서·자기소개서·포트폴리오를 한 곳에서 확인하실 수 있습니다." />
 
 <meta property="og:type" content="website" />
 <meta property="og:locale" content="ko_KR" />
 <meta property="og:title" content="이정현 — 시스템 기획자 포트폴리오" />
-<meta property="og:description" content="게임의 튼튼한 토대를 설계하는 시스템 기획자 이정현입니다." />
+<meta property="og:description" content="일단 부딪혀보는 기획자 이정현입니다." />
 <meta name="twitter:card" content="summary_large_image" />
 
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
@@ -20,16 +20,15 @@
       href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" />
 <link rel="stylesheet" href="./assets/site.css" />
 <link rel="stylesheet" href="./assets/project-timeline.css" />
-
-
+<link rel="stylesheet" href="./assets/home.css" />
 </head>
 
 <body>
 <a class="skip" href="#projects">주요 프로젝트 바로가기</a>
 
-<header class="nav" id="nav">
+<header class="nav nav--bordered" id="nav">
   <div class="container nav__inner">
-    <a class="brand" href="#top" aria-label="이정현 포트폴리오 홈">
+    <a class="brand" href="./index.html" aria-label="이정현 포트폴리오 홈" aria-current="page">
       <span class="brand__mark" aria-hidden="true">
         <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
           <path d="M4 20V9l8-5 8 5v11"/><path d="M9 20v-6h6v6"/>
@@ -40,64 +39,132 @@
     <nav class="doctabs" aria-label="문서 이동">
       <a href="./resume.html">이력서</a>
       <a href="./cover-letter.html">자기소개서</a>
-      <a href="./portfolio.html">프로젝트</a>
+      <a href="./portfolio.html">포트폴리오</a>
       <a href="./play-archive.html">플레이 아카이브</a>
     </nav>
   </div>
 </header>
 
-<!-- ════════ 첫 화면 : 로그라인 + 요약 + 바로가기 ════════ -->
-<section class="hero" id="top">
-  <!--
-    배경 — 메인급 프로젝트를 몇 초마다 순환하며 보여준다(컴스톡 → 타일시공마스터 → …).
-    각 항목은 데스크톱용 영상(음소거·자동재생·반복, 캡션이 프레임에 직접 합성됨)과
-    모바일용 정지 이미지(같은 스타일의 캡션 합성)를 한 쌍으로 갖는다.
-    실제 슬라이드 DOM은 </body> 바로 위 스크립트의 ITEMS 배열로 생성된다 —
-    새 메인급 프로젝트를 추가할 때는 그 배열에 항목만 추가하면 된다.
-  -->
-  <div class="hero__bg" id="heroBg" aria-hidden="true"></div>
-  <div class="hero__scrim" aria-hidden="true"></div>
+<!-- ════════ 대문 : 로그라인 + 프로젝트 이력 + 문서 버튼 + 게임 프로젝트 캐러셀 ════════ -->
+<section class="home" id="top">
+  <div class="container">
 
-  <div class="container hero__inner">
-    <h1>게임의 튼튼한 토대를 설계하는 시스템 기획자 이정현입니다.</h1>
+    <div class="intro">
+      <div class="intro__text">
+        <img class="intro__avatar" src="./assets/profile-cutout.webp" alt="" aria-hidden="true" />
 
-    <section class="home-projects" id="projects" aria-label="주요 프로젝트와 담당 역할" tabindex="-1">
-      <ul class="home-projects__list">
-        <li>
-          <a href="./portfolio.html#hatagong">
-            <strong>타일시공마스터(하늘타일공사)</strong>
-            <span>팀장 · 게임 콘셉트 기획 · 시스템 설계 · AI 보조 Unity 개발 및 검수</span>
-          </a>
-        </li>
-        <li>
-          <a href="./portfolio.html#comstock">
-            <strong>컴스톡</strong>
-            <span>시스템 총괄 기획 · 맵 기획 · 애니메이션·VFX 제작 · PV 제작 및 검수</span>
-          </a>
-        </li>
-        <li>
-          <a href="./portfolio.html#danyeogayong">
-            <strong>다녀가용</strong>
-            <span>성장·보스 시스템 기획 · 그래픽·사운드 검수 · OBT 테스트 설계</span>
-          </a>
-        </li>
-      </ul>
-    </section>
+        <!-- 1행의 역량 단어는 아래 스크립트의 SKILLS 배열에서 무작위로 바뀐다 -->
+        <h1 class="intro__title">
+          <span class="line"><span class="rotator" id="skillRotator" aria-hidden="true"><span class="rotator__word">스프레드시트 자동화</span></span><span class="rotator__suffix" aria-hidden="true">도</span><span class="sr-only">무엇이든</span></span>
+          <span class="line">일단 부딪혀보는 기획자 <span class="name">이정현</span>입니다.</span>
+        </h1>
 
-    <!-- 이력서를 가장 강조 — is-primary(채워진 버튼) -->
-    <nav class="jump" aria-label="주요 문서 바로가기">
-      <a class="is-primary" href="./resume.html">
-        이력서
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
-      </a>
-      <a class="is-secondary" href="./cover-letter.html">자기소개서</a>
-      <a class="is-secondary" href="./portfolio.html">프로젝트</a>
+        <!--
+          프로젝트 이력 — data-date(YYYY.MM, 종료 시점) 기준 최신순으로 자동 정렬되고,
+          4개를 넘으면 5번째부터 숨긴 뒤 우측 하단에 "더보기"가 나타난다.
+          새 프로젝트는 <li> 하나만 추가하면 된다.
+        -->
+        <section class="history" id="projects" aria-labelledby="history-title" tabindex="-1">
+          <h2 class="history__label" id="history-title">프로젝트 이력</h2>
+          <ul class="history__list" id="historyList">
+            <li data-date="2026.07">
+              <a href="./portfolio.html#hatagong">
+                <span class="history__name">타일시공마스터</span>
+                <span class="history__role">팀장 · 게임 콘셉트 기획 · 시스템 설계 · AI 보조 Unity 개발 및 검수</span>
+                <svg class="history__go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+              </a>
+            </li>
+            <li data-date="2026.09">
+              <a href="./portfolio.html#comstock">
+                <span class="history__name">컴스톡</span>
+                <span class="history__role">시스템 총괄 기획 · 맵 기획 · 애니메이션·VFX 제작 · PV 제작 및 검수</span>
+                <svg class="history__go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+              </a>
+            </li>
+            <!-- 다녀가용 — 2026.11.20 종료 예정 -->
+            <li data-date="2026.11">
+              <a href="./portfolio.html#danyeogayong">
+                <span class="history__name">다녀가용</span>
+                <span class="history__role">성장·보스 시스템 기획 · 그래픽·사운드 검수 · OBT 테스트 설계</span>
+                <svg class="history__go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+              </a>
+            </li>
+          </ul>
+          <p class="history__more" id="historyMore">
+            <a href="./portfolio.html#project-list">더보기
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+            </a>
+          </p>
+        </section>
+      </div>
+
+      <figure class="intro__photo">
+        <img src="./assets/profile-cutout.webp" alt="이정현 프로필 사진" width="640" height="904" />
+      </figure>
+    </div>
+
+    <!-- 기본: 투명 배경·파랑 글씨 / 호버: 파랑 배경·흰 글씨 + 우측 화살표 -->
+    <nav class="docbtns" aria-label="주요 문서 바로가기">
+      <a class="docbtn" href="./resume.html">이력서<span class="docbtn__arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span></a>
+      <a class="docbtn" href="./cover-letter.html">자기소개서<span class="docbtn__arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span></a>
+      <a class="docbtn" href="./portfolio.html">포트폴리오<span class="docbtn__arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span></a>
     </nav>
 
-    <a class="cue" href="#more">
-      보유 역량 보기
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="m6 13 6 6 6-6"/></svg>
-    </a>
+    <!--
+      게임 프로젝트 캐러셀 — 최신순. 평소엔 썸네일(정지 이미지)만, 마우스를 올리면 정사각형 시연 영상 재생 +
+      우측 하단에 "자세히 보기 →". (이름·역할은 위 프로젝트 이력에 있으므로 카드에는 넣지 않는다)
+      data-video 가 없는 타일은 썸네일만 보여준다. 터치 기기는 화면에 보이는 타일의 영상을 자동 재생.
+      화면에 들어가는 개수보다 항목이 많아지면 좌우 화살표가 자동으로 나타난다.
+    -->
+    <section class="showcase" aria-labelledby="showcase-title">
+      <div class="showcase__head">
+        <h2 class="showcase__label" id="showcase-title">게임 프로젝트</h2>
+        <a class="showcase__all" href="./portfolio.html#project-list">전체 보기</a>
+      </div>
+      <div class="showcase__body">
+        <button class="showcase__arrow showcase__arrow--prev" type="button" aria-label="이전 프로젝트">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+        </button>
+        <div class="showcase__viewport">
+          <ul class="showcase__track" id="showcaseTrack">
+            <li>
+              <a class="tile" href="./portfolio.html#danyeogayong" aria-label="다녀가용 자세히 보기" data-video="./assets/thumbs/danyeogayong-square.mp4">
+                <div class="tile__media">
+                  <img src="./assets/thumbs/danyeogayong-thumb.webp" alt="" loading="lazy" />
+                  <span class="tile__more" aria-hidden="true">자세히 보기 →</span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a class="tile" href="./portfolio.html#comstock" aria-label="컴스톡 자세히 보기" data-video="./assets/thumbs/comstock-square.mp4">
+                <div class="tile__media">
+                  <img src="./assets/logos/comstock-logo.jpg" alt="" loading="lazy" />
+                  <span class="tile__more" aria-hidden="true">자세히 보기 →</span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a class="tile" href="./portfolio.html#hatagong" aria-label="타일시공마스터 자세히 보기" data-video="./assets/thumbs/tile-square.mp4">
+                <div class="tile__media" style="background:#fff;">
+                  <img class="is-contain" src="./assets/logos/tile-logo.png" alt="" loading="lazy" />
+                  <span class="tile__more" aria-hidden="true">자세히 보기 →</span>
+                </div>
+              </a>
+            </li>
+            <!-- 빈 자리(4번째 칸 전용) — 실제 프로젝트가 4개 이상이 되면 스크립트가 자동으로 지운다.
+                 새 프로젝트는 이 <li> 위에 추가하면 된다 -->
+            <li class="is-placeholder" aria-hidden="true">
+              <div class="tile tile--empty"><div class="tile__media"></div></div>
+            </li>
+          </ul>
+        </div>
+        <button class="showcase__arrow showcase__arrow--next" type="button" aria-label="다음 프로젝트">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+        </button>
+      </div>
+      <div class="showcase__dots" id="showcaseDots" aria-label="프로젝트 페이지"></div>
+    </section>
+
   </div>
 </section>
 
@@ -229,188 +296,210 @@
 <footer class="footer">
   <div class="container footer__inner">
     <div class="footer__contact">
-      <a href="#" rel="noopener">GitHub</a>
-      <a href="#" rel="noopener">Notion</a>
+      <a href="https://github.com/2Khaz" target="_blank" rel="noopener">GitHub</a>
     </div>
     <p class="footer__copy">© 2026 이정현. 시스템 기획자 포트폴리오.</p>
   </div>
 </footer>
 
 <script>
+/*
+================================================================================
+  로그라인 역량 단어 — SKILLS 중 하나를 무작위로(직전과 겹치지 않게) 보여준다
+================================================================================
+*/
 (function () {
-  var nav = document.getElementById('nav');
-  var hero = document.getElementById('top');
-  if (!nav || !hero) return;
-  var ticking = false;
+  var el = document.getElementById('skillRotator');
+  if (!el) return;
+  var SKILLS = [
+    '스프레드시트 자동화', 'VBA 매크로', '데이터 테이블 설계', '시스템 설계',
+    'UI 플로우', 'Figma 프로토타입', '바이브 코딩', 'Unity 구현',
+    '밸런스 설계', 'VFX 제작', 'PV 제작', 'AI 리소스 생성'
+  ];
+  var INTERVAL_MS = 2600;
+  var word = el.querySelector('.rotator__word');
+  var current = word.textContent;
 
-  function update() {
-    ticking = false;
-    var threshold = hero.offsetHeight - nav.offsetHeight - 8;
-    var atTop = window.pageYOffset < threshold;
-    nav.classList.toggle('is-transparent', atTop);
-    nav.classList.toggle('is-solid', !atTop && window.pageYOffset > 2);
+  function fit() { el.style.width = word.offsetWidth + 'px'; }
+  fit();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+  window.addEventListener('resize', fit, { passive: true });
+  // 화면 높이에 따라 글자 크기가 바뀌므로, 제목 크기가 변하면 단어 폭을 다시 잰다
+  if ('ResizeObserver' in window) new ResizeObserver(fit).observe(el.parentNode.parentNode);
+
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  function pick() {
+    var next;
+    do { next = SKILLS[Math.floor(Math.random() * SKILLS.length)]; } while (next === current);
+    return next;
   }
-  function onScroll() {
-    if (ticking) return;
-    ticking = true;
-    window.requestAnimationFrame(update);
+  function swap() {
+    var nextText = pick();
+    var incoming = document.createElement('span');
+    incoming.className = 'rotator__word is-in';
+    incoming.textContent = nextText;
+    incoming.style.position = 'absolute';
+    incoming.style.left = '0';
+    incoming.style.top = '0';
+    el.appendChild(incoming);
+    void incoming.offsetWidth;
+    word.classList.add('is-out');
+    incoming.classList.remove('is-in');
+    el.style.width = incoming.offsetWidth + 'px';
+    var old = word;
+    window.setTimeout(function () {
+      old.remove();
+      incoming.style.position = '';
+      incoming.style.left = '';
+      incoming.style.top = '';
+      fit();
+    }, 460);
+    word = incoming;
+    current = nextText;
   }
-  window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', onScroll, { passive: true });
-  window.addEventListener('orientationchange', onScroll);
-  update();
+  var timer = window.setInterval(swap, INTERVAL_MS);
+  document.addEventListener('visibilitychange', function () {
+    if (document.hidden) { window.clearInterval(timer); timer = null; }
+    else { fit(); if (!timer) timer = window.setInterval(swap, INTERVAL_MS); }
+  });
 })();
 
 /*
 ================================================================================
-  히어로 배경 순환 — 메인급 프로젝트를 몇 초마다 전환한다
---------------------------------------------------------------------------------
-  새 프로젝트를 추가하는 법
-    1) 데스크톱용 영상(assets/video/xxx-hero.mp4)과 poster 정지 프레임,
-       모바일용 정지 이미지(assets/hero/xxx-mobile.jpg)를 준비한다.
-       영상·이미지 모두 우측 하단(또는 UI가 비어 있는 자리)에
-       "프로젝트: OOO" + "실제 플레이 화면" 캡션을 같은 스타일로 합성해 둔다.
-    2) 아래 ITEMS 배열에 { video, poster, mobile } 항목을 추가한다.
-       모바일에서도 영상을 재생하려면 용량을 줄인 mobileVideo(3초 내외,
-       720px 폭 권장)를 함께 추가한다 — 없으면 mobile 정지 이미지로 대체된다.
-    3) 저장하면 끝 — 자동으로 순환 목록에 포함된다.
-
-  동작
-    · 데스크톱은 <video>, 모바일(≤767px)은 mobileVideo가 있으면 <video>,
-      없으면 <img>로 전환된다(CSS 처리).
-    · 현재 보이는 항목의 영상만 재생하고 나머지는 멈춰서 리소스를 아낀다.
-    · prefers-reduced-motion 이용자에게는 첫 항목만 정지 화면으로 보여주고
-      순환·자동재생을 하지 않는다.
-    · 다른 탭을 보고 있을 때는 순환과 재생을 멈춘다.
+  프로젝트 이력 — data-date 최신순 정렬, 4개 초과 시 숨기고 "더보기" 노출
 ================================================================================
 */
 (function () {
-  var hero = document.getElementById('top');
-  var bg = document.getElementById('heroBg');
-  if (!hero || !bg) return;
-
-  var ITEMS = [
-    {
-      video: './assets/video/comstock-hero.mp4',
-      poster: './assets/hero/comstock-poster.jpg',
-      mobile: './assets/hero/comstock-mobile.jpg',
-      mobileVideo: './assets/video/comstock-hero-mobile.mp4',
-      caption: '컴스톡'
-    },
-    {
-      video: './assets/video/tile-hero.mp4',
-      poster: './assets/hero/tile-poster.jpg',
-      mobile: './assets/hero/tile-mobile.jpg',
-      mobileVideo: './assets/video/tile-hero-mobile.mp4',
-      caption: '타일시공마스터'
-    }
-  ];
-  var INTERVAL_MS = 3000;
-  var SLIDE_MS = 800; // site.css 의 .hero__bg-slide transition 시간과 맞출 것
-
-  if (!ITEMS.length) return;
-  hero.classList.add('has-photos');
-
-  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  var slides = ITEMS.map(function (item, i) {
-    var wrap = document.createElement('div');
-    wrap.className = 'hero__bg-slide' + (i === 0 ? ' is-active' : '');
-
-    var video = document.createElement('video');
-    video.className = 'hero__bg-video hero__bg-video--desktop';
-    video.src = item.video;
-    video.poster = item.poster;
-    video.muted = true;
-    video.loop = true;
-    video.playsInline = true;
-    video.preload = 'metadata';
-
-    var mobileEl;
-    if (item.mobileVideo) {
-      mobileEl = document.createElement('video');
-      mobileEl.className = 'hero__bg-video hero__bg-video--mobile';
-      mobileEl.src = item.mobileVideo;
-      mobileEl.poster = item.mobile;
-      mobileEl.muted = true;
-      mobileEl.loop = true;
-      mobileEl.playsInline = true;
-      mobileEl.preload = 'metadata';
-    } else {
-      mobileEl = document.createElement('img');
-      mobileEl.className = 'hero__bg-video hero__bg-video--mobile';
-      mobileEl.src = item.mobile;
-      mobileEl.alt = '';
-    }
-
-    wrap.appendChild(video);
-    wrap.appendChild(mobileEl);
-
-    // 모바일 전용 캡션 — 영상 픽셀에 굽지 않고 화면 위에 얹어서, 기종별 화면비로
-    // object-fit:cover 크롭 결과가 달라져도 우측 하단에 항상 균일하게 나온다.
-    // (모바일 영상 자체는 캡션을 크롭해서 제거한 순수 플레이 화면이다.)
-    if (item.caption) {
-      var cap = document.createElement('div');
-      cap.className = 'hero__bg-caption';
-      cap.innerHTML = '<b>프로젝트: <em>' + item.caption + '</em></b><span>실제 플레이 화면</span>';
-      wrap.appendChild(cap);
-    }
-
-    bg.appendChild(wrap);
-    return { wrap: wrap, video: video, mobileVideo: item.mobileVideo ? mobileEl : null };
+  var list = document.getElementById('historyList');
+  var more = document.getElementById('historyMore');
+  if (!list) return;
+  var MAX = 4;
+  var items = Array.prototype.slice.call(list.querySelectorAll(':scope > li'));
+  items.sort(function (a, b) {
+    return (b.getAttribute('data-date') || '').localeCompare(a.getAttribute('data-date') || '');
   });
+  items.forEach(function (li, i) {
+    list.appendChild(li);
+    li.classList.toggle('is-overflow', i >= MAX);
+  });
+  if (more) more.classList.toggle('is-visible', items.length > MAX);
+})();
 
-  if (reduceMotion) return; // 첫 항목의 poster 정지 화면만 유지
+/*
+================================================================================
+  게임 프로젝트 캐러셀 — 화살표/점/스와이프로 한 칸씩 이동,
+  호버 시 정사각형 시연 영상 재생
+================================================================================
+*/
+(function () {
+  var track = document.getElementById('showcaseTrack');
+  if (!track) return;
+  var root = track.closest('.showcase');
+  var prev = root.querySelector('.showcase__arrow--prev');
+  var next = root.querySelector('.showcase__arrow--next');
+  var dotsEl = document.getElementById('showcaseDots');
 
+  // 빈 칸은 4번째 자리를 채울 때만 쓴다 — 실제 프로젝트가 4개 이상이면 제거
+  var placeholder = track.querySelector('.is-placeholder');
+  if (placeholder && track.querySelectorAll(':scope > li:not(.is-placeholder)').length >= 4) {
+    placeholder.remove();
+  }
+  var items = Array.prototype.slice.call(track.children);
   var idx = 0;
-  var timer = null;
 
-  function play(i) {
-    var v = slides[i].video;
-    v.currentTime = 0;
-    v.play().catch(function () {});
-    var mv = slides[i].mobileVideo;
-    if (mv) { mv.currentTime = 0; mv.play().catch(function () {}); }
+  function perView() {
+    var v = parseInt(getComputedStyle(track).getPropertyValue('--per'), 10);
+    return isNaN(v) ? 3 : v;
   }
-  function show(next) {
-    var outgoing = slides[idx];
-    var incoming = slides[next];
+  function maxIdx() { return Math.max(0, items.length - perView()); }
 
-    // 나가는 슬라이드는 왼쪽으로 밀려나가고, 들어오는 슬라이드는 오른쪽에서 밀려들어온다
-    outgoing.wrap.classList.remove('is-active');
-    outgoing.wrap.classList.add('is-prev');
-    outgoing.video.pause();
-    if (outgoing.mobileVideo) outgoing.mobileVideo.pause();
-
-    incoming.wrap.classList.add('is-active');
-    idx = next;
-    play(idx);
-
-    // 전환이 끝나면 나간 슬라이드를 애니메이션 없이 대기 위치(오른쪽 바깥)로
-    // 되돌려, 다음 차례에 다시 오른쪽에서 밀려들어올 수 있게 한다
-    window.setTimeout(function () {
-      outgoing.wrap.style.transition = 'none';
-      outgoing.wrap.classList.remove('is-prev');
-      void outgoing.wrap.offsetWidth; // 강제 리플로우로 transition 해제를 확정
-      outgoing.wrap.style.transition = '';
-    }, SLIDE_MS + 50);
+  function renderDots() {
+    var n = maxIdx() + 1;
+    if (dotsEl.children.length !== n) {
+      dotsEl.innerHTML = '';
+      for (var i = 0; i < n; i++) {
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.setAttribute('aria-label', (i + 1) + '번째 위치로 이동');
+        b.addEventListener('click', (function (k) { return function () { go(k); }; })(i));
+        dotsEl.appendChild(b);
+      }
+    }
+    dotsEl.hidden = n < 2;
+    Array.prototype.forEach.call(dotsEl.children, function (b, i) {
+      b.classList.toggle('is-active', i === idx);
+    });
   }
-  function tick() { show((idx + 1) % slides.length); }
-  function start() {
-    if (timer) return;
-    play(idx);
-    if (slides.length > 1) timer = window.setInterval(tick, INTERVAL_MS);
+  function go(i) {
+    idx = Math.max(0, Math.min(i, maxIdx()));
+    var x = items[idx].offsetLeft - items[0].offsetLeft;
+    track.style.transform = 'translateX(' + (-x) + 'px)';
+    prev.disabled = idx === 0;
+    next.disabled = idx >= maxIdx();
+    renderDots();
   }
-  function stop() {
-    if (timer) { window.clearInterval(timer); timer = null; }
-    slides[idx].video.pause();
-    if (slides[idx].mobileVideo) slides[idx].mobileVideo.pause();
-  }
+  prev.addEventListener('click', function () { go(idx - 1); });
+  next.addEventListener('click', function () { go(idx + 1); });
+  window.addEventListener('resize', function () { go(idx); }, { passive: true });
 
-  start();
-  document.addEventListener('visibilitychange', function () {
-    if (document.hidden) stop(); else start();
+  var sx = null;
+  track.addEventListener('touchstart', function (e) { sx = e.touches[0].clientX; }, { passive: true });
+  track.addEventListener('touchend', function (e) {
+    if (sx === null) return;
+    var dx = e.changedTouches[0].clientX - sx;
+    if (Math.abs(dx) > 40) go(idx + (dx < 0 ? 1 : -1));
+    sx = null;
   });
+
+  go(0);
+
+  // 시연 영상
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) return;
+  var canHover = window.matchMedia && window.matchMedia('(hover: hover)').matches;
+
+  var tiles = Array.prototype.slice.call(track.querySelectorAll('.tile[data-video]'));
+  tiles.forEach(function (tile) {
+    var video = null;
+    function ensure() {
+      if (video) return video;
+      video = document.createElement('video');
+      video.src = tile.getAttribute('data-video');
+      video.muted = true; video.loop = true; video.playsInline = true;
+      video.setAttribute('muted', ''); video.setAttribute('playsinline', '');
+      video.preload = 'auto';
+      video.setAttribute('aria-hidden', 'true');
+      tile.querySelector('.tile__media').appendChild(video);
+      return video;
+    }
+    tile._play = function () {
+      var v = ensure();
+      tile._want = true;
+      v.play().then(function () { if (tile._want) tile.classList.add('is-playing'); }).catch(function () {});
+    };
+    tile._stop = function () {
+      tile._want = false;
+      tile.classList.remove('is-playing');
+      if (video) { video.pause(); video.currentTime = 0; }
+    };
+    if (canHover) {
+      tile.addEventListener('mouseenter', tile._play);
+      tile.addEventListener('mouseleave', tile._stop);
+      tile.addEventListener('focus', tile._play);
+      tile.addEventListener('blur', tile._stop);
+    }
+  });
+
+  // 터치 기기 — 화면에 충분히 보이는 타일의 영상을 자동 재생
+  if (!canHover && 'IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.intersectionRatio >= 0.6) en.target._play(); else en.target._stop();
+      });
+    }, { threshold: [0, 0.6] });
+    tiles.forEach(function (t) { io.observe(t); });
+  }
 })();
 
 /*

@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="theme-color" content="#ffffff" />
 <meta name="format-detection" content="telephone=no" />
-<title>프로젝트 — 이정현 시스템 기획자</title>
+<title>포트폴리오 — 이정현 시스템 기획자</title>
 <meta name="description" content="이정현이 진행한 프로젝트의 작업 이력. 상황, 행동, 결과, 배울점을 시간순으로 정리했습니다." />
 <meta property="og:type" content="website" />
 <meta property="og:locale" content="ko_KR" />
-<meta property="og:title" content="프로젝트 — 이정현 시스템 기획자" />
+<meta property="og:title" content="포트폴리오 — 이정현 시스템 기획자" />
 <meta property="og:description" content="게임 기획과 제작에서 맡은 일, 결과와 배울점을 프로젝트별로 정리했습니다." />
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
 <link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" />
@@ -32,7 +32,7 @@
     <nav class="doctabs" aria-label="문서 이동">
       <a href="./resume.html">이력서</a>
       <a href="./cover-letter.html">자기소개서</a>
-      <a href="./portfolio.html" aria-current="page">프로젝트</a>
+      <a href="./portfolio.html" aria-current="page">포트폴리오</a>
       <a href="./play-archive.html">플레이 아카이브</a>
     </nav>
   </div>
@@ -40,7 +40,7 @@
 
 <main id="main" class="container project-history">
     <section class="project-history__project" id="ranking-dashboard" tabindex="-1" aria-labelledby="ranking-dashboard-title">
-      <a class="project-back" href="#project-list">← 전체 프로젝트</a>
+      <a class="project-back" href="#project-list">← 포트폴리오 목록</a>
       <header class="project-history__heading">
         <h1 class="h2" id="ranking-dashboard-title">게임 랭킹 대시보드</h1>
         <p class="project-history__role">개인 프로젝트 · 데이터 수집과 웹 구현</p>
@@ -232,7 +232,12 @@
     </section>
 
     <section class="project-history__project" id="hatagong" tabindex="-1" aria-labelledby="hatagong-title">
-      <a class="project-back" href="#project-list">← 전체 프로젝트</a>
+      <a class="project-back" href="#project-list">← 포트폴리오 목록</a>
+      <!-- PV — 대문 첫 화면만큼 크게. TODO: 실제 PV 영상이 준비되면 src·poster 교체 (현재는 플레이 영상 임시) -->
+      <figure class="pv">
+        <video class="pv__video" src="./assets/video/tile-hero.mp4" poster="./assets/hero/tile-poster.jpg" controls playsinline muted loop preload="metadata" aria-label="타일시공마스터 PV"></video>
+      </figure>
+      <!-- 미출시 — 출시하면 위 다른 게임처럼 .pv-links 추가 -->
       <header class="project-history__heading">
         <h1 class="h2" id="hatagong-title">타일시공마스터(하늘타일공사)</h1>
         <p class="project-history__role">팀장 · 컨셉·시스템 기획 · AI 보조 Unity 개발과 검수</p>
@@ -451,7 +456,15 @@
     </section>
 
     <section class="project-history__project" id="comstock" tabindex="-1" aria-labelledby="comstock-title">
-      <a class="project-back" href="#project-list">← 전체 프로젝트</a>
+      <a class="project-back" href="#project-list">← 포트폴리오 목록</a>
+      <!-- PV — 대문 첫 화면만큼 크게. TODO: 실제 PV 영상이 준비되면 src·poster 교체 (현재는 플레이 영상 임시) -->
+      <figure class="pv">
+        <video class="pv__video" src="./assets/video/comstock-hero.mp4" poster="./assets/hero/comstock-poster.jpg" controls playsinline muted loop preload="metadata" aria-label="컴스톡 PV"></video>
+      </figure>
+      <!-- 출시 링크 — TODO: itch.io 실제 주소로 교체 -->
+      <div class="pv-links">
+        <a class="btn btn--filled pv-links__btn" href="#" target="_blank" rel="noopener" data-todo="itch">itch.io에서 플레이 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></a>
+      </div>
       <header class="project-history__heading">
         <h1 class="h2" id="comstock-title">컴스톡</h1>
         <p class="project-history__role">시스템 총괄기획 · 맵 기획 · 애니메이션·VFX·PV 제작과 검수</p>
@@ -784,7 +797,7 @@
     </section>
 
     <section class="project-history__project" id="pasadogam" tabindex="-1" aria-labelledby="pasadogam-title">
-      <a class="project-back" href="#project-list">← 전체 프로젝트</a>
+      <a class="project-back" href="#project-list">← 포트폴리오 목록</a>
       <header class="project-history__heading">
         <h1 class="h2" id="pasadogam-title">파사도감</h1>
         <p class="project-history__role">개인 기획 · 세계관·캐릭터·분기 퀘스트</p>
@@ -951,7 +964,16 @@
     </section>
 
     <section class="project-history__project" id="danyeogayong" tabindex="-1" aria-labelledby="danyeogayong-title">
-      <a class="project-back" href="#project-list">← 전체 프로젝트</a>
+      <a class="project-back" href="#project-list">← 포트폴리오 목록</a>
+      <!-- PV — 대문 첫 화면만큼 크게. TODO: 실제 PV 영상이 준비되면 src·poster 교체 (현재는 플레이 영상 임시) -->
+      <figure class="pv">
+        <video class="pv__video" src="./assets/video/danyeogayong-pv.mp4" poster="./assets/hero/danyeogayong-poster.jpg" controls playsinline muted loop preload="metadata" aria-label="다녀가용 PV"></video>
+      </figure>
+      <!-- 출시 링크 — TODO: itch.io 실제 주소로 교체 -->
+      <div class="pv-links">
+        <a class="btn btn--filled pv-links__btn" href="#" target="_blank" rel="noopener" data-todo="itch">itch.io에서 플레이 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></a>
+        <span class="btn btn--outline pv-links__btn is-soon" aria-disabled="true">Steam 출시 준비중</span>
+      </div>
       <header class="project-history__heading">
         <h1 class="h2" id="danyeogayong-title">다녀가용</h1>
         <p class="project-history__role">성장·보스 기획 · 그래픽과 사운드 검수 · QA 설계</p>
@@ -1223,54 +1245,94 @@
       </details>
     </section>
 
+    <!--
+      포트폴리오 목록 — 상단 분류 버튼으로 걸러 보기 (플레이 아카이브와 같은 방식)
+        · 카드마다 data-cats 에 분류를 공백으로 여러 개 적는다 (한 카드가 여러 분류에 속할 수 있음)
+            team : 팀 프로젝트   solo : 개인 프로젝트   dev : 게임 개발   plan : 게임 기획   tool : 툴·자동화
+        · 버튼의 개수는 자동 계산. 새 카드는 <li class="pf-item" data-cats="..."> 로 추가
+        · 순서: 게임 프로젝트 최신순 → 그 외
+        · 카드 <a> 에 data-video="정사각 영상 경로" 를 넣으면 썸네일에 마우스를 올렸을 때 시연 영상이 재생된다
+          (대문 게임 프로젝트 캐러셀과 같은 영상·같은 동작)
+    -->
     <section class="project-catalog" id="project-list" tabindex="-1" aria-labelledby="project-list-title">
       <header class="project-catalog__heading">
-        <p class="eyebrow"><span class="dot" aria-hidden="true"></span>Projects</p>
-        <h1 class="h1" id="project-list-title">프로젝트</h1>
+        <h1 class="h1" id="project-list-title">포트폴리오</h1>
         <p class="lead">프로젝트를 선택하면 맡은 일과 작업 순서, 단계별 작업본과 검증 데이터를 확인할 수 있습니다.</p>
       </header>
-      <ul class="project-cards">
-        <li>
-          <a class="project-card-link" href="#ranking-dashboard">
-            <span class="project-card-link__role">데이터 수집 · 웹 구현</span>
-            <h2 class="h3">게임 랭킹 대시보드</h2>
-            <p>한국 Steam 판매 순위와 Google Play 게임 매출 순위 수집, 변동 이력, 전송 실패 복구.</p>
-            <span class="project-card-link__action">작업 타임라인 보기 <span aria-hidden="true">→</span></span>
+
+      <div class="filters pf-filters noprint" id="pfFilters" role="group" aria-label="포트폴리오 분류">
+        <button type="button" data-cat="all" aria-pressed="true">전체 <span class="count"></span></button>
+        <button type="button" data-cat="team" aria-pressed="false">팀 프로젝트 <span class="count"></span></button>
+        <button type="button" data-cat="solo" aria-pressed="false">개인 프로젝트 <span class="count"></span></button>
+        <button type="button" data-cat="dev" aria-pressed="false">게임 개발 <span class="count"></span></button>
+        <button type="button" data-cat="plan" aria-pressed="false">게임 기획 <span class="count"></span></button>
+        <button type="button" data-cat="tool" aria-pressed="false">툴·자동화 <span class="count"></span></button>
+      </div>
+
+      <ul class="pf-grid" id="pfCards">
+        <li class="pf-item" data-cats="team dev plan">
+          <a class="pf-card" href="#danyeogayong" data-video="./assets/thumbs/danyeogayong-square.mp4">
+            <span class="pf-card__thumb"><img src="./assets/thumbs/danyeogayong-thumb.webp" alt="" loading="lazy" /></span>
+            <span class="pf-card__body">
+              <span class="pf-card__role">성장·보스 기획 · 리소스 검수 · QA</span>
+              <h2 class="pf-card__title">다녀가용</h2>
+              <p>성장 데이터와 밸런스 비교, 보스 전투 규칙, 그래픽·사운드 검수와 OBT 테스트 설계.</p>
+              <span class="pf-card__tags"><span>팀</span><span>게임 개발</span><span>게임 기획</span></span>
+              <span class="pf-card__action">작업 타임라인 보기 <span aria-hidden="true">→</span></span>
+            </span>
           </a>
         </li>
-        <li>
-          <a class="project-card-link" href="#hatagong">
-            <span class="project-card-link__role">팀장 · 콘셉트·시스템 기획</span>
-            <h2 class="h3">타일시공마스터(하늘타일공사)</h2>
-            <p>철거·도포·시공의 세 공정 설계, 퍼즐 판정, 의뢰·정산·보상 규칙.</p>
-            <span class="project-card-link__action">작업 타임라인 보기 <span aria-hidden="true">→</span></span>
+        <li class="pf-item" data-cats="team dev plan">
+          <a class="pf-card" href="#comstock" data-video="./assets/thumbs/comstock-square.mp4">
+            <span class="pf-card__thumb"><img src="./assets/logos/comstock-logo.jpg" alt="" loading="lazy" /></span>
+            <span class="pf-card__body">
+              <span class="pf-card__role">시스템 총괄 기획 · 리소스 제작</span>
+              <h2 class="pf-card__title">컴스톡</h2>
+              <p>장르 전환에 따른 전투·정비 규칙 개정, 맵 기획, 애니메이션·VFX·PV 제작.</p>
+              <span class="pf-card__tags"><span>팀</span><span>게임 개발</span><span>게임 기획</span></span>
+              <span class="pf-card__action">작업 타임라인 보기 <span aria-hidden="true">→</span></span>
+            </span>
           </a>
         </li>
-        <li>
-          <a class="project-card-link" href="#comstock">
-            <span class="project-card-link__role">시스템 총괄 기획 · 리소스 제작</span>
-            <h2 class="h3">컴스톡</h2>
-            <p>장르 전환에 따른 전투·정비 규칙 개정, 맵 기획, 애니메이션·VFX·PV 제작.</p>
-            <span class="project-card-link__action">작업 타임라인 보기 <span aria-hidden="true">→</span></span>
+        <li class="pf-item" data-cats="team dev plan">
+          <a class="pf-card" href="#hatagong" data-video="./assets/thumbs/tile-square.mp4">
+            <span class="pf-card__thumb pf-card__thumb--contain"><img src="./assets/logos/tile-logo.png" alt="" loading="lazy" /></span>
+            <span class="pf-card__body">
+              <span class="pf-card__role">팀장 · 콘셉트·시스템 기획</span>
+              <h2 class="pf-card__title">타일시공마스터(하늘타일공사)</h2>
+              <p>철거·도포·시공의 세 공정 설계, 퍼즐 판정, 의뢰·정산·보상 규칙.</p>
+              <span class="pf-card__tags"><span>팀</span><span>게임 개발</span><span>게임 기획</span></span>
+              <span class="pf-card__action">작업 타임라인 보기 <span aria-hidden="true">→</span></span>
+            </span>
           </a>
         </li>
-        <li>
-          <a class="project-card-link" href="#pasadogam">
-            <span class="project-card-link__role">세계관 · 캐릭터 · 분기 퀘스트 기획</span>
-            <h2 class="h3">파사도감</h2>
-            <p>호랑이 사건의 조사 조건, 분기별 전투 목표, 인물 관계와 결말 설계.</p>
-            <span class="project-card-link__action">작업 타임라인 보기 <span aria-hidden="true">→</span></span>
+        <li class="pf-item" data-cats="solo plan">
+          <a class="pf-card" href="#pasadogam">
+            <span class="pf-card__thumb pf-card__thumb--type" aria-hidden="true"><b>파사도감</b></span>
+            <span class="pf-card__body">
+              <span class="pf-card__role">세계관 · 캐릭터 · 분기 퀘스트 기획</span>
+              <h2 class="pf-card__title">파사도감</h2>
+              <p>호랑이 사건의 조사 조건, 분기별 전투 목표, 인물 관계와 결말 설계.</p>
+              <span class="pf-card__tags"><span>개인</span><span>게임 기획</span></span>
+              <span class="pf-card__action">작업 타임라인 보기 <span aria-hidden="true">→</span></span>
+            </span>
           </a>
         </li>
-        <li>
-          <a class="project-card-link" href="#danyeogayong">
-            <span class="project-card-link__role">성장·보스 기획 · 리소스 검수 · QA</span>
-            <h2 class="h3">다녀가용</h2>
-            <p>성장 데이터와 밸런스 비교, 보스 전투 규칙, 그래픽·사운드 검수와 OBT 테스트 설계.</p>
-            <span class="project-card-link__action">작업 타임라인 보기 <span aria-hidden="true">→</span></span>
+        <li class="pf-item" data-cats="solo tool">
+          <a class="pf-card" href="#ranking-dashboard">
+            <span class="pf-card__thumb pf-card__thumb--top"><img src="./assets/project-samples/ranking-screen.jpg" alt="" loading="lazy" /></span>
+            <span class="pf-card__body">
+              <span class="pf-card__role">데이터 수집 · 웹 구현</span>
+              <h2 class="pf-card__title">게임 랭킹 대시보드</h2>
+              <p>한국 Steam 판매 순위와 Google Play 게임 매출 순위 수집, 변동 이력, 전송 실패 복구.</p>
+              <span class="pf-card__tags"><span>개인</span><span>툴·자동화</span></span>
+              <span class="pf-card__action">작업 타임라인 보기 <span aria-hidden="true">→</span></span>
+            </span>
           </a>
         </li>
       </ul>
+
+      <p class="lead is-hidden" id="pfEmpty" style="margin-top:24px;">해당 분류에 표시할 항목이 없습니다.</p>
     </section>
 </main>
 
@@ -1283,5 +1345,126 @@
     <p class="footer__copy">© 2026 이정현. 시스템 기획자 포트폴리오.</p>
   </div>
 </footer>
+<script>
+/* 포트폴리오 분류 필터 — 카드 하나가 여러 분류(data-cats)에 속할 수 있다 */
+(function () {
+  var wrap = document.getElementById('pfFilters');
+  var items = document.querySelectorAll('#pfCards .pf-item');
+  var empty = document.getElementById('pfEmpty');
+  if (!wrap || !items.length) return;
+  var buttons = wrap.querySelectorAll('button[data-cat]');
+
+  function has(li, cat) {
+    return cat === 'all' || (' ' + (li.getAttribute('data-cats') || '') + ' ').indexOf(' ' + cat + ' ') > -1;
+  }
+  Array.prototype.forEach.call(buttons, function (b) {
+    var cat = b.getAttribute('data-cat'), n = 0;
+    Array.prototype.forEach.call(items, function (li) { if (has(li, cat)) n++; });
+    var slot = b.querySelector('.count');
+    if (slot) slot.textContent = n;
+  });
+
+  function apply(cat, push) {
+    var shown = 0;
+    Array.prototype.forEach.call(items, function (li) {
+      var hit = has(li, cat);
+      li.classList.toggle('is-hidden', !hit);
+      if (hit) shown++;
+    });
+    Array.prototype.forEach.call(buttons, function (b) {
+      b.setAttribute('aria-pressed', String(b.getAttribute('data-cat') === cat));
+    });
+    if (empty) empty.classList.toggle('is-hidden', shown > 0);
+    if (push && window.history && window.history.replaceState) {
+      try {
+        var url = new URL(window.location.href);
+        if (cat === 'all') url.searchParams.delete('filter'); else url.searchParams.set('filter', cat);
+        url.hash = '';
+        window.history.replaceState({}, '', url.toString());
+      } catch (err) {}
+    }
+  }
+
+  wrap.addEventListener('click', function (e) {
+    var b = e.target.closest ? e.target.closest('button[data-cat]') : null;
+    if (b) apply(b.getAttribute('data-cat'), true);
+  });
+
+  var initial = 'all';
+  try {
+    var q = new URL(window.location.href).searchParams.get('filter');
+    if (q && wrap.querySelector('button[data-cat="' + q + '"]')) initial = q;
+  } catch (err) {}
+  apply(initial, false);
+})();
+</script>
+<script>
+/* 포트폴리오 카드 — 썸네일에 마우스를 올리면 정사각 시연 영상 재생 (대문 캐러셀과 같은 방식)
+   터치 기기는 화면에 충분히 보이는 카드의 영상을 자동 재생 */
+(function () {
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) return;
+  var canHover = window.matchMedia && window.matchMedia('(hover: hover)').matches;
+  var cards = Array.prototype.slice.call(document.querySelectorAll('.pf-card[data-video]'));
+  cards.forEach(function (card) {
+    var video = null;
+    function ensure() {
+      if (video) return video;
+      video = document.createElement('video');
+      video.src = card.getAttribute('data-video');
+      video.muted = true; video.loop = true; video.playsInline = true;
+      video.setAttribute('muted', ''); video.setAttribute('playsinline', '');
+      video.preload = 'auto';
+      video.setAttribute('aria-hidden', 'true');
+      card.querySelector('.pf-card__thumb').appendChild(video);
+      return video;
+    }
+    card._play = function () {
+      var v = ensure();
+      card._want = true;
+      v.play().then(function () { if (card._want) card.classList.add('is-playing'); }).catch(function () {});
+    };
+    card._stop = function () {
+      card._want = false;
+      card.classList.remove('is-playing');
+      if (video) { video.pause(); video.currentTime = 0; }
+    };
+    if (canHover) {
+      card.addEventListener('mouseenter', card._play);
+      card.addEventListener('mouseleave', card._stop);
+      card.addEventListener('focus', card._play);
+      card.addEventListener('blur', card._stop);
+    }
+  });
+  if (!canHover && 'IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.intersectionRatio >= 0.6) en.target._play(); else en.target._stop();
+      });
+    }, { threshold: [0, 0.6] });
+    cards.forEach(function (c) { io.observe(c); });
+  }
+})();
+</script>
+<script>
+/* 프로젝트 상세 PV — 상세가 열릴 때(주소 #id) 해당 PV를 음소거 자동재생, 나머지는 정지 */
+(function () {
+  var vids = Array.prototype.slice.call(document.querySelectorAll('.pv__video'));
+  if (!vids.length) return;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function sync() {
+    vids.forEach(function (v) {
+      var sec = v.closest('.project-history__project');
+      var open = sec && getComputedStyle(sec).display !== 'none';
+      if (open && !reduce) { v.play().catch(function () {}); }
+      else { v.pause(); }
+    });
+  }
+  window.addEventListener('hashchange', function () { window.setTimeout(sync, 30); });
+  window.addEventListener('load', sync);
+  document.addEventListener('visibilitychange', function () { if (!document.hidden) sync(); });
+  sync();
+})();
+</script>
 </body>
 </html>

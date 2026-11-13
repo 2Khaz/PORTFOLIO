@@ -18,13 +18,14 @@
 <link rel="stylesheet" as="style" crossorigin
       href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" />
 <link rel="stylesheet" href="./assets/site.css" />
+<link rel="stylesheet" href="./assets/resume.css" />
 
 <!--
 ================================================================================
   이력서 — 제출하신 PDF 이력서(20260901_Ver01) 기준으로 내용을 채웠습니다.
 
   남은 TODO
-    · 링크(GitHub · Notion) — 원본 이력서에 없어 자리표시자(#) 그대로 둠
+    · 링크 — GitHub 연결 완료, Notion은 보류(제외)
     · 자격증 3건 — 취득월 정보가 없어 이름만 기재. 있으면 <span class="m"> 로 추가
     · 프로필 사진 — 원본 PDF에서 추출한 121×162px 저해상도 사진(assets/profile.jpg)을
       임시로 넣음. 고화질 원본이 있으면 같은 경로로 교체 권장
@@ -49,7 +50,7 @@
     <nav class="doctabs" aria-label="문서 이동">
       <a href="./resume.html" aria-current="page">이력서</a>
       <a href="./cover-letter.html">자기소개서</a>
-      <a href="./portfolio.html">프로젝트</a>
+      <a href="./portfolio.html">포트폴리오</a>
       <a href="./play-archive.html">플레이 아카이브</a>
     </nav>
   </div>
@@ -58,12 +59,7 @@
 <div class="pagehead">
   <div class="container pagehead__inner pagehead__inner--center">
     <div>
-      <p class="eyebrow"><span class="dot" aria-hidden="true"></span>Resume</p>
       <h1 class="h1">이력서</h1>
-      <p class="pagemeta">
-        <span>최종 수정 <b>2026.09</b></span>
-        <span>지원 직무 <b>시스템 기획</b></span>
-      </p>
     </div>
     <div class="pagehead__actions noprint">
       <button class="btn btn--outline" type="button" id="printBtn">
@@ -80,27 +76,36 @@
   </div>
 </div>
 
+<!-- 따라다니는 목차 — PC(폭 1440px 이상)에서만 왼쪽 여백에 고정. 모바일·좁은 화면에서는 숨김 -->
+<nav class="rtoc noprint" aria-label="이력서 목차">
+  <p class="rtoc__title">이력서</p>
+  <ol class="rtoc__list">
+    <li><a href="#profile"><span class="rtoc__no">01</span>프로필</a></li>
+    <li><a href="#projects"><span class="rtoc__no">02</span>주요 프로젝트</a></li>
+    <li><a href="#skills"><span class="rtoc__no">03</span>보유 기술 및 역량</a></li>
+  </ol>
+</nav>
+
 <main id="main">
 
   <!-- ════════ 인적사항 ════════ -->
-  <section class="section" aria-labelledby="profile-title">
+  <section class="section" id="profile" aria-labelledby="profile-title">
     <div class="container">
-      <h2 class="sr-only" id="profile-title">인적사항</h2>
+      <h2 class="sr-only" id="profile-title">프로필</h2>
       <div class="profile">
         <img src="./assets/profile.jpg" alt="이정현 프로필 사진" class="profile__photo" />
 
         <div class="profile__header">
-          <p class="eyebrow"><span class="dot" aria-hidden="true"></span>Profile</p>
-          <p class="h3" style="margin-top:10px;">이정현 <span style="font-weight:500;color:var(--muted);font-size:15px;">LEE JEONGHYEON</span></p>
+          <p class="h3">이정현</p>
           <p style="margin-top:8px;font-size:15px;line-height:1.65;color:var(--muted);max-width:52ch;">
-            게임의 튼튼한 토대를 설계하는 시스템 기획자 이정현입니다.
+            일단 부딪혀보는 기획자 이정현입니다.
           </p>
         </div>
 
-          <dl class="infolist" style="margin-top:14px;">
-            <!-- TODO: 원본 이력서에 GitHub · Notion 링크가 없어 자리표시자로 둠 -->
+          <dl class="infolist">
+            <!-- 링크: GitHub (Notion은 보류) -->
             <div class="infolist__wide"><dt>링크</dt><dd>
-              <a href="#" rel="noopener">GitHub</a> · <a href="#" rel="noopener">Notion</a>
+              <a href="https://github.com/2Khaz" target="_blank" rel="noopener">GitHub</a>
             </dd></div>
             <div class="infolist__wide infolist__split">
               <div>
@@ -162,59 +167,76 @@
     </div>
   </section>
 
-  <!-- ════════ 프로젝트 (신상명세 바로 다음, 최상단 강조) ════════ -->
-  <section class="section section--tight" aria-labelledby="proj-title">
+  <!-- ════════ 주요 프로젝트 ════════
+       2열 가로 카드 [정사각 썸네일 | 태그·게임명·기간·역할]. 2개씩 줄을 맞추고 늘어나면 아래로 쌓인다.
+       data-date(종료 YYYY.MM) 기준 최신순으로 자동 정렬 — 새 프로젝트는 <li> 하나만 추가.
+       태그: 장르 · 출시 위치(있을 때만) · 팀장(팀장일 때만, class="rproj__tag--lead") -->
+  <section class="section section--tight rproj-section" id="projects" aria-labelledby="proj-title">
     <div class="container">
-      <div class="section-head">
-        <p class="eyebrow"><span class="dot" aria-hidden="true"></span>Projects</p>
-        <h2 class="h2" id="proj-title">주요 프로젝트</h2>
-      </div>
+      <h2 class="h2 rproj-section__title" id="proj-title">주요 프로젝트</h2>
 
-      <ul class="grid grid--2">
-        <li class="card">
-          <div class="chips">
-            <span class="chip">캐주얼 퍼즐</span>
-            <span class="chip">팀장 담당</span>
-          </div>
-          <div class="projectcard__row">
-            <img class="projectcard__logo" src="./assets/logos/tile-logo.png" alt="하늘타일공사 로고" />
-            <div>
-              <h3 class="h3 projectcard__title">타일시공마스터 <span class="tl__period">2026.06 – 2026.07</span></h3>
-              <ul class="tl__list">
-                <li>게임 컨셉 기획 및 팀 프로젝트 매니징 수행</li>
-                <li>시스템 총괄 기획 업무 수행</li>
-                <li><b>Unity</b> 엔진 활용 및 시스템 구현 업무 수행</li>
-              </ul>
-            </div>
-          </div>
+      <ul class="rproj" id="resumeProjects">
+        <li data-date="2026.07">
+          <a class="rproj__card" href="./portfolio.html#hatagong">
+            <span class="rproj__thumb rproj__thumb--contain"><img src="./assets/logos/tile-logo.png" alt="" /></span>
+            <span class="rproj__body">
+              <span class="rproj__tags">
+                <span class="rproj__tag">캐주얼 퍼즐</span>
+                <span class="rproj__tag rproj__tag--lead">팀장</span>
+              </span>
+              <span class="rproj__title"><b>타일시공마스터</b><span class="rproj__period">2026.06 – 2026.07</span></span>
+              <span class="rproj__list">
+                <span>게임 컨셉 기획 및 팀 프로젝트 매니징 수행</span>
+                <span>시스템 총괄 기획 업무 수행</span>
+                <span>Unity 엔진 활용 및 시스템 구현 업무 수행</span>
+              </span>
+            </span>
+          </a>
         </li>
-        <li class="card">
-          <div class="chips">
-            <span class="chip">뱀서라이크</span>
-            <span class="chip">itch.io 출시</span>
-          </div>
-          <div class="projectcard__row">
-            <img class="projectcard__logo" src="./assets/logos/comstock-logo.jpg" alt="컴스톡 로고" />
-            <div>
-              <h3 class="h3 projectcard__title">컴스톡 <span class="tl__period">2026.07 – 2026.09</span></h3>
-              <ul class="tl__list">
-                <li>게임 이미지·애니메이션 리소스 제작 담당</li>
-                <li>시스템 총괄 기획 업무 수행</li>
-                <li><b>AI</b> 파이프라인 활용 리소스 생산 업무 수행</li>
-              </ul>
-            </div>
-          </div>
+        <li data-date="2026.09">
+          <a class="rproj__card" href="./portfolio.html#comstock">
+            <span class="rproj__thumb"><img src="./assets/logos/comstock-logo.jpg" alt="" /></span>
+            <span class="rproj__body">
+              <span class="rproj__tags">
+                <span class="rproj__tag">뱀서라이크</span>
+                <span class="rproj__tag">itch.io 출시</span>
+              </span>
+              <span class="rproj__title"><b>컴스톡</b><span class="rproj__period">2026.07 – 2026.09</span></span>
+              <span class="rproj__list">
+                <span>게임 이미지·애니메이션 리소스 제작 담당</span>
+                <span>시스템 총괄 기획 업무 수행</span>
+                <span>AI 파이프라인 활용 리소스 생산 업무 수행</span>
+              </span>
+            </span>
+          </a>
+        </li>
+        <li data-date="2026.11">
+          <a class="rproj__card" href="./portfolio.html#danyeogayong">
+            <span class="rproj__thumb"><img src="./assets/thumbs/danyeogayong-thumb.webp" alt="" /></span>
+            <span class="rproj__body">
+              <span class="rproj__tags">
+                <span class="rproj__tag">인크리멘탈</span>
+                <span class="rproj__tag">itch.io 출시</span>
+                <span class="rproj__tag">Steam 준비중</span>
+              </span>
+              <span class="rproj__title"><b>다녀가용</b><span class="rproj__period">2026.09 – 2026.11</span></span>
+              <span class="rproj__list">
+                <span>성장·보스 시스템 기획 업무 수행</span>
+                <span>그래픽·사운드 리소스 검수 담당</span>
+                <span>OBT 테스트 케이스 설계 및 QA 수행</span>
+              </span>
+            </span>
+          </a>
         </li>
       </ul>
     </div>
   </section>
 
   <!-- ════════ 역량 ════════ -->
-  <section class="section section--tight" aria-labelledby="skill-title">
+  <section class="section section--tight" id="skills" aria-labelledby="skill-title">
     <div class="container">
       <div class="section-head">
-        <p class="eyebrow"><span class="dot" aria-hidden="true"></span>Skills</p>
-        <h2 class="h2" id="skill-title">보유 기술 · 역량</h2>
+        <h2 class="h2" id="skill-title">보유 기술 및 역량</h2>
         <p class="lead">쓸 수 있는 기술을 눌러서 요약과 실제 산출물을 확인하세요.</p>
       </div>
 
@@ -385,14 +407,25 @@
   <div class="container footer__inner">
     <div class="footer__contact">
       <a href="./index.html">홈</a>
-      <a href="#" rel="noopener">GitHub</a>
-      <a href="#" rel="noopener">Notion</a>
+      <a href="https://github.com/2Khaz" target="_blank" rel="noopener">GitHub</a>
     </div>
     <p class="footer__copy">© 2026 이정현. 시스템 기획자 포트폴리오.</p>
   </div>
 </footer>
 
+<script src="./assets/toc.js"></script>
 <script>
+/* 주요 프로젝트 — data-date(종료 시점) 최신순 정렬 */
+(function () {
+  var list = document.getElementById('resumeProjects');
+  if (!list) return;
+  var items = Array.prototype.slice.call(list.children);
+  items.sort(function (a, b) {
+    return (b.getAttribute('data-date') || '').localeCompare(a.getAttribute('data-date') || '');
+  });
+  items.forEach(function (li) { list.appendChild(li); });
+})();
+
 (function () {
   var btn = document.getElementById('printBtn');
   if (btn) btn.addEventListener('click', function () { window.print(); });

@@ -220,3 +220,74 @@
   .project-back { display: none; }
   .work-timeline__item { break-inside: avoid; }
 }
+
+/* ══════════════ 포트폴리오 목록 — 분류 필터 + 썸네일 위 / 본문 아래 카드 (한 줄 최대 4개) ══════════════ */
+.pf-filters { margin-top: 24px; margin-bottom: 22px; }
+.pf-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 16px;
+}
+@media (min-width: 560px)  { .pf-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 860px)  { .pf-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; } }
+@media (min-width: 1100px) { .pf-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+
+.pf-card {
+  display: flex; flex-direction: column; height: 100%;
+  border: 1px solid var(--cloud); border-radius: 14px; overflow: hidden;
+  background: var(--white);
+  transition: border-color .15s ease, box-shadow .15s ease, transform .15s ease;
+}
+.pf-card:hover { border-color: var(--accent); box-shadow: 0 8px 22px rgba(8,9,10,.08); transform: translateY(-2px); }
+
+.pf-card__thumb {
+  position: relative; display: block; aspect-ratio: 1 / 1; overflow: hidden;
+  background: var(--mist); border-bottom: 1px solid var(--mist);
+}
+.pf-card__thumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .4s ease; }
+.pf-card:hover .pf-card__thumb img { transform: scale(1.03); }
+.pf-card__thumb--contain { background: var(--white); }
+.pf-card__thumb--contain img { object-fit: contain; padding: 14%; }
+.pf-card__thumb--top img { object-position: top center; }
+.pf-card__thumb--type { display: flex; align-items: center; justify-content: center; background: var(--accent-wash); }
+.pf-card__thumb--type b { font-size: clamp(24px, 2.4vw, 32px); font-weight: 800; letter-spacing: -.8px; color: var(--accent); }
+
+.pf-card__body { display: flex; flex-direction: column; gap: 7px; flex: 1; padding: 16px 18px 18px; }
+.pf-card__role { color: var(--accent); font-size: 12.5px; font-weight: 650; line-height: 1.4; }
+.pf-card__title { font-size: 17px; font-weight: 700; letter-spacing: -.3px; line-height: 1.35; color: var(--ink); }
+.pf-card__body p { color: var(--muted); font-size: 13.5px; line-height: 1.6; }
+.pf-card__tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 2px; }
+.pf-card__tags span {
+  padding: 2px 8px; border-radius: var(--r-tag);
+  background: var(--mist); color: var(--muted); font-size: 11.5px; font-weight: 600;
+}
+.pf-card__action { margin-top: auto; padding-top: 6px; color: var(--accent); font-size: 13px; font-weight: 650; }
+
+/* 카드 호버 시연 영상 — 썸네일 위에 겹쳐 페이드인 */
+.pf-card__thumb video {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+  opacity: 0; transition: opacity .3s ease;
+}
+.pf-card.is-playing .pf-card__thumb video { opacity: 1; }
+
+/* ══════════════ 프로젝트 상세 — PV(대문 첫 화면 크기) + 출시 링크 ══════════════ */
+.pv {
+  margin: 0 auto;
+  /* 16:9 를 유지하면서 화면 높이 안에 들어오도록 폭을 제한 → 대문 첫 화면만큼 크게 보임 */
+  width: min(100%, calc((100svh - var(--nav-h) - 150px) * 16 / 9));
+  aspect-ratio: 16 / 9;
+  border-radius: 16px; overflow: hidden;
+  background: #000; box-shadow: 0 14px 40px rgba(8,9,10,.16);
+}
+.pv__video { display: block; width: 100%; height: 100%; object-fit: cover; background: #000; }
+.pv-links {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;
+  margin: 22px 0 40px;
+}
+.pv-links__btn { min-width: 200px; min-height: 46px; font-size: 15px; }
+.pv-links__btn.is-soon { color: var(--muted); border-style: dashed; cursor: default; pointer-events: none; }
+.pv + .project-history__heading { margin-top: 36px; }
+@media (max-width: 767px) {
+  .pv { width: 100%; border-radius: 12px; }
+  .pv-links__btn { min-width: 0; flex: 1 1 100%; }
+}
