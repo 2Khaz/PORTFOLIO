@@ -99,16 +99,16 @@
 }
 
 /* ══════════════ 따라다니는 목차 (PC 전용) ══════════════
-   본문(최대 1200px) 왼쪽 여백에 고정. 여백이 부족한 1440px 미만·모바일에서는 숨긴다 */
+   본문(최대 --page 폭) 왼쪽 여백에 고정. 여백이 부족한 1440px 미만·모바일에서는 숨긴다 */
 .rtoc{display:none;}
 @media (min-width:1440px){
   .rtoc{
     display:block;position:fixed;z-index:20;
     top:calc(var(--nav-h) + 96px);
     /* 폭은 남는 여백에 맞춰 112~176px, 본문 시작점에서 28px 떨어지게 */
-    --tw:clamp(112px,calc((100vw - 1200px) / 2 - 24px),176px);
+    --tw:clamp(112px,calc((100vw - var(--page)) / 2 - 24px),176px);
     width:var(--tw);
-    left:max(12px,calc((100vw - 1200px) / 2 + 4px - var(--tw)));
+    left:max(12px,calc((100vw - var(--page)) / 2 + 4px - var(--tw)));
   }
 }
 .rtoc__title{font-size:18px;font-weight:700;letter-spacing:-.4px;color:var(--ink);margin-bottom:12px;}

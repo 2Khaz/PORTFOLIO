@@ -254,7 +254,9 @@
    썸네일은 정사각형만(--sq) 두고, 각각 위 버튼 열의 가운데에 맞춘다 */
 @media (min-width:960px){
   .home{
-    --sq:clamp(150px,27vh,320px);
+    /* 높이 기준(27vh) 크기를 쓰되, 본문 폭에서 간격(최소 40px×3)을 뺀 1/4을 넘지 않게 —
+       세로로 긴 큰 모니터에서 정사각형끼리 붙거나 본문 밖으로 넘치는 것 방지 (16px = 스크롤바 여유) */
+    --sq:min(clamp(150px,27vh,320px),calc((min(100vw - 16px,var(--page)) - 64px - 120px) / 4));
     min-height:calc(100vh - var(--nav-h));
     min-height:calc(100svh - var(--nav-h));
     display:flex;flex-direction:column;justify-content:flex-start;

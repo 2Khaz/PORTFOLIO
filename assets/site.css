@@ -34,6 +34,8 @@
 
   --nav-h:60px;
 }
+/* 큰 모니터(가로 1680px 이상)에서는 본문 폭을 넓혀 화면이 휑하고 좁아 보이지 않게 한다 */
+@media (min-width:1680px){ :root{--page:1360px;} }
 
 /* ══════════════ Reset / Base ══════════════ */
 *,*::before,*::after{box-sizing:border-box;}
