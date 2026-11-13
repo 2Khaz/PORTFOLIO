@@ -5,39 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="theme-color" content="#ffffff" />
 <meta name="format-detection" content="telephone=no" />
-
-<title>포트폴리오 — 이정현 시스템 기획자</title>
-<meta name="description" content="시스템 기획자 이정현의 포트폴리오. 프로젝트별 문제 정의, 설계 근거, 수치 검증 결과를 정리했습니다." />
-
-<meta property="og:type" content="article" />
+<title>프로젝트 — 이정현 시스템 기획자</title>
+<meta name="description" content="이정현이 진행한 프로젝트의 작업 이력. 상황, 행동, 결과, 배울점을 시간순으로 정리했습니다." />
+<meta property="og:type" content="website" />
 <meta property="og:locale" content="ko_KR" />
-<meta property="og:title" content="포트폴리오 — 이정현 시스템 기획자" />
-<meta property="og:description" content="기획서 원문과 시스템 구조, 수치 설계 근거를 담았습니다." />
-
+<meta property="og:title" content="프로젝트 — 이정현 시스템 기획자" />
+<meta property="og:description" content="게임 기획과 제작에서 맡은 일, 결과와 배울점을 프로젝트별로 정리했습니다." />
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
-<link rel="stylesheet" as="style" crossorigin
-      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" />
+<link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" />
 <link rel="stylesheet" href="./assets/site.css" />
-
-<!--
-================================================================================
-  포트폴리오 — 이 파일은 "목록"만 담당합니다.
-  프로젝트 상세 내용은 projects/ 폴더 안의 개별 페이지에 있습니다.
-    projects/animation-pipeline.html  (애니메이션 리소스 파이프라인 구축)
---------------------------------------------------------------------------------
-  TODO
-    · 카드 : 썸네일(.pcard__thumb 를 <img>로 교체), 제목, 요약, 기간
-    · 새 프로젝트 추가 시
-        1) projects/ 폴더의 기존 파일 하나를 복사해 새 상세 페이지를 만든다
-        2) 아래 카드 목록(#cards)에 <li class="pcard-item"> 을 추가하고
-           href 를 새 상세 페이지 경로로 연결한다
-        3) 앞뒤로 이어지는 상세 페이지의 이전/다음 링크(.projectnav)를 갱신한다
-  카드를 추가할 때 : <li class="pcard-item" data-cat="main|docs|tools"> 로 감싸면
-  상단 필터가 자동으로 인식하고 개수도 자동 계산됩니다.
-================================================================================
--->
+<link rel="stylesheet" href="./assets/project-timeline.css" />
 </head>
-
 <body>
 <a class="skip" href="#main">본문 바로가기</a>
 
@@ -54,157 +32,1256 @@
     <nav class="doctabs" aria-label="문서 이동">
       <a href="./resume.html">이력서</a>
       <a href="./cover-letter.html">자기소개서</a>
-      <a href="./portfolio.html" aria-current="page">포트폴리오</a>
+      <a href="./portfolio.html" aria-current="page">프로젝트</a>
       <a href="./play-archive.html">플레이 아카이브</a>
     </nav>
-    <!-- TODO: 이메일 교체 -->
-    <a class="nav__mail" href="mailto:tripletrio97@naver.com">연락하기</a>
   </div>
 </header>
 
-<div class="pagehead">
-  <div class="container pagehead__inner pagehead__inner--center">
-    <div>
-      <p class="eyebrow"><span class="dot" aria-hidden="true"></span>Portfolio</p>
-      <h1 class="h1">포트폴리오</h1>
-      <p class="pagemeta">
-        <span>프로젝트 <b>1건</b></span>
-        <span>최종 수정 <b>2026.09</b></span>
-      </p>
-    </div>
-    <div class="pagehead__actions noprint">
-      <a class="btn btn--outline" href="./resume.html">이력서 보기</a>
-      <!-- TODO: 이메일 교체 -->
-      <a class="btn btn--filled" href="mailto:tripletrio97@naver.com">
-        연락하기
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
-      </a>
-    </div>
-  </div>
-</div>
+<main id="main" class="container project-history">
+    <section class="project-history__project" id="ranking-dashboard" tabindex="-1" aria-labelledby="ranking-dashboard-title">
+      <a class="project-back" href="#project-list">← 전체 프로젝트</a>
+      <header class="project-history__heading">
+        <h1 class="h2" id="ranking-dashboard-title">게임 랭킹 대시보드</h1>
+        <p class="project-history__role">개인 프로젝트 · 데이터 수집과 웹 구현</p>
+        <p class="lead">두 플랫폼의 게임 순위를 일정한 기준으로 수집하고, 순위 변동과 과거 기록을 살펴볼 수 있도록 만든 개인 도구입니다.</p>
+        <p class="project-history__source"><a href="https://github.com/2Khaz/GameRankingDashboard">GitHub 저장소 ↗</a></p>
+      </header>
+      <nav class="project-stages" aria-label="작업 단계 바로가기">
+        <ul>
+          <li><a href="#ranking-dashboard-collection">수집 기준</a></li>
+          <li><a href="#ranking-dashboard-history">이력 관리</a></li>
+          <li><a href="#ranking-dashboard-recovery">운영 복구</a></li>
+          <li><a href="#ranking-dashboard-guide">문서화</a></li>
+        </ul>
+      </nav>
+      <ol class="work-timeline" aria-label="게임 랭킹 대시보드 작업 순서">
+        <li class="work-timeline__item" id="ranking-dashboard-collection" tabindex="-1">
+          <span class="work-timeline__stage"><span aria-hidden="true">01</span>수집 기준</span>
+          <article class="work-entry">
+            <h2 class="h3">수집 기준과 표시 항목 정의</h2>
+            <dl class="work-entry__steps">
+              <div>
+                <dt>상황</dt>
+                <dd>여러 페이지에서 인기 게임을 건별로 확인하면 어느 나라에서 어떤 기준으로 순위가 매겨졌는지 놓치기 쉬웠습니다. 반복해서 비교할 수 있도록 지역과 지표를 고정할 필요가 있었습니다.</dd>
+              </div>
+              <div>
+                <dt>행동</dt>
+                <dd>
+                  <p>한국 Steam 판매 상위 100개와 한국 Google Play 게임 매출 상위 100개를 각각 수집하도록 정했습니다. 판매 순위와 매출 순위는 지표가 달라 합산하지 않고 화면에서 구분했습니다.</p>
+                  <p>Steam은 순위 목록에 앱 식별자, 개발사, 장르, 가격·할인 상세를 붙였습니다. 상세 조회는 한 번에 몰아 요청하지 않고 다섯 개씩 묶었으며, 일시적 응답 실패에는 재시도를 뒀습니다.</p>
+                </dd>
+              </div>
+              <div>
+                <dt>결과</dt>
+                <dd>두 플랫폼의 순위와 게임 속성을 같은 화면에서 각각 읽을 수 있는 수집기와 출력 구조를 구현했습니다. 상위 100개는 조회 범위이며 항상 100개의 상세 정보를 확보했다는 측정 결과는 아닙니다.</dd>
+              </div>
+              <div>
+                <dt>배울점</dt>
+                <dd>데이터를 모으기 전에 지역·순위 기준·수집 범위를 고정해야 다음 기록과 비교할 수 있습니다. 순위에 가격이나 장르를 함께 두면 움직임의 맥락을 살피는 데도 도움이 됩니다.</dd>
+              </div>
+            </dl>
+            <section class="work-sample">
+              <span class="work-sample__type">구현 데이터 항목</span>
+              <h3>같은 지역에서 서로 다른 순위 기준을 병렬로 수집</h3>
+              <div class="work-sample__table">
+                <table aria-label="플랫폼별 수집 기준">
+                  <thead><tr><th scope="col">플랫폼</th><th scope="col">수집 기준</th><th scope="col">화면에서 확인할 항목</th></tr></thead>
+                  <tbody>
+                    <tr><th scope="row">Steam</th><td>한국 판매 상위 100</td><td>순위 · 게임·장르 · 가격·할인 · 개발사</td></tr>
+                    <tr><th scope="row">Google Play</th><td>한국 게임 매출 상위 100</td><td>순위 · 게임·장르 · 개발사</td></tr>
+                  </tbody>
+                </table>
+              </div><p class="work-sample__source">출처: <a href="https://github.com/2Khaz/GameRankingDashboard">GameRankingDashboard 수집기와 화면 소스 ↗</a></p>
+            </section>
+          </article>
+        </li>
+        <li class="work-timeline__item" id="ranking-dashboard-history" tabindex="-1">
+          <span class="work-timeline__stage"><span aria-hidden="true">02</span>이력 관리</span>
+          <article class="work-entry">
+            <h2 class="h3">순위 변동과 과거 이력</h2>
+            <dl class="work-entry__steps">
+              <div>
+                <dt>상황</dt>
+                <dd>최신 순위로 계속 덮어쓰면 신규 진입, 상승과 하락, 연속 등장 여부를 비교할 수 없었습니다. 게임 이름이 바뀌어도 이력에서 같은 게임으로 찾아야 했습니다.</dd>
+              </div>
+              <div>
+                <dt>행동</dt>
+                <dd>
+                  <p>이전 순위를 앱 식별자 기준으로 조회해 현재 순위와 비교하고, 이전 목록에 없던 항목을 구분했습니다. 최신 데이터와 수집 시점별 스냅샷을 따로 쓰고, 이력 파일 목록을 저장해 화면에서 선택할 수 있게 했습니다.</p>
+                  <p>이름 대신 앱 식별자로 연속 등장 기록을 관리해 동일한 게임을 구별했습니다. 화면에서 장르 분포, 순위 이동, 연속 진입 기록을 확인할 수 있도록 구성했습니다.</p>
+                </dd>
+              </div>
+              <div>
+                <dt>결과</dt>
+                <dd>최근 순위만 보여 주던 구조를 과거 시점을 선택할 수 있는 화면으로 확장했습니다. 연속 기록은 저장된 수집 회차 기준입니다.</dd>
+              </div>
+              <div>
+                <dt>배울점</dt>
+                <dd>변화를 보여 주려면 현재값뿐 아니라 비교할 이전값, 동일 대상을 연결하는 키, 기록을 고르는 방법이 함께 있어야 합니다.</dd>
+              </div>
+            </dl>
+            <section class="work-sample">
+              <span class="work-sample__type">구현 코드 발췌</span>
+              <h3>플랫폼별 수집 결과를 저장하는 코드</h3>
+              <p>Steam과 Google Play 수집 결과를 한 JSON에 묶어 대시보드가 읽도록 했습니다. 과거 조회용 스냅샷은 <code>history/</code>에 별도로 저장합니다.</p>
+              <pre><code>async function saveHistory(nowStr, steamGlobal, playKr) {
+                  const dashboardData = { lastUpdated: nowStr, steamGlobal: steamGlobal, playKr: playKr };
+                  fs.writeFileSync('data.json', JSON.stringify(dashboardData, null, 2), 'utf8');</code></pre>
+              <p class="work-sample__source">출처: <a href="https://github.com/2Khaz/GameRankingDashboard">GameRankingDashboard 저장소 · saveHistory 함수의 앞 3줄 ↗</a></p>
+            </section>
+          </article>
+        </li>
+        <li class="work-timeline__item" id="ranking-dashboard-recovery" tabindex="-1">
+          <span class="work-timeline__stage"><span aria-hidden="true">03</span>운영 복구</span>
+          <article class="work-entry">
+            <h2 class="h3">시트 전송 실패의 분리와 재처리</h2>
+            <dl class="work-entry__steps">
+              <div>
+                <dt>상황</dt>
+                <dd>수집은 끝났는데 Google Sheets에 쓰지 못하는 경우가 생길 수 있었습니다. 실패를 수집 전체의 실패로만 다루면 이미 확보한 순위를 다시 수집해야 합니다.</dd>
+              </div>
+              <div>
+                <dt>행동</dt>
+                <dd>
+                  <p>전송에서는 인증을 갱신해 재시도하고, 임시 탭에 먼저 기록한 뒤 기존 탭을 교체하는 절차를 뒀습니다. 전송을 끝내지 못하면 수집 데이터를 대기열에 남겼습니다.</p>
+                  <p>재전송을 별도 스크립트로 분리했습니다. 저장에 성공한 대기 항목과 재시도가 필요한 항목을 나눠 처리하도록 했고, JSON 이력 저장은 시트 전송과 구분했습니다.</p>
+                </dd>
+              </div>
+              <div>
+                <dt>결과</dt>
+                <dd>수집 결과를 재사용해 시트 쓰기만 다시 할 수 있는 경로를 구현했습니다. 저장소에서 재전송 스크립트 추가와 현재 대기열 처리 코드를 확인할 수 있습니다.</dd>
+              </div>
+              <div>
+                <dt>배울점</dt>
+                <dd>외부 서비스 연동은 실패 위치를 구분하고 단계별로 재실행할 수 있게 설계하는 편이 복구에 유리합니다.</dd>
+              </div>
+            </dl>
+            <section class="work-sample">
+              <span class="work-sample__type">운영 복구 명세</span>
+              <h3>시트 전송 실패 뒤 남기는 데이터</h3>
+              <div class="work-sample__table">
+                <table aria-label="수집과 재전송 경로">
+                  <thead><tr><th scope="col">처리 지점</th><th scope="col">남는 결과</th><th scope="col">다음 동작</th></tr></thead>
+                  <tbody>
+                    <tr><th scope="row">일반 수집</th><td>최신 JSON과 조회 이력</td><td>웹에서 순위와 변화 확인</td></tr>
+                    <tr><th scope="row">시트 전송 실패</th><td>pending_sheets.json 대기 항목</td><td>복구 작업에서 시트 전송 재시도</td></tr>
+                    <tr><th scope="row">재전송 완료</th><td>처리한 항목은 대기열에서 제거</td><td>계속 실패한 항목만 후속 재시도</td></tr>
+                  </tbody>
+                </table>
+              </div><p class="work-sample__source">출처: <a href="https://github.com/2Khaz/GameRankingDashboard/commit/40bb882349e9c87b28c9c6c1f2814152552d162a">재전송 스크립트 추가 커밋 ↗</a></p>
+            </section>
+          </article>
+        </li>
+        <li class="work-timeline__item" id="ranking-dashboard-guide" tabindex="-1">
+          <span class="work-timeline__stage"><span aria-hidden="true">04</span>문서화</span>
+          <article class="work-entry">
+            <h2 class="h3">대시보드와 구축 가이드 정리</h2>
+            <dl class="work-entry__steps">
+              <div>
+                <dt>상황</dt>
+                <dd>사이트 화면만 있으면 배치 작업이 어떻게 시작되고 수집·저장·시트·알림 중 어디에서 실패했는지 다른 사람이 파악하기 어려웠습니다.</dd>
+              </div>
+              <div>
+                <dt>행동</dt>
+                <dd>
+                  <p>정기 호출에서 GitHub Actions, 수집기, JSON 이력, GitHub Pages, 시트와 Discord로 이어지는 구조를 문서화했습니다. 일반 실행과 복구, 테스트 실행을 따로 설명했습니다.</p>
+                  <p>수집 응답, 로컬 파일 생성, 시트 쓰기·읽기·교체, 알림을 각각 확인하는 테스트 절차를 준비했습니다. 사이트 구조 변경, 화면 미반영, 알림 실패처럼 대응이 다른 경우도 나눴습니다.</p>
+                </dd>
+              </div>
+              <div>
+                <dt>결과</dt>
+                <dd>실제 순위 화면과 47쪽 구축 가이드를 남겼습니다. 이 가이드로 구성 요소, 실행 순서, 장애 위치별 확인 방법을 설명할 수 있습니다.</dd>
+              </div>
+              <div>
+                <dt>배울점</dt>
+                <dd>운영 문서에는 설치 순서뿐 아니라 정상 출력이 무엇인지와 실패했을 때 어느 단계부터 확인하는지도 있어야 합니다.</dd>
+              </div>
+            </dl>
+            <section class="work-sample">
+              <span class="work-sample__type">구현 화면</span>
+              <h3>실제 수집 결과를 표시한 대시보드</h3>
+              <figure>
+                <a href="./assets/project-samples/ranking-screen.jpg" target="_blank" rel="noopener" aria-label="Steam과 Play Store의 상위 장르, 연속 순위 진입 기록, 순위와 변동을 나란히 표시한 대시보드 이미지 크게 보기 (새 탭)">
+                  <img src="./assets/project-samples/ranking-screen.jpg" width="811" height="684" alt="Steam과 Play Store의 상위 장르, 연속 순위 진입 기록, 순위와 변동을 나란히 표시한 대시보드" loading="lazy" decoding="async">
+                </a>
+                <figcaption>게임 랭킹 대시보드 소개 자료 p. 10의 구현 화면 발췌 · 이미지를 누르면 크게 열립니다.</figcaption>
+              </figure>
+            </section>
+            <section class="work-sample">
+              <span class="work-sample__type">구축 가이드 원본</span>
+              <h3>정기 실행부터 화면과 알림까지</h3>
+              <figure>
+                <a href="./assets/project-samples/ranking-flow.jpg" target="_blank" rel="noopener" aria-label="정기 호출, GitHub 작업, 수집기, 대시보드와 Discord 알림 흐름 이미지 크게 보기 (새 탭)">
+                  <img src="./assets/project-samples/ranking-flow.jpg" width="1440" height="810" alt="정기 호출, GitHub 작업, 수집기, 대시보드와 Discord 알림 흐름" loading="lazy" decoding="async">
+                </a>
+                <figcaption>게임 랭킹 대시보드 소개 자료 p. 4 · 당시 구성도</figcaption>
+              </figure>
+            </section>
+          </article>
+        </li>
+      </ol>
+      <details class="project-verification">
+        <summary>검증한 자료와 추가로 확인할 점</summary>
+        <dl>
+          <div><dt>자료에서 확인</dt><dd>공개 GitHub 저장소의 수집기·복구 스크립트·화면·테스트 코드와 개인 작성 47쪽 구축 가이드를 대조했습니다.</dd></div>
+          <div><dt>확인 범위</dt><dd>문서에 나온 운영 설정과 현재 코드가 같은 버전이라는 보장은 없습니다. 외부 시트·알림 재실행이나 수집 성공률·사용자 규모 측정은 하지 않았습니다. 변경 과정은 코드·문서에서 확인한 문제 대응입니다.</dd></div>
+          <div><dt>추가할 증거</dt><dd>실제 조사에서 어떤 장르 변화나 신규 진입을 발견해 기획 판단에 썼는지, 장애를 복구한 로그가 있는지 한 사례씩 붙이면 도구의 효용을 설명할 수 있습니다.</dd></div>
+        </dl>
+      </details>
+    </section>
 
-<div class="container">
-  <div class="notice">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v5"/><path d="M12 16h.01"/></svg>
-    <p>포트폴리오도 아직 미완성이며 레이아웃 구축 중입니다. 아래 내용은 레이아웃 확인용 예시입니다.</p>
-  </div>
-</div>
+    <section class="project-history__project" id="hatagong" tabindex="-1" aria-labelledby="hatagong-title">
+      <a class="project-back" href="#project-list">← 전체 프로젝트</a>
+      <header class="project-history__heading">
+        <h1 class="h2" id="hatagong-title">타일시공마스터(하늘타일공사)</h1>
+        <p class="project-history__role">팀장 · 컨셉·시스템 기획 · AI 보조 Unity 개발과 검수</p>
+        <p class="lead">타일을 부수고 시멘트를 바른 뒤 조각을 맞추는 캐주얼 퍼즐입니다. 팀장으로 컨셉과 시스템을 기획하고 AI 보조 개발을 진행·검수했습니다.</p>
+        <p class="project-history__source"><a href="https://github.com/2Khaz/HATAGONG_DES_11">GitHub 저장소 ↗</a></p>
+      </header>
+      <nav class="project-stages" aria-label="작업 단계 바로가기">
+        <ul>
+          <li><a href="#hatagong-concept">콘셉트 기획</a></li>
+          <li><a href="#hatagong-paint">도포 규칙</a></li>
+          <li><a href="#hatagong-puzzle">시공 규칙</a></li>
+          <li><a href="#hatagong-scoring">평가·정산</a></li>
+          <li><a href="#hatagong-ui">UI 후속 검수</a></li>
+        </ul>
+      </nav>
+      <ol class="work-timeline" aria-label="타일시공마스터(하늘타일공사) 작업 순서">
+        <li class="work-timeline__item" id="hatagong-concept" tabindex="-1">
+          <span class="work-timeline__stage"><span aria-hidden="true">01</span>콘셉트 기획</span>
+          <article class="work-entry">
+            <h2 class="h3">세 공정을 하나의 의뢰로 설계</h2>
+            <dl class="work-entry__steps">
+              <div>
+                <dt>상황</dt>
+                <dd>타일 공사라는 소재로 서로 다른 조작을 넣으면서도 세 미니게임을 이어 붙인 것처럼 느껴지지 않도록 해야 했습니다. 팀장으로서 공통 콘셉트와 시스템 문서를 정리했습니다.</dd>
+              </div>
+              <div>
+                <dt>행동</dt>
+                <dd>
+                  <p>철거는 타격으로 공간을 비우는 감각, 도포는 빈 곳을 메우는 감각, 시공은 조각을 맞춰 마무리하는 성취감을 목표로 뒀습니다. 같은 작업 공간을 손보면서 조작의 감각이 순서대로 바뀌도록 연결했습니다.</p>
+                  <p>로비 → 의뢰 선택 → 철거·도포·시공 → 정산 → 로비 흐름으로 구체화했습니다. 초기 의뢰 선택은 무작위로 제시되는 세 의뢰를 두고, 90초 안에 성패가 갈리는 짧은 반복을 유지하는 방향을 잡았습니다.</p>
+                </dd>
+              </div>
+              <div>
+                <dt>결과</dt>
+                <dd>본인 작성 콘셉트 기획서와 시스템 가이드에 세 공정의 의도, 의뢰 선택과 점수·보상, 로비 복귀를 연결한 흐름도를 남겼습니다.</dd>
+              </div>
+              <div>
+                <dt>배울점</dt>
+                <dd>여러 조작을 묶을 때는 입력의 종류보다 앞 단계가 다음 단계의 목표에 왜 필요한지 설명해야 하나의 작업 경험으로 읽힙니다.</dd>
+              </div>
+            </dl>
+            <section class="work-sample">
+              <span class="work-sample__type">기획서 원본</span>
+              <h3>의뢰 선택부터 정산·로비 복귀까지</h3>
+              <figure>
+                <a href="./assets/project-samples/hatagong-system.jpg" target="_blank" rel="noopener" aria-label="로비에서 의뢰를 선택하고 철거·도포·시공을 거쳐 정산 후 로비로 돌아오는 흐름도 이미지 크게 보기 (새 탭)">
+                  <img src="./assets/project-samples/hatagong-system.jpg" width="1440" height="810" alt="로비에서 의뢰를 선택하고 철거·도포·시공을 거쳐 정산 후 로비로 돌아오는 흐름도" loading="lazy" decoding="async">
+                </a>
+                <figcaption>하늘타일공사 시스템 가이드 P_005 · 시스템 루프 기획안 · 이미지를 누르면 크게 열립니다.</figcaption>
+              </figure>
+            </section>
+          </article>
+        </li>
+        <li class="work-timeline__item" id="hatagong-paint" tabindex="-1">
+          <span class="work-timeline__stage"><span aria-hidden="true">02</span>도포 규칙</span>
+          <article class="work-entry">
+            <h2 class="h3">도포 진행률과 완료 판정</h2>
+            <dl class="work-entry__steps">
+              <div>
+                <dt>상황</dt>
+                <dd>도포에서 빈 곳을 채우는 감각을 살리려면 화면에 보이는 도포 상태와 실제 클리어 기준이 맞아야 했습니다. 같은 위치를 반복 입력해 진행량만 늘어나는 경우도 막아야 했습니다.</dd>
+              </div>
+              <div>
+                <dt>행동</dt>
+                <dd>
+                  <p>바닥을 128×128 셀로 나누고 이미 칠해진 셀은 중복 집계하지 않는 방식으로 판정을 구체화했습니다. 99%를 충족하는 정수 기준으로 올림값 16,221셀을 사용했습니다.</p>
+                  <p>경계 검증에서 16,220셀의 미완료와 16,221번째 셀의 최초 완료를 구분했습니다. 초기 테스트가 이미 칠한 중앙 셀을 다시 찍는 바람에 완료되지 않자, 기준이나 기대값을 낮추지 않고 미도포 셀을 입력하도록 테스트를 고쳤습니다.</p>
+                </dd>
+              </div>
+              <div>
+                <dt>결과</dt>
+                <dd>도포 로직 커밋에 중복 입력과 완료 직전·직후의 동작이 기록됐습니다. 감각적인 요구를 개발 과정에서 검증할 수 있는 상태와 숫자로 연결한 결과입니다.</dd>
+              </div>
+              <div>
+                <dt>배울점</dt>
+                <dd>판정이 예상과 다를 때 규칙이 틀린 경우와 테스트가 기대한 상태를 만들지 못한 경우를 먼저 나눠야 합니다.</dd>
+              </div>
+            </dl>
+            <section class="work-sample">
+              <span class="work-sample__type">구현 검증 데이터</span>
+              <h3>99% 도포 완료 판정의 경계값</h3>
+              <p>판정판 128 × 128 = 16,384셀. 완료에 필요한 셀 수는 16,384 × 0.99를 올림한 <strong>16,221셀</strong>입니다.</p>
+              <div class="work-sample__table">
+                <table aria-label="도포 완료 판정 테스트 발췌">
+                  <thead><tr><th scope="col">테스트 조건</th><th scope="col">도포 셀</th><th scope="col">기대 동작</th></tr></thead>
+                  <tbody>
+                    <tr><th scope="row">기준 직전</th><td data-number>16,220</td><td>완료 신호 없음</td></tr>
+                    <tr><th scope="row">미도포 셀 1개 추가</th><td data-number>16,221</td><td>처음 한 번 완료 신호 발생</td></tr>
+                    <tr><th scope="row">완료 후 추가 입력</th><td data-number>16,221</td><td>입력을 거부하고 셀 수 유지</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p>초기 테스트 입력이 이미 칠한 중앙 셀을 다시 찍어 경계값에 닿지 않았습니다. 판정 조건을 바꾸지 않고 미도포 셀을 찍도록 테스트 입력을 수정했습니다.</p>
+              <p class="work-sample__source">출처: <a href="https://github.com/2Khaz/HATAGONG_DES_11/commit/4920c6df5fb98cc5e05fcdfa862daf8e0ddcf9b5">HATAGONG_DES_11 · 도포 로직과 Validation 기록 ↗</a></p>
+            </section>
+          </article>
+        </li>
+        <li class="work-timeline__item" id="hatagong-puzzle" tabindex="-1">
+          <span class="work-timeline__stage"><span aria-hidden="true">03</span>시공 규칙</span>
+          <article class="work-entry">
+            <h2 class="h3">난도별 조각 구성과 퍼즐 생성</h2>
+            <dl class="work-entry__steps">
+              <div>
+                <dt>상황</dt>
+                <dd>시공 난도를 조각 수로만 올리면 너무 얇거나 비슷한 조각, 겹치는 조각이 나와도 어려운 퍼즐로 처리될 수 있었습니다.</dd>
+              </div>
+              <div>
+                <dt>행동</dt>
+                <dd>
+                  <p>쉬움 8개, 보통 10개, 어려움 12개로 나누되 생성 결과를 따로 검증하는 구조를 뒀습니다. 동일 시드로 문제를 재현하고, 볼록성·최소 두께·면적·겹침·모양 다양성을 검사했습니다.</p>
+                  <p>조각 수를 맞추는 검증과 플레이할 수 있는 기하 형태인지 검증을 구분했습니다. 모바일 실기 검증은 후속으로 두고 Windows 세로 9:16 대응은 별도 변경으로 다뤘습니다.</p>
+                </dd>
+              </div>
+              <div>
+                <dt>결과</dt>
+                <dd>조각 데이터와 시드 기반 생성기가 커밋으로 남았습니다. 해당 변경이 다루는 범위는 생성·검증 단계로, 이후 인게임 통합이나 모바일 테스트와 구분합니다.</dd>
+              </div>
+              <div>
+                <dt>배울점</dt>
+                <dd>절차적으로 만드는 콘텐츠는 개수와 난도 표기만으로 품질이 보장되지 않습니다. 문제를 재현할 식별자와 결과를 걸러낼 검사가 함께 있어야 합니다.</dd>
+              </div>
+            </dl>
+            <section class="work-sample">
+              <span class="work-sample__type">구현 검증 명세</span>
+              <h3>난도별 조각 수와 공통 검증 조건</h3>
+              <div class="work-sample__table">
+                <table aria-label="시공 퍼즐 조각 데이터">
+                  <thead><tr><th scope="col">난도</th><th scope="col">조각 수</th></tr></thead>
+                  <tbody>
+                    <tr><th scope="row">쉬움</th><td>8</td></tr>
+                    <tr><th scope="row">보통</th><td>10</td></tr>
+                    <tr><th scope="row">어려움</th><td>12</td></tr>
+                  </tbody>
+                </table>
+              </div><p>난도 공통: 같은 시드로 결과를 재현하고, 모양 중복·겹침·최소 두께·면적·볼록성·형상 다양성을 검사합니다.</p><p class="work-sample__source">출처: <a href="https://github.com/2Khaz/HATAGONG_DES_11/commit/92389149b112cedd39165b13f4faadd8b114dcb3">HATAGONG_DES_11 · 퍼즐 데이터 및 생성기 커밋 ↗</a></p>
+            </section>
+          </article>
+        </li>
+        <li class="work-timeline__item" id="hatagong-scoring" tabindex="-1">
+          <span class="work-timeline__stage"><span aria-hidden="true">04</span>평가·정산</span>
+          <article class="work-entry">
+            <h2 class="h3">정산과 후속 성장 설계</h2>
+            <dl class="work-entry__steps">
+              <div>
+                <dt>상황</dt>
+                <dd>후속 논의에서 완료 시간·중복 도포·잘못 놓기 횟수로 S/A/B 등급을 주자는 안이 나왔습니다. 집계값을 그대로 쓰면 정상적인 플레이가 실수로 평가될 수 있었습니다.</dd>
+              </div>
+              <div>
+                <dt>행동</dt>
+                <dd>
+                  <p>도포 중 브러시가 겹치는 것은 정상이고 아이템 때문에 여러 번 칠할 수도 있다고 지적했습니다. 타일을 잠시 내려놓은 행동과 실제 스냅 실패를 같은 실수로 셀 수 있는지도 검토했습니다.</p>
+                  <p>강제 등급은 빼고 총점과 골드 보상을 연결하며 통계는 평가와 분리했습니다. 범위를 넓히기보다 기존 세 공정과 7종 아이템을 유지하면서 보상 → 골드 → 상점 순환을 우선했습니다. 정산 진행·점수 원장·보상 계산·저장 책임을 분리하는 구조도 검토했습니다.</p>
+                </dd>
+              </div>
+              <div>
+                <dt>결과</dt>
+                <dd>후속 설계에 총점·보상·상점 우선순위가 남았습니다. 상점은 초기 4칸에서 3칸, 의뢰 종료 뒤 무료 재입고, 100골드 즉시 갱신, 재고·보유 상태 저장으로 구체화했습니다.</dd>
+              </div>
+              <div>
+                <dt>배울점</dt>
+                <dd>측정할 수 있다는 이유로 점수를 매기면 안 됩니다. 지표가 실제 플레이 의도와 실력을 구분하는지 먼저 따져야 평가를 납득할 수 있습니다.</dd>
+              </div>
+            </dl>
+            <section class="work-sample">
+              <span class="work-sample__type">후속 설계 비교</span>
+              <h3>등급 제안에서 점수·골드와 별도 통계로</h3>
+              <div class="work-sample__table">
+                <table aria-label="하늘타일공사 후속 평가 설계 비교">
+                  <thead><tr><th scope="col">제안</th><th scope="col">문제</th><th scope="col">수정 방향</th></tr></thead>
+                  <tbody>
+                    <tr><th scope="row">중복 도포 횟수 감점</th><td>자연스러운 겹침·아이템 사용도 실수로 집계될 수 있음</td><td>강제 등급에서 제외하고 통계와 평가 분리</td></tr>
+                    <tr><th scope="row">잘못 놓기 횟수 감점</th><td>잠시 놓는 행동과 스냅 실패의 구분이 필요</td><td>명시적 도전 조건과 기록으로 구분</td></tr>
+                    <tr><th scope="row">신규 콘텐츠로 반복감 해소</th><td>추가 제작 범위가 커짐</td><td>세 공정 유지, 점수 → 골드 → 상점 순환 우선</td></tr>
+                  </tbody>
+                </table>
+              </div><p class="work-sample__source">출처: 후킹·차별화 개선제안 및 통합 로드맵 · 후속 설계 기록</p>
+            </section>
+          </article>
+        </li>
+        <li class="work-timeline__item" id="hatagong-ui" tabindex="-1">
+          <span class="work-timeline__stage"><span aria-hidden="true">05</span>UI 후속 검수</span>
+          <article class="work-entry">
+            <h2 class="h3">상점 UI 분리와 아이템 버튼 연출</h2>
+            <dl class="work-entry__steps">
+              <div>
+                <dt>상황</dt>
+                <dd>상점 화면을 나누고 망치 버튼이 활성화된 느낌을 주면서도, 버튼 바깥 형태가 흔들려 원래 UI로 보이지 않는 문제는 피해야 했습니다.</dd>
+              </div>
+              <div>
+                <dt>행동</dt>
+                <dd>
+                  <p>버튼 실루엣과 외곽은 고정하고 내부 사선 무늬만 움직이도록 요청했습니다. 흐름 방향을 수정한 버전을 GIF·MP4로 비교했습니다.</p>
+                  <p>전달용 상점 이미지 12종의 파일을 확인했을 때 RGB로 저장돼 알파가 없었습니다. 화면의 시각안과 투명 PNG라는 실제 납품 규격을 별도 항목으로 확인했습니다.</p>
+                </dd>
+              </div>
+              <div>
+                <dt>결과</dt>
+                <dd>외곽 고정과 사선 방향 수정이 적용된 연출 작업본이 보고서에 남았습니다. Windows 제출본의 오프닝·로비·의뢰·세 공정·정산·저장 흐름도 보고됐지만 후속 UI 적용은 별도입니다.</dd>
+              </div>
+              <div>
+                <dt>배울점</dt>
+                <dd>UI 피드백은 움직이지 않아야 하는 부분과 바꿀 부분을 정확히 나누고, 넘길 때는 파일 형식·투명 여부까지 확인해야 개발에서 같은 결과를 얻을 수 있습니다.</dd>
+              </div>
+            </dl>
+          </article>
+        </li>
+      </ol>
+      <details class="project-verification">
+        <summary>검증한 자료와 추가로 확인할 점</summary>
+        <dl>
+          <div><dt>자료에서 확인</dt><dd>이정현 작성 콘셉트 기획서·시스템 가이드, 도포·퍼즐·Windows 화면 대응 커밋, 후속 개선·상점·버튼 작업보고서를 확인했습니다.</dd></div>
+          <div><dt>확인 범위</dt><dd>개인 기여는 팀장·콘셉트와 시스템 기획·Unity 개발 및 검수로 구분했습니다. 팀원 저작의 비주얼·콘텐츠는 별도이며, 후속 상점·평가 변경과 모바일 실기 확인은 커밋의 생성기 검증과 다른 범위입니다.</dd></div>
+          <div><dt>추가할 증거</dt><dd>공정별 직접 구현·검수 항목과 팀원 담당 범위, Windows 제출본 및 모바일 화면, 피드백 전후를 보여 주는 실행 장면을 붙이면 설계가 최종 게임에서 어떻게 보이는지 설명할 수 있습니다.</dd></div>
+        </dl>
+      </details>
+    </section>
 
-<main id="main">
+    <section class="project-history__project" id="comstock" tabindex="-1" aria-labelledby="comstock-title">
+      <a class="project-back" href="#project-list">← 전체 프로젝트</a>
+      <header class="project-history__heading">
+        <h1 class="h2" id="comstock-title">컴스톡</h1>
+        <p class="project-history__role">시스템 총괄기획 · 맵 기획 · 애니메이션·VFX·PV 제작과 검수</p>
+        <p class="lead">로봇을 조립하고 몰려오는 적을 상대하는 팀 프로젝트입니다. 시스템 총괄기획과 맵 설계, AI를 활용한 리소스 제작, PV 검수를 맡았습니다.</p>
+      </header>
+      <nav class="project-stages" aria-label="작업 단계 바로가기">
+        <ul>
+          <li><a href="#comstock-initial-system">초기 시스템</a></li>
+          <li><a href="#comstock-map">맵 기획</a></li>
+          <li><a href="#comstock-system-revision">장르 전환</a></li>
+          <li><a href="#comstock-animation">애니메이션</a></li>
+          <li><a href="#comstock-vfx">VFX 제작</a></li>
+          <li><a href="#comstock-pv">PV 검수</a></li>
+        </ul>
+      </nav>
+      <ol class="work-timeline" aria-label="컴스톡 작업 순서">
+        <li class="work-timeline__item" id="comstock-initial-system" tabindex="-1">
+          <span class="work-timeline__stage"><span aria-hidden="true">01</span>초기 시스템</span>
+          <article class="work-entry">
+            <h2 class="h3">제작 범위와 초기 시스템 정리</h2>
+            <dl class="work-entry__steps">
+              <div>
+                <dt>상황</dt>
+                <dd>5인 팀의 PC 게임 프로젝트에서 로봇 파츠 모딩, 좀비 웨이브 전투, 파밍과 탈출을 한 흐름에 넣어야 했습니다. 특히 사망해도 남는 해금과 탈출해야 보존되는 아이템을 구분할 필요가 있었습니다.</dd>
+              </div>
+              <div>
+                <dt>행동</dt>
+                <dd>
+                  <p>개인 WBS 제안에서 프리프로덕션·프로덕션·포스트 프로덕션을 대·중·소 작업으로 나누고 담당자와 검수자를 따로 뒀습니다. 일정표의 예정 담당과 나중에 작성한 실제 산출물은 따로 확인했습니다.</p>
+                  <p>초기 총괄기획서는 체력·획득품·웨이브를 담는 인게임 데이터, 기체·장비·맵을 담는 출격 설정, 해금·보관품·골드·진행도를 담는 영구 데이터로 분리했습니다. 탈출하면 획득품을 격납고에 보내고, 사망하면 출격에 장착한 장비와 파밍품을 잃되 해금은 유지하도록 설계했습니다.</p>
+                </dd>
+              </div>
+              <div>
+                <dt>결과</dt>
+                <dd>초기 총괄기획서 27쪽에 기체·장비 상태, 전투와 드랍, 탈출 결과 전달, HUD·인벤토리와 격납고 화면까지 연결했습니다. 작업 배정의 기준이 되는 개인 WBS 제안도 남겼습니다.</dd>
+              </div>
+              <div>
+                <dt>배울점</dt>
+                <dd>보상 규칙을 화면 문구로만 정하면 저장에서 해석이 갈릴 수 있습니다. 언제 얻고 언제 잃으며 다음 출격에 무엇이 남는지까지 정해야 탈출의 긴장감이 시스템으로 구현됩니다.</dd>
+              </div>
+            </dl>
+            <section class="work-sample">
+              <span class="work-sample__type">초기 시스템 명세</span>
+              <h3>출격 결과에 따른 데이터 보존</h3>
+              <div class="work-sample__table">
+                <table aria-label="초기 총괄기획서 데이터 구분">
+                  <thead><tr><th scope="col">데이터</th><th scope="col">주요 항목</th><th scope="col">초기안의 처리</th></tr></thead>
+                  <tbody>
+                    <tr><th scope="row">인게임 상태</th><td>체력 · 웨이브 · 이번 출격의 획득품</td><td>탈출 결과를 계산하고 획득품을 격납고에 전달</td></tr>
+                    <tr><th scope="row">출격 설정</th><td>선택 기체 · 장착 장비 · 선택 맵</td><td>사망하면 이번 출격에 장착한 장비와 파밍품을 잃음</td></tr>
+                    <tr><th scope="row">영구 진행</th><td>기체 해금 · 보관품 · 골드 · 진행도</td><td>사망하더라도 기체 해금 자체는 유지</td></tr>
+                  </tbody>
+                </table>
+              </div><p class="work-sample__source">출처: 컴스톡 초기 시스템 총괄기획서 · 출격 및 보존 규칙</p>
+            </section>
+          </article>
+        </li>
+        <li class="work-timeline__item" id="comstock-map" tabindex="-1">
+          <span class="work-timeline__stage"><span aria-hidden="true">02</span>맵 기획</span>
+          <article class="work-entry">
+            <h2 class="h3">이동 시간과 위험을 고려한 맵 설계</h2>
+            <dl class="work-entry__steps">
+              <div>
+                <dt>상황</dt>
+                <dd>익스트랙션에서는 같은 목적지까지 항상 같은 길이 최선이면 반복 출격에서 경로를 고민할 이유가 줄어듭니다. 파밍을 한 번 더 할지, 안전하게 탈출할지 선택을 만들고자 했습니다.</dd>
+              </div>
+              <div>
+                <dt>행동</dt>
+                <dd>
+                  <p>프로젝트 좀보이드·낙원·이스케이프 프롬 타르코프의 공간 구성과 경로 선택을 참고했습니다. 맵을 구역, 주요 목적지, 연결 경로로 나누고 주요 목적지에는 적어도 두 경로를 두었습니다. 짧고 위험한 길과 길고 안전한 길, 진입이 까다로운 대신 보상이 높은 공장 구역을 구상했습니다.</p>
+                  <p>기본 이동속도로 목적지·탈출구 간 이동과 맵 횡단 시간을 비교해 거리를 조정하도록 했습니다. 제한 시간에서 예상 탈출 시간을 빼고 남는 시간을 파밍에 쓸 수 있는 시간으로 봤습니다.</p>
+                </dd>
+              </div>
+              <div>
+                <dt>결과</dt>
+                <dd>맵 기획서 25쪽에 고정 탈출 지점 8개, 난도별 활성 지점 수와 탈출 대기 조건을 적었습니다. 배경과 상호작용 물체를 명도·채도·실루엣으로 구분하는 기준도 정의했습니다.</dd>
+              </div>
+              <div>
+                <dt>배울점</dt>
+                <dd>맵의 동선은 지도상 거리만으로 판단하기 어렵습니다. 플레이어가 실제로 쓸 수 있는 시간, 보상, 적과 마주칠 위험을 함께 잡아야 두 경로에 서로 다른 가치가 생깁니다.</dd>
+              </div>
+            </dl>
+            <section class="work-sample">
+              <span class="work-sample__type">초기 맵 기획 데이터</span>
+              <h3>난도에 따라 달라지는 탈출 선택지</h3>
+              <div class="work-sample__table">
+                <table aria-label="초기 맵 탈출 규칙">
+                  <thead><tr><th scope="col">항목</th><th scope="col">기획 수치</th><th scope="col">의도</th></tr></thead>
+                  <tbody>
+                    <tr><th scope="row">탈출 지점</th><td>고정 8개</td><td>반복 플레이에서 위치 학습</td></tr>
+                    <tr><th scope="row">활성 지점</th><td>난도별 5 / 3 / 2개 무작위 활성</td><td>후보 위치를 알아도 현장 확인 필요</td></tr>
+                    <tr><th scope="row">탈출 대기</th><td>상호작용 5초 · 미입력 10초</td><td>탈출구에 도착한 뒤에도 안전 유지 필요</td></tr>
+                  </tbody>
+                </table>
+              </div><p class="work-sample__source">출처: 컴스톡 맵 기획서 · 익스트랙션 초기안. 수치는 설계값이며 최종 게임 실측값이 아닙니다.</p>
+            </section>
+          </article>
+        </li>
+        <li class="work-timeline__item" id="comstock-system-revision" tabindex="-1">
+          <span class="work-timeline__stage"><span aria-hidden="true">03</span>장르 전환</span>
+          <article class="work-entry">
+            <h2 class="h3">장르 변경에 맞춰 전투·정비·저장 개정</h2>
+            <dl class="work-entry__steps">
+              <div>
+                <dt>상황</dt>
+                <dd>장르가 탐색·탈출 중심에서 자동공격·웨이브 생존으로 바뀌었습니다. 기존 탈출 보존 규칙을 그대로 두면 언제 성장하고 무엇을 다음 런에 남길지 설명할 수 없었습니다.</dd>
+              </div>
+              <div>
+                <dt>행동</dt>
+                <dd>
+                  <p>전투 → 정비 → 다음 웨이브로 진행을 다시 짜고, 20웨이브의 보스를 처치하면 종료하도록 정의했습니다. 정비에서는 레벨업 시 증강, 파츠를 획득했을 때 로봇 정비, 매 웨이브 종료 시 상점 순으로 진행합니다. 뒤 단계로 넘어가면 이전 단계로 돌아갈 수 없도록 했습니다.</p>
+                  <p>게임 진행·웨이브·플레이어·전투 관리 책임을 나눴습니다. HP·레벨·증강·파츠는 런 종료 시 초기화하고, 기체·콘텐츠·도감 해금은 영구 데이터로 보존하도록 바꿨습니다.</p>
+                </dd>
+              </div>
+              <div>
+                <dt>결과</dt>
+                <dd>개정 총괄기획서 22쪽에 전투와 정비의 순서, 단계 진입 조건, 저장 범위를 연결했습니다. 정비 시안에서 순서와 뒤로 갈 수 없는 조건을 시각화했습니다. 일부 개요에는 초기 탈출 문구가 남아 있었습니다.</dd>
+              </div>
+              <div>
+                <dt>배울점</dt>
+                <dd>장르가 바뀌면 전투만 개정할 수 없습니다. 무엇이 성공인지, 보상이 언제 반영되는지, 런을 끝낼 때 어떤 정보가 남는지까지 한 번에 검토해야 규칙이 서로 맞습니다.</dd>
+              </div>
+            </dl>
+            <section class="work-sample">
+              <span class="work-sample__type">개정 기획서 원본</span>
+              <h3>웨이브 종료 후 정비 순서와 진입 조건</h3>
+              <figure>
+                <a href="./assets/project-samples/comstock-loop.jpg" target="_blank" rel="noopener" aria-label="레벨업 증강, 로봇 정비, 상점 순서와 각 단계의 진입 조건을 제시한 시안 이미지 크게 보기 (새 탭)">
+                  <img src="./assets/project-samples/comstock-loop.jpg" width="1440" height="810" alt="레벨업 증강, 로봇 정비, 상점 순서와 각 단계의 진입 조건을 제시한 시안" loading="lazy" decoding="async">
+                </a>
+                <figcaption>컴스톡 개정 총괄 기획서 p. 12 · 정비 규칙을 설명하는 기획 시안 · 이미지를 누르면 크게 열립니다.</figcaption>
+              </figure>
+            </section>
+            <section class="work-sample">
+              <span class="work-sample__type">기획 버전 비교</span>
+              <h3>익스트랙션 초기안 → 웨이브 생존 개정안</h3>
+              <div class="work-sample__table">
+                <table aria-label="장르 전환 전후의 시스템 기획">
+                  <thead><tr><th scope="col">기준</th><th scope="col">초기안</th><th scope="col">개정안</th></tr></thead>
+                  <tbody>
+                    <tr><th scope="row">플레이 반복</th><td>출격 → 탐색·파밍 → 탈출</td><td>자동공격 전투 → 증강·정비·상점 → 다음 웨이브</td></tr>
+                    <tr><th scope="row">보상 반영</th><td>탈출 성공 시 획득품을 격납고에 보존</td><td>웨이브 사이 정비 구간에서 런 성장 반영</td></tr>
+                    <tr><th scope="row">저장 범위</th><td>장착·획득품 손실과 영구 해금을 분리</td><td>런 HP·레벨·증강·파츠 초기화, 영구 해금은 보존</td></tr>
+                  </tbody>
+                </table>
+              </div><p class="work-sample__source">출처: 컴스톡 초기·개정 시스템 총괄기획서 · 두 문서의 설계 비교</p>
+            </section>
+          </article>
+        </li>
+        <li class="work-timeline__item" id="comstock-animation" tabindex="-1">
+          <span class="work-timeline__stage"><span aria-hidden="true">04</span>애니메이션</span>
+          <article class="work-entry">
+            <h2 class="h3">캐릭터 애니메이션 제작 방식 전환</h2>
+            <dl class="work-entry__steps">
+              <div>
+                <dt>상황</dt>
+                <dd>원화를 만들 수 있어도 걷기에서 두 다리가 교차할 때 어느 부위가 앞뒤로 겹치고 드러나는지 자연스럽게 만들기 어려웠습니다. 같은 공정으로 계속 보정하면 남은 제작 시간에 필요한 동작을 확보하기 어려웠습니다.</dd>
+              </div>
+              <div>
+                <dt>행동</dt>
+                <dd>
+                  <p>공격·이동 레퍼런스를 정리하고 ChatGPT로 만든 원화를 바탕으로 Claude를 활용해 몸통·팔·다리 분절과 리깅을 시도했습니다. 가려졌던 부분은 ComfyUI 인페인팅과 Photopea 후처리로 보완했습니다.</p>
+                  <p>보행의 다리 교차가 반복해서 어색해지는 것을 보고 기존 방식에 시간을 더 쓰는 대신 Blit.so와 Ludo.ai를 비교했습니다. 당시 비용과 제작 여건을 고려해 원화와 동작 프롬프트를 넣고 결과를 선별하는 Ludo.ai 방식으로 전환했습니다.</p>
+                </dd>
+              </div>
+              <div>
+                <dt>결과</dt>
+                <dd>필요한 캐릭터 애니메이션을 생산한 기록이 개인 경험문서에 남았습니다. 문서 리뷰에서는 결과의 형태와 팀에 전달한 과정을 이미지·기록으로 더 구체화하라는 피드백을 받았습니다.</dd>
+              </div>
+              <div>
+                <dt>배울점</dt>
+                <dd>도구 변경은 실패 지점과 비용을 기준으로 판단했습니다. 결과를 확보하는 능력과 내부 생성 공정까지 이해해 같은 제작 방식을 재현하는 능력은 따로 검토해야 합니다.</dd>
+              </div>
+            </dl>
+            <section class="work-sample">
+              <span class="work-sample__type">제작 방식 비교</span>
+              <h3>계속 수정할 공정과 바꿀 공정을 판단한 기준</h3>
+              <div class="work-sample__table">
+                <table aria-label="컴스톡 애니메이션 작업 흐름과 판단">
+                  <thead><tr><th scope="col">공정</th><th scope="col">시도</th><th scope="col">판단</th></tr></thead>
+                  <tbody>
+                    <tr><th scope="row">초기 제작</th><td>원화 → 부위 분절 → 리깅 → 빈 부분 보완</td><td>보행 중 다리 교차와 가림을 안정적으로 처리하기 어려움</td></tr>
+                    <tr><th scope="row">대체 제작</th><td>도구 비교 → 원화·프롬프트 입력 → 결과 선별</td><td>필요 동작을 확보. 서비스 내부 생성 공정의 재현은 어려움</td></tr>
+                  </tbody>
+                </table>
+              </div><p class="work-sample__source">출처: 개인 프로젝트 경험문서 · 제작 경로 전환 기록</p>
+            </section>
+          </article>
+        </li>
+        <li class="work-timeline__item" id="comstock-vfx" tabindex="-1">
+          <span class="work-timeline__stage"><span aria-hidden="true">05</span>VFX 제작</span>
+          <article class="work-entry">
+            <h2 class="h3">총구 섬광·폭발탄·폭발의 기준 정리</h2>
+            <dl class="work-entry__steps">
+              <div>
+                <dt>상황</dt>
+                <dd>총구 섬광은 연사 중 시야를 가릴 수 있었고, 폭발탄 초안은 여러 무기에 공통으로 쓰기 어려운 전용 로켓처럼 보였습니다. 폭발도 채도와 발광이 강해 게임의 평면 카툰 색면과 어긋났습니다.</dd>
+              </div>
+              <div>
+                <dt>행동</dt>
+                <dd>
+                  <p>섬광은 발사 방향과 고정 피벗을 유지하며 점화 후 빠르게 줄어드는 3프레임으로 정리했습니다. 폭발탄은 날개를 빼고 짧은 캡슐과 작은 추진부만 남겼습니다. 충돌 폭발은 투사체와 별도 자산으로 두고, 2~3단 색면·작은 흰 중심부·연한 연기·빠른 소멸을 각각 검토했습니다.</p>
+                  <p>구르기 먼지는 6개 후보 프레임 중 F1·F5·F6만 골라 0.5초 미리보기를 검토했습니다. 이후 외곽선을 절반 수준으로 낮추고 가운데 프레임의 크기를 약 85~90%로 줄이는 방향을 제시했습니다.</p>
+                </dd>
+              </div>
+              <div>
+                <dt>결과</dt>
+                <dd>폭발탄은 선택한 시트를 60×60 RGBA 8장으로 규격화했습니다. 원형 섬광은 3프레임, 얇은 외곽선 폭발은 261×301 RGBA 10프레임과 GIF 패키지로 정리했습니다. 먼지는 크기·선 수정 뒤 다시 묶은 개별 PNG까지 확인되지는 않았습니다.</dd>
+              </div>
+              <div>
+                <dt>배울점</dt>
+                <dd>리소스 피드백을 색·실루엣·크기·기준점·프레임 시간으로 나누면 무엇을 고칠지 분명해집니다. 제작용 파일을 넘길 때는 그림뿐 아니라 프레임마다 캔버스와 기준점이 같은지도 확인해야 합니다.</dd>
+              </div>
+            </dl>
+            <section class="work-sample">
+              <span class="work-sample__type">VFX 실제 작업 시트</span>
+              <h3>발사 순간, 비행, 충돌을 분리한 리소스</h3>
+              <figure>
+                <a href="./assets/project-samples/comstock-flash.jpg" target="_blank" rel="noopener" aria-label="오른쪽을 향하며 순서대로 작아지는 총구 섬광 3프레임 이미지 크게 보기 (새 탭)">
+                  <img src="./assets/project-samples/comstock-flash.jpg" width="384" height="128" alt="오른쪽을 향하며 순서대로 작아지는 총구 섬광 3프레임" loading="lazy" decoding="async">
+                </a>
+                <figcaption>기본 섬광 검토본 · 128×128 RGBA, 피벗 (28,64). 최종 작업본은 원형 계열로 패키징했습니다.</figcaption>
+              </figure>
+              <figure>
+                <a href="./assets/project-samples/comstock-shell.jpg" target="_blank" rel="noopener" aria-label="같은 크기의 캡슐형 투사체와 달라지는 추진 불꽃 8프레임 이미지 크게 보기 (새 탭)">
+                  <img src="./assets/project-samples/comstock-shell.jpg" width="480" height="60" alt="같은 크기의 캡슐형 투사체와 달라지는 추진 불꽃 8프레임" loading="lazy" decoding="async">
+                </a>
+                <figcaption>승인 시트의 100% 행에서 추출한 투사체 8프레임 · 각 60×60 RGBA, 탄두 x=54, 중심 y=30.</figcaption>
+              </figure>
+              <figure>
+                <a href="./assets/project-samples/comstock-explosion.jpg" target="_blank" rel="noopener" aria-label="작게 점화해 커진 뒤 연기로 소멸하는 폭발 10프레임 이미지 크게 보기 (새 탭)">
+                  <img src="./assets/project-samples/comstock-explosion.jpg" width="1100" height="440" alt="작게 점화해 커진 뒤 연기로 소멸하는 폭발 10프레임" loading="lazy" decoding="async">
+                </a>
+                <figcaption>폭발 10프레임 작업 시트 · 투명 분리본은 프레임마다 261×301 RGBA로 정리했습니다.</figcaption>
+              </figure>
+              <figure>
+                <a href="./assets/project-samples/comstock-dust.jpg" target="_blank" rel="noopener" aria-label="바닥에 생겼다 퍼지고 가라앉는 먼지 3프레임 이미지 크게 보기 (새 탭)">
+                  <img src="./assets/project-samples/comstock-dust.jpg" width="1350" height="280" alt="바닥에 생겼다 퍼지고 가라앉는 먼지 3프레임" loading="lazy" decoding="async">
+                </a>
+                <figcaption>구르기 먼지 프레임 선별 작업본 · 선 굵기와 크기를 더 조정하는 피드백이 이어졌습니다.</figcaption>
+              </figure>
+              <p class="work-sample__source">출처: 컴스톡 VFX 작업보고서 및 구르기 지면먼지 작업기록 · 작업본 발췌</p>
+            </section>
+          </article>
+        </li>
+        <li class="work-timeline__item" id="comstock-pv" tabindex="-1">
+          <span class="work-timeline__stage"><span aria-hidden="true">06</span>PV 검수</span>
+          <article class="work-entry">
+            <h2 class="h3">PV 표현과 게임 정보 대조</h2>
+            <dl class="work-entry__steps">
+              <div>
+                <dt>상황</dt>
+                <dd>PV의 짧은 시간 안에 웃는 로봇, 직접 붙이는 무기, 파츠 모딩, 좀비 웨이브를 전달해야 했습니다. 기존 영상의 머리·무기 수와 두 자루 고정 문구가 게임 데이터와 맞는지도 확인해야 했습니다.</dd>
+              </div>
+              <div>
+                <dt>행동</dt>
+                <dd>
+                  <p>레트로 TV 광고와 CRT를 검토한 뒤 효과는 약하게, 인게임 UI 밝기는 유지하고 영어 음성·짧은 한글 자막으로 시선을 유도하는 방향을 잡았습니다. 광고 테마와 어두운 도입·보스 구간의 오디오도 분리해 검토했습니다.</p>
+                  <p>GameDataAsset의 명칭·ID와 영문 문자열을 대조했습니다. 원거리 10종과 근접 3종의 5등급 데이터를 종류 65개로 세지 않고, 좌우 장착 리소스나 테스트 잔존 이미지도 별도 무기로 세지 않았습니다. 기체별 슬롯 수 차이와 기본 6칸에서 확장되는 디스크도 확인했습니다.</p>
+                </dd>
+              </div>
+              <div>
+                <dt>결과</dt>
+                <dd>머리 12종·무기 13종으로 문구를 정정하고, 기체별 슬롯에 맞춰 장착 표현을 고치는 안을 기록했습니다. 확인한 v2 CLEAN 화면에는 기존 6종·22종·두 자루 문구가 남아 있어 수정안과 영상 반영 여부를 따로 표시했습니다.</dd>
+              </div>
+              <div>
+                <dt>배울점</dt>
+                <dd>홍보 문구를 확인할 때는 데이터 레코드 수, 실제 선택할 수 있는 콘텐츠 종류, 화면에 나온 한 기체의 장착 예시를 구분해야 합니다. 정정안을 확정한 뒤에도 실제 출력 영상의 컷과 자막을 다시 대조해야 합니다.</dd>
+              </div>
+            </dl>
+            <section class="work-sample">
+              <span class="work-sample__type">PV 검수 기록</span>
+              <h3>홍보 영상 문구를 게임 데이터와 대조</h3>
+              <div class="work-sample__table">
+                <table aria-label="컴스톡 PV 문구 정정안">
+                  <thead><tr><th scope="col">기존 영상 문구</th><th scope="col">보고서의 정정안</th><th scope="col">대조 기준</th></tr></thead>
+                  <tbody>
+                    <tr><th scope="row">6 HEADS</th><td>12 HEADS</td><td>플레이어가 선택할 수 있는 머리 12종</td></tr>
+                    <tr><th scope="row">22 GUNS</th><td>13 WEAPONS</td><td>원거리 10종 + 근접 3종. 13종 × 5등급의 데이터 ID 65개는 종류 수와 구분</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="work-sample__source">출처: COMSTOCK PV 작업보고서 · v2 CLEAN 문구 검수 및 정정 제안</p>
+            </section>
+            <section class="work-sample">
+              <span class="work-sample__type">실제 PV 작업본</span>
+              <h3>정정이 필요했던 v2 CLEAN 화면</h3>
+              <div class="work-sample__gallery">
+              <figure>
+                <a href="./assets/project-samples/comstock-pv-heads.png" target="_blank" rel="noopener" aria-label="머리 선택 장면 하단에 무려 6종이라는 자막이 남은 작업본 이미지 크게 보기 (새 탭)">
+                  <img src="./assets/project-samples/comstock-pv-heads.png" width="1000" height="563" alt="머리 선택 장면 하단에 무려 6종이라는 자막이 남은 작업본" loading="lazy" decoding="async">
+                </a>
+                <figcaption>머리 선택 컷 · 잠금 해금 대상까지 세어 머리 12종으로 정정 제안.</figcaption>
+              </figure>
+              <figure>
+                <a href="./assets/project-samples/comstock-pv-weapons.png" target="_blank" rel="noopener" aria-label="장착 장면에 딱 2자루와 무기 22종 자막이 남은 작업본 이미지 크게 보기 (새 탭)">
+                  <img src="./assets/project-samples/comstock-pv-weapons.png" width="1000" height="563" alt="장착 장면에 딱 2자루와 무기 22종 자막이 남은 작업본" loading="lazy" decoding="async">
+                </a>
+                <figcaption>무기 소개 컷 · 무기 13종, 장착 슬롯은 기체별로 다름.</figcaption>
+              </figure>
+              </div>
+              <p class="work-sample__source">출처: COMSTOCK PV 작업보고서 · v2 CLEAN 캡처, 정정 전 화면</p>
+            </section>
+          </article>
+        </li>
+      </ol>
+      <details class="project-verification">
+        <summary>검증한 자료와 추가로 확인할 점</summary>
+        <dl>
+          <div><dt>자료에서 확인</dt><dd>이정현 작성 초기 시스템 총괄기획서 27쪽, 맵 기획서 25쪽, 개정 시스템 총괄기획서 22쪽, WBS 제안, 개인 경험문서, VFX·구르기 먼지·PV 작업보고서를 대조했습니다.</dd></div>
+          <div><dt>확인 범위</dt><dd>WBS는 초기 배정안이고 최종 분담표가 아닙니다. 리소스의 채택과 실제 게임 내 적용은 별개입니다. 빌드 분석 보고서는 VFX 처리 클래스·필드의 존재를 보여주지만 원본 이미지와 엔진 텍스처의 일치는 확인되지 않았습니다.</dd></div>
+          <div><dt>추가할 증거</dt><dd>직접 구현한 기능의 커밋과 당시 팀 전달 기록, 적용된 VFX의 인게임 비교, 정정된 PV 파일을 확보하면 역할과 최종 반영 범위를 더 정확히 제시할 수 있습니다.</dd></div>
+        </dl>
+        <section class="work-sample">
+          <span class="work-sample__type">팀 개발 기록</span>
+          <h3>증상에서 수정 지점을 좁힌 개발 검수 사례</h3>
+          <div class="work-sample__table">
+            <table aria-label="컴스톡 팀 개발 검수 기록">
+              <thead><tr><th scope="col">재현 증상</th><th scope="col">문서에 기록된 원인</th><th scope="col">보완 방향</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">웨이브 UI에서 ESC → 설정 → 복귀 후 이동 불가</th><td>웨이브 배너와 일시정지가 각각 시간 배속을 변경해 0으로 복원</td><td>시간 배속의 최종 변경 통로와 소유자를 하나로 정리</td></tr>
+                <tr><th scope="row">차저 돌진 애니메이션이 대기 모션과 반대로 보임</th><td>상태가 바뀌어도 처음 선택한 애니메이션 결과가 유지됨</td><td>상태에 따라 애니메이션 선택을 갱신</td></tr>
+                <tr><th scope="row">텍스트 크기를 늘려도 실제 화면이 그대로임</th><td>설정값 변경만으로는 화면의 표시 크기를 판단할 수 없음</td><td>표시 칸과 실제 렌더 크기를 함께 확인</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="work-sample__source">출처: 컴스톡 저장소 프로젝트 안내의 개발 기록. 각 수정 코드와 리포트 작성자의 개인 귀속은 확인되지 않았습니다.</p>
+        </section>
+      </details>
+    </section>
 
-  <!-- ════════ 목록 ════════ -->
-  <section class="section" aria-labelledby="list-title">
-    <div class="container">
-      <h2 class="sr-only" id="list-title">프로젝트 목록</h2>
+    <section class="project-history__project" id="pasadogam" tabindex="-1" aria-labelledby="pasadogam-title">
+      <a class="project-back" href="#project-list">← 전체 프로젝트</a>
+      <header class="project-history__heading">
+        <h1 class="h2" id="pasadogam-title">파사도감</h1>
+        <p class="project-history__role">개인 기획 · 세계관·캐릭터·분기 퀘스트</p>
+        <p class="lead">조사로 모은 정보가 전투와 선택의 의미를 바꾸는 서사·퀘스트 기획입니다. 초기 캐릭터와 퀘스트를 작성한 뒤 후속 스토리 바이블에서 세계관과 결말을 검토했습니다.</p>
+      </header>
+      <nav class="project-stages" aria-label="작업 단계 바로가기">
+        <ul>
+          <li><a href="#pasadogam-character">캐릭터 기획</a></li>
+          <li><a href="#pasadogam-branches">분기 기획</a></li>
+          <li><a href="#pasadogam-quest-table">퀘스트 명세</a></li>
+          <li><a href="#pasadogam-worldbuilding">세계관 개정</a></li>
+        </ul>
+      </nav>
+      <ol class="work-timeline" aria-label="파사도감 작업 순서">
+        <li class="work-timeline__item" id="pasadogam-character" tabindex="-1">
+          <span class="work-timeline__stage"><span aria-hidden="true">01</span>캐릭터 기획</span>
+          <article class="work-entry">
+            <h2 class="h3">인물 동기를 플레이 과제로 구체화</h2>
+            <dl class="work-entry__steps">
+              <div>
+                <dt>상황</dt>
+                <dd>초기 캐릭터안에서는 조선 말기를 변형한 세계에서 전임 경호 책임자의 딸이 아버지의 죽음을 조사합니다. 사연이 캐릭터 설명에만 남으면 플레이어는 왜 조사하고 싸우는지 체감하기 어렵습니다.</dd>
+              </div>
+              <div>
+                <dt>행동</dt>
+                <dd>
+                  <p>NPC와 대화하고 현장·퍼즐에서 단서를 얻은 뒤 적의 약점을 찾아 전투로 해결하는 구조를 구상했습니다. 회피·패링·연계 공격 등 인물의 플레이 역할과 필요한 동작·외형을 함께 검토했습니다.</p>
+                  <p>캐릭터 기획 리뷰에서는 게임을 먼저 설명하고 인물이 필요한 기능적·감정적 이유, 실제 행동, 외형의 배경과 레퍼런스 사용 의도를 붙이라는 조언을 받았습니다.</p>
+                </dd>
+              </div>
+              <div>
+                <dt>결과</dt>
+                <dd>캐릭터 기획 초안과 발표자료를 작성했습니다. 인물의 동기에서 플레이 기능과 필요한 리소스를 이어 설명할 수 있는 기준을 정리했습니다. 조언 전부가 최종 시트에 반영됐는지는 확인하지 못했습니다.</dd>
+              </div>
+              <div>
+                <dt>배울점</dt>
+                <dd>캐릭터의 목적을 제작에 전달하려면 성격이나 인상에서 멈추지 않고, 플레이 중 하는 행동과 장면에 필요한 리소스로 풀어야 합니다.</dd>
+              </div>
+            </dl>
+          </article>
+        </li>
+        <li class="work-timeline__item" id="pasadogam-branches" tabindex="-1">
+          <span class="work-timeline__stage"><span aria-hidden="true">02</span>분기 기획</span>
+          <article class="work-entry">
+            <h2 class="h3">조사 단서와 분기별 전투 목표</h2>
+            <dl class="work-entry__steps">
+              <div>
+                <dt>상황</dt>
+                <dd>착호별장은 호랑이를 퇴치하려 하지만 주민은 호랑이가 자신들을 구한 산군이라고 증언합니다. 마지막 대화에서 결말만 고르게 하면 앞서 조사한 정보가 플레이에 영향을 주지 못합니다.</dd>
+              </div>
+              <div>
+                <dt>행동</dt>
+                <dd>
+                  <p>솔고개마을에서 피해 현장, 기본 증언, 선택 조사로 정보를 쌓도록 설계했습니다. 어떤 단서를 갖고 산기슭으로 가느냐에 따라 호랑이를 처치하거나 몰아내거나 뒤따라 진상을 확인할 수 있도록 했습니다.</p>
+                  <p>조총은 긴 장전과 큰 피해를 갖는 전투 도구로 익히게 하면서, 원거리 사격으로 오브젝트를 작동시키거나 조사 단서를 얻는 기믹에도 연결했습니다.</p>
+                </dd>
+              </div>
+              <div>
+                <dt>결과</dt>
+                <dd>퀘스트 초안에 상반된 증언, 무기 습득과 튜토리얼, 분기 전 조사와 전투를 연결했습니다. 최종 제출본에서는 조사 진행에 따라 실제 분기 진입 가능 여부가 바뀌도록 정리했습니다.</dd>
+              </div>
+              <div>
+                <dt>배울점</dt>
+                <dd>조사가 의미 있으려면 대화량만 늘리는 것이 아니라 확보한 정보가 다음 행동과 성공 조건을 바꾸어야 합니다.</dd>
+              </div>
+            </dl>
+            <section class="work-sample">
+              <span class="work-sample__type">제출 기획서의 제작 범위</span>
+              <h3>조사·전투를 위해 필요한 리소스</h3>
+              <div class="work-sample__table">
+                <table aria-label="파사도감 최종 퀘스트 문서의 리소스 범위">
+                  <thead><tr><th scope="col">대상</th><th scope="col">퀘스트에서 하는 일</th><th scope="col">제작 범위</th></tr></thead>
+                  <tbody>
+                    <tr><th scope="row">착호별장</th><td>의뢰와 조총 튜토리얼 안내</td><td>기존 사용</td></tr>
+                    <tr><th scope="row">호환 피해 조사 지점</th><td>초기 피해 조사 목표</td><td>기존 수정·사용</td></tr>
+                    <tr><th scope="row">훈련용 볏짚 인형</th><td>조총 사격 튜토리얼</td><td>기존 수정·사용</td></tr>
+                    <tr><th scope="row">조총</th><td>원거리 전투·조사</td><td>신규 제작 대상으로 명세</td></tr>
+                  </tbody>
+                </table>
+              </div><p class="work-sample__source">출처: 파사도감 최종 퀘스트 문서 · 리소스 목록 발췌</p>
+            </section>
+          </article>
+        </li>
+        <li class="work-timeline__item" id="pasadogam-quest-table" tabindex="-1">
+          <span class="work-timeline__stage"><span aria-hidden="true">03</span>퀘스트 명세</span>
+          <article class="work-entry">
+            <h2 class="h3">분기 조건과 실패 처리를 테이블로 정리</h2>
+            <dl class="work-entry__steps">
+              <div>
+                <dt>상황</dt>
+                <dd>문장으로 설명한 이야기를 제작에 넘기려면 퀘스트가 언제 시작하고 어떤 상태에서 다음으로 가며 실패하면 어디로 돌아가는지 모호하지 않아야 했습니다.</dd>
+              </div>
+              <div>
+                <dt>행동</dt>
+                <dd>
+                  <p>선행 퀘스트와 조사 조건, 진행 단계·구역·NPC·개체·장비를 표에서 구분했습니다. 공통 조총 훈련과 분기별로 필요한 전투·추적 행동을 따로 적었습니다.</p>
+                  <p>퇴치에서는 호랑이 HP 0이 성공이고 격퇴에서는 같은 HP 0이 실패가 됩니다. 진상 분기에서는 인식 범위를 10초 이상 벗어나면 추적에 실패하고, 이후에는 마을 호랑이를 지키면서 악령 호랑이를 처치해야 합니다.</p>
+                </dd>
+              </div>
+              <div>
+                <dt>결과</dt>
+                <dd>최종 기획 MD와 XLSX에 분기 진입 후 변경 불가, 결말 하나를 완료하면 연계 종료, 전투·추적 실패 시 즉시 재도전을 명시했습니다. 퀘스트 ID와 목표, 금지 행동, 재시도 범위까지 확인할 수 있습니다.</dd>
+              </div>
+              <div>
+                <dt>배울점</dt>
+                <dd>분기는 제목과 대사보다 상태, 목표, 실패 조건의 차이로 설명해야 제작자가 어떤 행동을 판정할지 알 수 있습니다.</dd>
+              </div>
+            </dl>
+            <section class="work-sample">
+              <span class="work-sample__type">제출 기획서 데이터</span>
+              <h3>훈련과 호랑이 사건의 분기 퀘스트</h3>
+              <div class="work-sample__table">
+                <table aria-label="최종 퀘스트 테이블의 목표와 진입·실패 조건 발췌">
+                  <thead><tr><th scope="col">ID · 단계</th><th scope="col">플레이 목표</th><th scope="col">진입·실패 조건</th></tr></thead>
+                  <tbody>
+                    <tr><th scope="row">6 · 정비</th><td>조총 획득 후 볏짚 인형 3기를 20초 내 파괴</td><td>공통 훈련</td></tr>
+                    <tr><th scope="row">8-A · 호랑이 퇴치</th><td>호랑이 HP를 0으로 만들어 퇴치</td><td>조사 정보가 부족할 때 진입 가능</td></tr>
+                    <tr><th scope="row">8-B · 경고</th><td>공격과 어그로로 호랑이를 유도 지점까지 이동</td><td>추가 단서로 진입. 호랑이 HP 0이면 실패</td></tr>
+                    <tr><th scope="row">8-C1 · 산군?</th><td>호랑이를 따라가 실제 피해 원인 확인</td><td>핵심 조사 조건으로 진입. 인식 범위를 10초 이상 벗어나면 실패</td></tr>
+                    <tr><th scope="row">8-C2 · 진상</th><td>마을 호랑이를 보호하면서 악령 호랑이 처치</td><td>마을 호랑이 HP 0이면 실패</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="work-sample__source">출처: 파사도감 최종 퀘스트 문서 · 목표와 조건 열 발췌</p>
+            </section>
+          </article>
+        </li>
+        <li class="work-timeline__item" id="pasadogam-worldbuilding" tabindex="-1">
+          <span class="work-timeline__stage"><span aria-hidden="true">04</span>세계관 개정</span>
+          <article class="work-entry">
+            <h2 class="h3">후속 세계관과 결말 검토</h2>
+            <dl class="work-entry__steps">
+              <div>
+                <dt>상황</dt>
+                <dd>후속 바이블에서 근대화와 믿음의 쇠퇴가 신비한 존재들을 몰아붙인다는 주제를 잡았습니다. 외세를 단순 악역으로 세우거나 대원군을 최종 적으로 처치하면 인물 동기와 시대 변화가 단순해질 수 있었습니다.</dd>
+              </div>
+              <div>
+                <dt>행동</dt>
+                <dd>
+                  <p>이진을 대원군의 신임을 받는 왕족 출신으로 잡아 전국을 이동하고 사건을 해결할 명분을 줬습니다. 대원군을 배신·처치하는 안은 거절하고, 공개된 퇴진과 신비를 붙잡으려던 숨은 계획의 실패를 나란히 두었습니다.</p>
+                  <p>이무기는 중반부터 도움을 주는 동료이자 용이 되고 싶은 존재로 설정했습니다. 승천 과정의 강제성을 이무기 본인의 동의 없는 희생과 혼동하지 않도록 관계와 선택의 의미를 바로잡았습니다.</p>
+                </dd>
+              </div>
+              <div>
+                <dt>결과</dt>
+                <dd>후속 바이블에서 처치와 통제의 관점이 진실을 조사하면서 이해와 관계의 문제로 바뀌는 흐름을 정리했습니다. 설화 조사 후보는 확정 설정과 분리했습니다.</dd>
+              </div>
+              <div>
+                <dt>배울점</dt>
+                <dd>역사 소재를 쓰는 창작에서는 고증과 가상 설정을 구분하고, 결말을 선택할 때 인물이 왜 그 행동을 하는지와 전체 주제에 맞는지를 함께 봐야 합니다.</dd>
+              </div>
+            </dl>
+          </article>
+        </li>
+      </ol>
+      <details class="project-verification">
+        <summary>검증한 자료와 추가로 확인할 점</summary>
+        <dl>
+          <div><dt>자료에서 확인</dt><dd>이정현 작성 캐릭터 초안과 발표자료, 퀘스트 초안, 노션 최종 기획 MD·테이블 XLSX, 캐릭터 조언 자료, 스토리 바이블의 대화 기록을 대조했습니다.</dd></div>
+          <div><dt>확인 범위</dt><dd>테이블 예제와 수업 공용 형식이 섞여 있어 시트 체계 전체를 개인 저작으로 보지 않습니다. 초안과 후속 바이블은 설정이 다른 버전입니다. 자료에서 분기 설계를 확인했으며 구현·플레이테스트까지 확인하지는 않았습니다.</dd></div>
+          <div><dt>추가할 증거</dt><dd>분기 진입을 판단하는 세이브·조건 플래그, 각각의 결말 화면이나 검수 시트, 캐릭터 피드백 전후 시트를 추가하면 설계 전달과 실제 반영을 함께 보여줄 수 있습니다.</dd></div>
+        </dl>
+      </details>
+    </section>
 
-      <div class="filters noprint" id="filters" role="group" aria-label="분류 필터">
-        <button type="button" data-cat="all" aria-pressed="true">전체 <span class="count"></span></button>
-        <button type="button" data-cat="main" aria-pressed="false">메인 프로젝트 <span class="count"></span></button>
-        <button type="button" data-cat="docs" aria-pressed="false">기획 문서 <span class="count"></span></button>
-        <button type="button" data-cat="tools" aria-pressed="false">데이터 · 툴 <span class="count"></span></button>
-      </div>
+    <section class="project-history__project" id="danyeogayong" tabindex="-1" aria-labelledby="danyeogayong-title">
+      <a class="project-back" href="#project-list">← 전체 프로젝트</a>
+      <header class="project-history__heading">
+        <h1 class="h2" id="danyeogayong-title">다녀가용</h1>
+        <p class="project-history__role">성장·보스 기획 · 그래픽과 사운드 검수 · QA 설계</p>
+        <p class="lead">성장 수치와 보스 규칙을 비교하고, 그래픽과 사운드 제작 기준을 실제 사용 장면에 맞춰 구체화했습니다.</p>
+      </header>
+      <nav class="project-stages" aria-label="작업 단계 바로가기">
+        <ul>
+          <li><a href="#danyeogayong-game-data">데이터 정리</a></li>
+          <li><a href="#danyeogayong-balance">밸런스 비교</a></li>
+          <li><a href="#danyeogayong-boss">보스 전투</a></li>
+          <li><a href="#danyeogayong-graphics">그래픽 검수</a></li>
+          <li><a href="#danyeogayong-sound">사운드 검수</a></li>
+          <li><a href="#danyeogayong-obt">OBT 검수 설계</a></li>
+        </ul>
+      </nav>
+      <ol class="work-timeline" aria-label="다녀가용 작업 순서">
+        <li class="work-timeline__item" id="danyeogayong-game-data" tabindex="-1">
+          <span class="work-timeline__stage"><span aria-hidden="true">01</span>데이터 정리</span>
+          <article class="work-entry">
+            <h2 class="h3">성장 데이터의 편집 구조 단순화</h2>
+            <dl class="work-entry__steps">
+              <div>
+                <dt>상황</dt>
+                <dd>스탯 데이터가 여러 시트와 복잡한 수식에 흩어져 있어 기획자가 수치를 바꿨을 때 배수인지 합산인지 놓치기 쉬웠습니다.</dd>
+              </div>
+              <div>
+                <dt>행동</dt>
+                <dd>
+                  <p>10개로 나뉜 안 대신 INFO·UpgradeTree·RebirthStat·ActiveSkill 중심으로 줄이고 이름의 한글·영어와 코드 키를 분리했습니다. 숫자 값과 연산 종류·수치 단위를 같은 뜻으로 혼용하지 않도록 요구했습니다.</p>
+                  <p>소수와 정수, 배수와 합산을 따로 표시하고 읽고 편집해야 하는 항목을 가까이 배치했습니다. 예를 들어 공격력 증가율과 최대 기력 증가는 수치뿐 아니라 적용 방식이 다릅니다.</p>
+                </dd>
+              </div>
+              <div>
+                <dt>결과</dt>
+                <dd>네 시트의 게임 데이터 수정본을 남겼습니다. 같은 성장 데이터에서도 수치, 증가량, 연산, 단위를 따로 읽을 수 있습니다.</dd>
+              </div>
+              <div>
+                <dt>배울점</dt>
+                <dd>편집 화면은 입력을 빠르게 하는 것과 입력값의 의미를 오해하지 않게 하는 것이 함께 중요합니다.</dd>
+              </div>
+            </dl>
+            <section class="work-sample">
+              <span class="work-sample__type">실제 엑셀 행 발췌</span>
+              <h3>값과 적용 연산을 분리한 환생 스탯</h3>
+              <div class="work-sample__table">
+                <table aria-label="RebirthStat의 일부 데이터">
+                  <thead><tr><th scope="col">코드 키 · 스탯</th><th scope="col">첫 레벨 값</th><th scope="col">추가 값</th><th scope="col">연산 · 단위</th></tr></thead>
+                  <tbody>
+                    <tr><th scope="row">p_dmg · 태고의 분노</th><td data-number>0.5</td><td data-number>0.5</td><td>배수 · 증가율</td></tr>
+                    <tr><th scope="row">p_gold · 황금 혈통</th><td data-number>0.5</td><td data-number>0.5</td><td>배수 · 증가율</td></tr>
+                    <tr><th scope="row">p_time · 영원의 심장</th><td data-number>10</td><td data-number>10</td><td>합산 · 기력</td></tr>
+                  </tbody>
+                </table>
+              </div><p class="work-sample__source">출처: 다녀가용 게임 데이터 수정 엑셀 · RebirthStat 시트</p>
+            </section>
+          </article>
+        </li>
+        <li class="work-timeline__item" id="danyeogayong-balance" tabindex="-1">
+          <span class="work-timeline__stage"><span aria-hidden="true">02</span>밸런스 비교</span>
+          <article class="work-entry">
+            <h2 class="h3">구매 정책별 성장 비교와 조정 후보 선정</h2>
+            <dl class="work-entry__steps">
+              <div>
+                <dt>상황</dt>
+                <dd>초반에는 자주 강화하고 중반에는 벽을 만나 환생하며 후반에는 다시 가속되는 감각을 목표로 삼았습니다. 같은 강화 비용도 가장 싼 것을 사는 사람과 생존·DPS를 우선하는 사람에게 다르게 작용할 수 있었습니다.</dd>
+              </div>
+              <div>
+                <dt>행동</dt>
+                <dd>
+                  <p>Bills Must Be Paid·Clicker Heroes·AdVenture Capitalist의 성장 감각을 참고해 HTML Balance Lab에서 구매 전략과 비용·효과를 바꿔 비교했습니다. 진행 시간뿐 아니라 세션 길이와 반복 부담도 함께 봤습니다.</p>
+                  <p>조정 범위를 낙뢰의 초회 비용과 비용 배수로 좁혔습니다. 후보 선정에 쓰지 않은 시드 501~510을 기존안과 조정안, 두 구매 정책에 동일하게 적용했습니다.</p>
+                </dd>
+              </div>
+              <div>
+                <dt>결과</dt>
+                <dd>조정안에서 최저가 정책의 평균 진행 시간은 0.83분 짧아지고 생존·DPS 정책은 0.43분 길어졌습니다. 같은 수정이 구매 방식에 따라 반대 방향으로 작용하는 결과를 함께 기록했습니다.</dd>
+              </div>
+              <div>
+                <dt>배울점</dt>
+                <dd>한 정책의 평균만으로 전체 개선을 결론낼 수 없습니다. 후보를 고르는 데 쓴 실행과 비교 검증 실행을 분리하고, 모형에서 찾은 결과는 실제 플레이에서 다시 확인해야 합니다.</dd>
+              </div>
+            </dl>
+            <section class="work-sample">
+              <span class="work-sample__type">시뮬레이션 결과</span>
+              <h3>낙뢰 비용 변경 전후의 평균 진행 시간</h3>
+              <div class="work-sample__table">
+                <table aria-label="F0와 S1의 구매 정책별 전체 평균 진행 시간">
+                  <thead><tr><th scope="col">구매 정책</th><th scope="col">기존안 F0</th><th scope="col">조정안 S1</th><th scope="col">변화</th></tr></thead>
+                  <tbody>
+                    <tr><th scope="row">최저가</th><td data-number>42.25분</td><td data-number>41.42분</td><td data-number>−0.83분</td></tr>
+                    <tr><th scope="row">생존·DPS</th><td data-number>47.96분</td><td data-number>48.39분</td><td data-number>+0.43분</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p>낙뢰 기본 비용 <strong>15,840 → 12,672</strong>, 비용 배수 <strong>×1.50 → ×1.55</strong>. 조정안 선정에 쓰지 않은 시드 501~510을 두 정책과 두 설정에 동일하게 적용해 총 40회 시뮬레이션했습니다.</p>
+              <p class="work-sample__source">출처: 스탯별 최종 조정안 S1 · HTML 모형의 비교 결과</p>
+            </section>
+          </article>
+        </li>
+        <li class="work-timeline__item" id="danyeogayong-boss" tabindex="-1">
+          <span class="work-timeline__stage"><span aria-hidden="true">03</span>보스 전투</span>
+          <article class="work-entry">
+            <h2 class="h3">보스 패턴을 상태와 이벤트로 명세</h2>
+            <dl class="work-entry__steps">
+              <div>
+                <dt>상황</dt>
+                <dd>공격 쿨다운만 늘어놓으면 두 스킬이 같이 준비되거나 시전이 밀렸을 때 어느 공격이 나갈지 정할 수 없었습니다. 보스별 패턴과 실제 연출이 같은 동작을 설명하는지도 확인할 필요가 있었습니다.</dd>
+              </div>
+              <div>
+                <dt>행동</dt>
+                <dd>
+                  <p>대기·공격·사망 상태, 스킬2 → 스킬1 → 기본 공격의 우선순위, 지연된 쿨다운과 실제 발사 시점을 구분했습니다. 30초 종료 시점에 보스가 죽었다면 사망 판정을 우선하도록 검토했습니다.</p>
+                  <p>보스 공격은 예상 플레이어 체력÷15, 보스 체력은 목표 DPS×15초를 기준으로 안을 제안했습니다. 로켓 주먹의 돌아오는 공격이 새 이미지의 늘어나는 팔로 보이는 차이를 짚었고, 슈퍼로봇 레이저는 발사부·확장·접합·총구를 나누어 수정했습니다.</p>
+                </dd>
+              </div>
+              <div>
+                <dt>결과</dt>
+                <dd>공통 전투 규칙과 보스별 명세를 정리했습니다. 보스 1~6과 우주 테마 7·8의 초안 수준을 구분했고, 레이저는 여러 작업 버전 이후에도 총구 기준으로 처음부터 다시 제작하는 요청이 남았습니다.</dd>
+              </div>
+              <div>
+                <dt>배울점</dt>
+                <dd>패턴이 재미있어 보이는 것과 구현·연출이 같은 규칙으로 동작하는 것은 별개입니다. 우선순위, 판정 시점, 실제 움직임을 한 명세에서 대조해야 합니다.</dd>
+              </div>
+            </dl>
+            <section class="work-sample">
+              <span class="work-sample__type">보스 명세 수치</span>
+              <h3>공격 우선순위와 수치 가정</h3>
+              <div class="work-sample__table">
+                <table aria-label="다녀가용 보스 기획의 초기 가정">
+                  <thead><tr><th scope="col">항목</th><th scope="col">명세 기준</th><th scope="col">해석</th></tr></thead>
+                  <tbody>
+                    <tr><th scope="row">공격 중첩</th><td>스킬2 &gt; 스킬1 &gt; 기본 공격</td><td>여러 공격이 준비됐을 때 선택 기준</td></tr>
+                    <tr><th scope="row">목표 피해</th><td>보스 공격 ≈ 예상 플레이어 체력 ÷ 15</td><td>약 15회 피격을 기준으로 잡은 설계 가정</td></tr>
+                    <tr><th scope="row">목표 체력</th><td>보스 체력 = 목표 DPS × 15초</td><td>처치 목표 시간 12~20초, 전투 제한 30초</td></tr>
+                  </tbody>
+                </table>
+              </div><p class="work-sample__source">출처: 다녀가용 보스 명세와 기획 기록 · 실전 난도 측정 전의 설계 기준</p>
+            </section>
+          </article>
+        </li>
+        <li class="work-timeline__item" id="danyeogayong-graphics" tabindex="-1">
+          <span class="work-timeline__stage"><span aria-hidden="true">04</span>그래픽 검수</span>
+          <article class="work-entry">
+            <h2 class="h3">스킬 VFX와 자원 그래픽의 제작 조건</h2>
+            <dl class="work-entry__steps">
+              <div>
+                <dt>상황</dt>
+                <dd>브레스·낙뢰·메테오·지진을 구분할 수 있어야 했고, 자원은 드랍·도감·정산 화면의 서로 다른 크기에서도 같은 아이콘으로 읽혀야 했습니다.</dd>
+              </div>
+              <div>
+                <dt>행동</dt>
+                <dd>
+                  <p>팀의 비주얼 가이드를 기준으로 생성·후처리를 지시하고 이펙트별 모양과 타이밍을 비교했습니다. 540×540, 12프레임·24fps 같은 제작 기준을 정리하고 프레임마다 피벗과 중심이 흔들리지 않도록 했습니다.</p>
+                  <p>자원 아이콘은 외곽선을 더 굵게 요청하고 1,254px로 잘못 커진 결과를 540×540으로 수정하도록 했습니다. 드랍에서 작은 크기로 보이는 경우를 32·48·96px 미리보기로 확인했습니다.</p>
+                </dd>
+              </div>
+              <div>
+                <dt>결과</dt>
+                <dd>스킬과 자원 그래픽 후보, 수정본, 크기별 검토 이미지를 정리했습니다. 인계 기록에서 확정·미확정·리젝 자산을 구분했습니다.</dd>
+              </div>
+              <div>
+                <dt>배울점</dt>
+                <dd>공통 그림체를 맞추는 일은 스타일 지시뿐 아니라 게임에서 쓰이는 크기, 외곽선, 프레임, 기준점을 함께 검수하는 일입니다.</dd>
+              </div>
+            </dl>
+            <section class="work-sample">
+              <span class="work-sample__type">그래픽 작업본</span>
+              <h3>드랍 아이콘 6종 크기 검토</h3>
+              <figure>
+                <a href="./assets/project-samples/danyeogayong-icons.png" target="_blank" rel="noopener" aria-label="금 코인, 금괴, 사파이어, 루비, 다이아몬드, 왕관을 32·48·96픽셀로 비교한 작업본 이미지 크게 보기 (새 탭)">
+                  <img src="./assets/project-samples/danyeogayong-icons.png" width="1040" height="370" alt="금 코인, 금괴, 사파이어, 루비, 다이아몬드, 왕관을 32·48·96픽셀로 비교한 작업본" loading="lazy" decoding="async">
+                </a>
+                <figcaption>자원 아이콘 패키지 · 크기별 리소스 검토 이미지 · 이미지를 누르면 크게 열립니다.</figcaption>
+              </figure>
+            </section>
+          </article>
+        </li>
+        <li class="work-timeline__item" id="danyeogayong-sound" tabindex="-1">
+          <span class="work-timeline__stage"><span aria-hidden="true">05</span>사운드 검수</span>
+          <article class="work-entry">
+            <h2 class="h3">효과음 후보 비교와 편집 피드백</h2>
+            <dl class="work-entry__steps">
+              <div>
+                <dt>상황</dt>
+                <dd>같은 스킬이라도 준비·첫 타격·지속·잔향이 서로 다른 역할을 합니다. 원본 음원이 비슷해 보인다는 이유만으로 선택하면 스킬의 타이밍이나 무게를 전달하기 어렵습니다.</dd>
+              </div>
+              <div>
+                <dt>행동</dt>
+                <dd>
+                  <p>49개 선택 항목을 23개 용도와 37개 리소스로 연결하고 이미 확정된 7개를 유지했습니다. 지진은 준비·첫 충격·반복 한 박을 구분하고 낙뢰는 첫 충격과 짧은 전기 잔결을 따로 들었습니다.</p>
+                  <p>미채택 하위 효과 31개에 후보 6개씩을 두어 186개 비교 항목, 중복 제외 147개 원본을 듣고 비교할 수 있게 했습니다. 현대 공격음의 거친 성분을 줄이는 EQ 의견과 일반 루프·보스 인트로→루프 등 편집 방향도 정리했습니다.</p>
+                </dd>
+              </div>
+              <div>
+                <dt>결과</dt>
+                <dd>용도별 후보와 청취 비교 도구, 편집 피드백을 남겼습니다. 제공 보고서에 WAV 19개 편집이 기록돼 있으나 원본 파일과 최종 적용은 이 자료에서 확인되지 않았습니다.</dd>
+              </div>
+              <div>
+                <dt>배울점</dt>
+                <dd>청취 피드백은 좋고 나쁨보다 어느 순간의 공격감·재질·길이·잔향을 살릴지로 써야 교체나 편집 기준이 됩니다.</dd>
+              </div>
+            </dl>
+            <section class="work-sample">
+              <span class="work-sample__type">청취 비교 목록 발췌</span>
+              <h3>하나의 스킬을 서로 다른 소리 역할로 분리</h3>
+              <div class="work-sample__table">
+                <table aria-label="효과음별 청취 판단 기준">
+                  <thead><tr><th scope="col">대상</th><th scope="col">들어 본 부분</th><th scope="col">선택·편집 기준</th></tr></thead>
+                  <tbody>
+                    <tr><th scope="row">지진 준비</th><td>발동 전 짧은 저역과 돌 재질</td><td>긴 녹음은 준비감이 있는 구간만 비교</td></tr>
+                    <tr><th scope="row">지진 첫 타격</th><td>첫 충격과 석재 파편</td><td>잔향이 길면 어택 부분 위주로 검토</td></tr>
+                    <tr><th scope="row">지속 지진</th><td>반복되는 진동 한 박</td><td>긴 진동에서 한 박으로 편집할 구간을 선별</td></tr>
+                    <tr><th scope="row">낙뢰 타격</th><td>첫 충격과 짧은 전기 잔결</td><td>날카로운 고음과 긴 천둥 꼬리는 줄임</td></tr>
+                  </tbody>
+                </table>
+              </div><p class="work-sample__source">출처: 이펙트별 무료 후보 목록 · 채택 전 비교 기준</p>
+            </section>
+          </article>
+        </li>
+        <li class="work-timeline__item" id="danyeogayong-obt" tabindex="-1">
+          <span class="work-timeline__stage"><span aria-hidden="true">06</span>OBT 검수 설계</span>
+          <article class="work-entry">
+            <h2 class="h3">OBT 핵심 테스트 명세 정리</h2>
+            <dl class="work-entry__steps">
+              <div>
+                <dt>상황</dt>
+                <dd>CBT와 OBT의 Windows 빌드를 비교할 때 기존 23개 항목을 그대로 가져가면 새 기능과 핵심 흐름이 빠지고, 세부 경계까지 모두 넣으면 우선순위를 보기 어려웠습니다.</dd>
+              </div>
+              <div>
+                <dt>행동</dt>
+                <dd>
+                  <p>CBT 0.5.0과 OBT 0.6.2에서 달라진 기능을 확인하고 자동 전투·알과 부화·유물·스킨·도감·저장 등 본편 중심으로 재구성했습니다. 기존 저장·불러오기 항목은 새 게임의 취소·확정에 따른 초기화 검증으로 바꿨습니다.</p>
+                  <p>디버그로 건너뛴 진행과 자연 성장 검증을 분리했습니다. 언어가 한국어에서 영어로 돌아가는 현상은 CBT에도 있는지 비교해 기존 문제와 새 회귀를 구분하려 했습니다.</p>
+                </dd>
+              </div>
+              <div>
+                <dt>결과</dt>
+                <dd>기능별 확인 방법과 기대 결과가 있는 핵심 35개 케이스를 남겼습니다. 수정본의 상태는 모두 대기이며 확인 메모는 비어 있습니다.</dd>
+              </div>
+              <div>
+                <dt>배울점</dt>
+                <dd>테스트 케이스의 작성과 실행 결과는 다릅니다. 기대 결과를 명확히 적고 버전과 진행 조건을 남겨야 재현과 회귀 판단이 가능합니다.</dd>
+              </div>
+            </dl>
+            <section class="work-sample">
+              <span class="work-sample__type">테스트 시트 발췌</span>
+              <h3>OBT에서 확인할 기능과 기대 동작</h3>
+              <div class="work-sample__table">
+                <table aria-label="OBT 핵심 테스트 케이스 발췌">
+                  <thead><tr><th scope="col">항목</th><th scope="col">확인 방법</th><th scope="col">기대 결과</th><th scope="col">상태</th></tr></thead>
+                  <tbody>
+                    <tr><th scope="row">OBT-01 · 자동 전투</th><td>무조작 상태에서 자동 전투를 확인함</td><td>건물을 자동 공격·파괴하고 진행도가 증가함</td><td data-number>대기</td></tr>
+                    <tr><th scope="row">OBT-09 · 신규 게임 초기화</th><td>진행 중 새 게임을 선택하고 취소·확정을 확인함</td><td>취소 시 진행을 유지하고 확정 시 초기 상태로 시작함</td><td data-number>대기</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="work-sample__source">출처: 다녀가용 OBT 핵심 테스트 케이스 수정본 · 핵심TC_35 시트</p>
+            </section>
+          </article>
+        </li>
+      </ol>
+      <details class="project-verification">
+        <summary>검증한 자료와 추가로 확인할 점</summary>
+        <dl>
+          <div><dt>자료에서 확인</dt><dd>게임 데이터 수정 엑셀, F0·S1 밸런스 보고서, 보스 명세와 수정 기록, 그래픽 작업 패키지, 효과음 비교 목록, OBT 핵심 테스트 시트를 대조했습니다.</dd></div>
+          <div><dt>확인 범위</dt><dd>시뮬레이션 값은 플레이어 실측 지표가 아닙니다. 일부 그래픽은 AI 생성·후처리를 지시하고 검수한 작업입니다. 사운드 편집은 보고서 확인 범위이며 실물 WAV와 Unity 적용, OBT 케이스 통과는 별도입니다.</dd></div>
+          <div><dt>추가할 증거</dt><dd>Unity 적용 전후 캡처, 최종 사용 음원·라이선스 목록, OBT 실제 결과 및 메모, 실제 플레이의 진행 시간·막히는 구간을 추가하면 최종 효과까지 설명할 수 있습니다.</dd></div>
+        </dl>
+      </details>
+    </section>
 
-      <ul class="grid grid--3" id="cards">
-        <li class="pcard-item" data-cat="main">
-          <a class="pcard" href="./projects/animation-pipeline.html">
-            <span class="pcard__thumb">대표 이미지</span>
-            <span class="pcard__body">
-              <span class="tag">리소스 · AI 파이프라인</span>
-              <h3 class="h3">애니메이션 리소스 파이프라인 구축</h3>
-              <p>ChatGPT·Claude·ComfyUI로 시도하다 막힌 지점에서 Ludo.ai로 전환해, 팀 전체가 쓸 수 있는 애니메이션 파이프라인을 완성했습니다.</p>
-              <span class="pcard__meta">6주 프로젝트 · 프로덕션 단계 · 컴스톡</span>
-              <span class="pcard__go">
-                자세히 보기
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
-              </span>
-            </span>
+    <section class="project-catalog" id="project-list" tabindex="-1" aria-labelledby="project-list-title">
+      <header class="project-catalog__heading">
+        <p class="eyebrow"><span class="dot" aria-hidden="true"></span>Projects</p>
+        <h1 class="h1" id="project-list-title">프로젝트</h1>
+        <p class="lead">프로젝트를 선택하면 맡은 일과 작업 순서, 단계별 작업본과 검증 데이터를 확인할 수 있습니다.</p>
+      </header>
+      <ul class="project-cards">
+        <li>
+          <a class="project-card-link" href="#ranking-dashboard">
+            <span class="project-card-link__role">데이터 수집 · 웹 구현</span>
+            <h2 class="h3">게임 랭킹 대시보드</h2>
+            <p>한국 Steam 판매 순위와 Google Play 게임 매출 순위 수집, 변동 이력, 전송 실패 복구.</p>
+            <span class="project-card-link__action">작업 타임라인 보기 <span aria-hidden="true">→</span></span>
+          </a>
+        </li>
+        <li>
+          <a class="project-card-link" href="#hatagong">
+            <span class="project-card-link__role">팀장 · 콘셉트·시스템 기획</span>
+            <h2 class="h3">타일시공마스터(하늘타일공사)</h2>
+            <p>철거·도포·시공의 세 공정 설계, 퍼즐 판정, 의뢰·정산·보상 규칙.</p>
+            <span class="project-card-link__action">작업 타임라인 보기 <span aria-hidden="true">→</span></span>
+          </a>
+        </li>
+        <li>
+          <a class="project-card-link" href="#comstock">
+            <span class="project-card-link__role">시스템 총괄 기획 · 리소스 제작</span>
+            <h2 class="h3">컴스톡</h2>
+            <p>장르 전환에 따른 전투·정비 규칙 개정, 맵 기획, 애니메이션·VFX·PV 제작.</p>
+            <span class="project-card-link__action">작업 타임라인 보기 <span aria-hidden="true">→</span></span>
+          </a>
+        </li>
+        <li>
+          <a class="project-card-link" href="#pasadogam">
+            <span class="project-card-link__role">세계관 · 캐릭터 · 분기 퀘스트 기획</span>
+            <h2 class="h3">파사도감</h2>
+            <p>호랑이 사건의 조사 조건, 분기별 전투 목표, 인물 관계와 결말 설계.</p>
+            <span class="project-card-link__action">작업 타임라인 보기 <span aria-hidden="true">→</span></span>
+          </a>
+        </li>
+        <li>
+          <a class="project-card-link" href="#danyeogayong">
+            <span class="project-card-link__role">성장·보스 기획 · 리소스 검수 · QA</span>
+            <h2 class="h3">다녀가용</h2>
+            <p>성장 데이터와 밸런스 비교, 보스 전투 규칙, 그래픽·사운드 검수와 OBT 테스트 설계.</p>
+            <span class="project-card-link__action">작업 타임라인 보기 <span aria-hidden="true">→</span></span>
           </a>
         </li>
       </ul>
-
-      <p class="lead is-hidden" id="empty" style="margin-top:24px;">해당 분류에 표시할 프로젝트가 없습니다.</p>
-
-      <div class="nextdocs noprint" style="margin-top:56px;">
-        <div class="nextdocs__grid nextdocs__grid--single">
-          <a href="./resume.html">
-            <span>
-              <span class="l">다음 문서</span>
-              <span class="t">이력서</span>
-            </span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 </main>
 
 <footer class="footer noprint">
   <div class="container footer__inner">
     <div class="footer__contact">
-      <a href="mailto:tripletrio97@naver.com">tripletrio97@naver.com</a>
       <a href="./index.html">홈</a>
-      <a href="#" rel="noopener">GitHub</a>
-      <a href="#" rel="noopener">Notion</a>
+      <a href="https://github.com/2Khaz">GitHub</a>
     </div>
     <p class="footer__copy">© 2026 이정현. 시스템 기획자 포트폴리오.</p>
   </div>
 </footer>
-
-<script>
-(function () {
-  var wrap = document.getElementById('filters');
-  var items = document.querySelectorAll('.pcard-item');
-  var empty = document.getElementById('empty');
-  if (!wrap || !items.length) return;
-
-  var buttons = wrap.querySelectorAll('button');
-
-  // 개수 자동 계산
-  Array.prototype.forEach.call(buttons, function (b) {
-    var cat = b.getAttribute('data-cat');
-    var n = cat === 'all'
-      ? items.length
-      : document.querySelectorAll('.pcard-item[data-cat="' + cat + '"]').length;
-    var slot = b.querySelector('.count');
-    if (slot) slot.textContent = n;
-  });
-
-  function apply(cat, push) {
-    var shown = 0;
-    Array.prototype.forEach.call(items, function (li) {
-      var hit = (cat === 'all') || li.getAttribute('data-cat') === cat;
-      li.classList.toggle('is-hidden', !hit);
-      if (hit) shown++;
-    });
-    Array.prototype.forEach.call(buttons, function (b) {
-      b.setAttribute('aria-pressed', String(b.getAttribute('data-cat') === cat));
-    });
-    if (empty) empty.classList.toggle('is-hidden', shown > 0);
-
-    // 필터 상태를 주소에 반영 — 새로고침·공유·뒤로가기가 동작하도록
-    if (push && window.history && window.history.replaceState) {
-      var url = new URL(window.location.href);
-      if (cat === 'all') url.searchParams.delete('filter');
-      else url.searchParams.set('filter', cat);
-      window.history.replaceState({}, '', url.toString());
-    }
-  }
-
-  wrap.addEventListener('click', function (e) {
-    var b = e.target.closest ? e.target.closest('button[data-cat]') : null;
-    if (!b) return;
-    apply(b.getAttribute('data-cat'), true);
-  });
-
-  // 진입 시 주소의 filter 값 복원
-  var initial = 'all';
-  try {
-    var q = new URL(window.location.href).searchParams.get('filter');
-    if (q && wrap.querySelector('button[data-cat="' + q + '"]')) initial = q;
-  } catch (err) { /* URL 미지원 브라우저 — 기본값 사용 */ }
-  apply(initial, false);
-})();
-</script>
 </body>
 </html>

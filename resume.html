@@ -28,8 +28,6 @@
     · 자격증 3건 — 취득월 정보가 없어 이름만 기재. 있으면 <span class="m"> 로 추가
     · 프로필 사진 — 원본 PDF에서 추출한 121×162px 저해상도 사진(assets/profile.jpg)을
       임시로 넣음. 고화질 원본이 있으면 같은 경로로 교체 권장
-    · 거주지는 "경기 안산시"까지만 표기 — 원본의 상세 주소(도로명·아파트명)는
-      공개 사이트라 의도적으로 뺐음. 필요하면 .infolist 의 거주지 항목에서 되돌릴 것
   인쇄 : 우측 상단 [인쇄 · PDF] 버튼 → assets/site.css 의 @media print 규칙 적용 (A4)
 ================================================================================
 -->
@@ -51,10 +49,9 @@
     <nav class="doctabs" aria-label="문서 이동">
       <a href="./resume.html" aria-current="page">이력서</a>
       <a href="./cover-letter.html">자기소개서</a>
-      <a href="./portfolio.html">포트폴리오</a>
+      <a href="./portfolio.html">프로젝트</a>
       <a href="./play-archive.html">플레이 아카이브</a>
     </nav>
-    <a class="nav__mail" href="mailto:tripletrio97@naver.com">연락하기</a>
   </div>
 </header>
 
@@ -101,10 +98,6 @@
         </div>
 
           <dl class="infolist" style="margin-top:14px;">
-            <div><dt>성별</dt><dd>남 (군필)</dd></div>
-            <div><dt>거주지</dt><dd>경기 안산시</dd></div>
-            <div><dt>이메일</dt><dd><a href="mailto:tripletrio97@naver.com">tripletrio97@naver.com</a></dd></div>
-            <div><dt>연락처</dt><dd>010-4038-4198</dd></div>
             <!-- TODO: 원본 이력서에 GitHub · Notion 링크가 없어 자리표시자로 둠 -->
             <div class="infolist__wide"><dt>링크</dt><dd>
               <a href="#" rel="noopener">GitHub</a> · <a href="#" rel="noopener">Notion</a>
@@ -391,7 +384,6 @@
 <footer class="footer noprint">
   <div class="container footer__inner">
     <div class="footer__contact">
-      <a href="mailto:tripletrio97@naver.com">tripletrio97@naver.com</a>
       <a href="./index.html">홈</a>
       <a href="#" rel="noopener">GitHub</a>
       <a href="#" rel="noopener">Notion</a>
